@@ -76,24 +76,172 @@ html, body {
 	markers.push(myMarker);
 	
 
-	//
+	//위치를 담을 변수
 	var swLat,swLng,neLat,neLng,cenLat,cenLng;
+	
+	//위치를 담은 변수를 배열로 선별할 변수
+	var allData,centerData,subfor;
 
+	//아작스에서 나온 데이터를 운반할 변수
+	var string;
+	
+	//시작함수
+	function startFuc(){
+		infowindow = new google.maps.InfoWindow();
+		swLat = map.getBounds().getSouthWest().lat(); 
+	    swLng = map.getBounds().getSouthWest().lng(); 
+	    neLat = map.getBounds().getNorthEast().lat(); 
+	    neLng = map.getBounds().getNorthEast().lng(); 
+	    cenLat = map.getBounds().getCenter().lat(); 
+	    cenLng = map.getBounds().getCenter().lng(); 
+		allData = new Array(swLat, swLng, neLat, neLng);
+		centerData = new Array(cenLat,cenLng);
+	    subfor = allData[0]+"/"+allData[1]+"/"+ allData[2]+"/"+allData[3];
+	}
+	
+
+	
+	//움직일때마다 사용되는 지하철정보
+	function subwayinfo(){
+		$.ajax({
+			url: "/MeetWhen/bus/findSB.mw",
+			type: "post",
+			data: {subfor : subfor},
+			success : function(data){
+				var subArray = data;
+			for (i = 0; i < subArray.length; i++) {
+				console.log(subArray[i][0]);
+				submarker = new google.maps.Marker({
+			          id: i,
+			          position: new google.maps.LatLng(subArray[i][1], subArray[i][2]),
+			          icon: subway,
+			          map: map
+			        });
+			        markers.push(submarker);
+			        
+			        google.maps.event.addListener(submarker, 'click', (function(submarker, i) {
+				          return function() {
+				        	  var title = subArray[i][0];
+				              $.ajax({
+				              	url: "/MeetWhen/bus/returnSBinfo.mw",
+				              	type: "post",
+				              	data: {stationNm : subArray[i][0]},
+				              	success : function(data){
+				              	  	var subway = data;
+				              		var str = '</br></br>';
+				              		for (var i in subway) {
+				              		str += '<TR><TD colsapn="5"></TD></TR><TR><TD colspan="3">' 
+    				              		+ subway[i][1]+'</TD><TD colspan="2">'+ subway[i][2] +'</TD></TR>'+
+				              		'<TR rowspan="2"><TD>'+ subway[i][0] +'</TD><TD colspan="4" rowspan="2">' 
+				              		+ subway[i][4] + "(" + subway[i][3] + ")"+ '</TD></TR>'+
+				              		'<TR><TD></TD></TR>';     
+				              	}
+				              	str += '</br>';
+				              	infowindow.setContent(
+				              		'<h3>' + title +'역 </h3>' + '가장 먼저 도착하는 순서입니다.'+
+				              		'<table id="subList" border="1">' + '</table>');
+				              		 $("#subList").append(str); 
+				              	},
+				              	error: function(textStatus, errorThrown) {
+				              	alert("Status: " + textStatus); alert("Error :"+errorThrown);
+				              	}
+				              });
+				            infowindow.open(map, submarker);
+				          }
+				        })			        
+				        (submarker, i));  
+				        if(submarker)
+				        {
+				        	submarker.addListener('click', function() {
+				            map.setZoom(17);
+				            map.setCenter(this.getPosition());
+				          });
+				       }
+				        if(infowindow)
+				        {
+				        	infowindow.addListener('click', function() {
+				            map.setZoom(17);
+				            map.setCenter(this.getPosition());
+				          });
+				       }
+				}
+			},
+			error: function(textStatus, errorThrown) {
+			alert("Status: " + textStatus); alert("Error :"+errorThrown);
+			}
+		});
+	}
+
+	//움직일때마다 사용되는 버스정보
+	function businfo(){
+		$.ajax({
+			url: "/MeetWhen/bus/returnCenter.mw",
+			type: "post",
+			data: {string : string},
+			success : function(data){
+				locations = data;
+				for (i = 0; i < locations.length; i++) {
+    				
+				      marker = new google.maps.Marker({
+				          id: i,
+				          position: new google.maps.LatLng(locations[i][2], locations[i][1]),
+				          icon: busIcon,
+				          map: map
+				        });
+				        markers.push(marker);
+
+				     
+				        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+				          return function() {
+				              var title = locations[i][0];
+				              $.ajax({
+				              	url: "/MeetWhen/bus/returnBSinfo.mw",
+				              	type: "post",
+				              	data: {arsId : locations[i][3]},
+				              	success : function(data){
+				              	  	var busArray = data;
+				              		var str = '</br>'+'<TR><TD>버스</TD><TD>도착 시간</TD><TD>승객</TD></TR>';
+				              		for (var i in busArray) {
+				              		str += '<TR><TD rowspan="2">' + busArray[i][0]+'</br>'+ busArray[i][1]
+				              		 +'</TD> <TD>' + busArray[i][2] + '</TD> <TD>' + busArray[i][3] +'</TD></TR>'+
+				              		'<TR><TD>'+ busArray[i][4] +'</TD><TD>' + busArray[i][5] +  '</TD></TR>';     
+				              	}
+				              	str += '</br>';
+				              	infowindow.setContent(
+				              		'<h3>' + title +'</h3>' +
+				              		'<table id="boardList" border="1">' + '</table>');
+				              		 $("#boardList").append(str); 
+				              	},
+				              	error: function(textStatus, errorThrown) {
+				              	alert("Status: " + textStatus); alert("Error :"+errorThrown);
+				              	}
+				              });
+				            infowindow.open(map, marker);
+				          }
+				        })
+				        
+				        (marker, i));
+				        
+				        if(marker)
+				        {
+				          marker.addListener('click', function() {
+				            map.setZoom(17);
+				            map.setCenter(this.getPosition());
+				          });
+				        }
+				      }
+			},
+			error: function(textStatus, errorThrown) {
+			alert("Status: " + textStatus); alert("Error :"+errorThrown);
+			}
+		});
+	}
+
+
+	
 	//처음 맵 로딩시 보여주는 화면부분.
 	google.maps.event.addListenerOnce(map, 'idle', function(){
-		
-	swLat = map.getBounds().getSouthWest().lat(); 
-    swLng = map.getBounds().getSouthWest().lng(); 
-    neLat = map.getBounds().getNorthEast().lat(); 
-    neLng = map.getBounds().getNorthEast().lng(); 
-    cenLat = map.getBounds().getCenter().lat(); 
-    cenLng = map.getBounds().getCenter().lng(); 
-
-
-	var allData = new Array(swLat, swLng, neLat, neLng);
-	var centerData = new Array(cenLat,cenLng);
-    var subfor = allData[0]+"/"+allData[1]+"/"+ allData[2]+"/"+allData[3];
-	
+	startFuc();
 
 	
     ////전달받은 마커들을 전부 찍는 작업(맵에 표시 까지 하는 부분)
@@ -146,67 +294,7 @@ html, body {
 
 
    		//지하철을 찾는 부분
-	    $.ajax({
-			url: "/MeetWhen/bus/findSB.mw",
-			type: "post",
-			data: {subfor : subfor},
-			success : function(data){
-			var subArray = data;
-			
-			//지하철역사의 수를 파악후 그 수대로 마커를 찍는 부분
-			for (i = 0; i < subArray.length; i++) {
-				console.log(subArray[i][0]);
-				submarker = new google.maps.Marker({
-			          id: i,
-			          position: new google.maps.LatLng(subArray[i][1], subArray[i][2]),
-			          icon: subway,
-			          map: map
-			        });
-			        markers.push(submarker);
-			        google.maps.event.addListener(submarker, 'click', (function(submarker, i) {
-				          return function() {
-				        	  var title = subArray[i][0];
-				              $.ajax({
-				              	url: "/MeetWhen/bus/returnSBinfo.mw",
-				              	type: "post",
-				              	data: {stationNm : subArray[i][0]},
-				              	success : function(data){
-				              	  	var subway = data;
-				              		var str = '</br></br>';
-				              		for (var i in subway) {
-				              		str += '<TR><TD colsapn="5"></TD></TR><TR><TD colspan="3">' 
-					              	+ subway[i][1]+'</TD><TD colspan="2">'+ subway[i][2] +'</TD></TR>'+
-				              		'<TR rowspan="2"><TD>'+ subway[i][0] +'</TD><TD colspan="4" rowspan="2">' 
-				              		+ subway[i][4] + "(" + subway[i][3] + ")"+ '</TD></TR>'+
-				              		'<TR></TR>';     
-				              	}
-				              	str += '</br>';
-				              	infowindow.setContent(
-				              		'<h3>' + title +'역 </h3>' + '가장 먼저 도착하는 순서입니다.'+
-				              		'<table id="subList" border="1">' + '</table>');
-				              		 $("#subList").append(str); 
-				              	},
-				              	error: function(textStatus, errorThrown) {
-				              	alert("Status: " + textStatus); alert("Error :"+errorThrown);
-				              	}
-				              });
-				            infowindow.open(map, submarker);
-				          }
-				        })
-				        (submarker, i));
-				        if(submarker)
-				        {
-				        	submarker.addListener('click', function() {
-				            map.setZoom(17);
-				            map.setCenter(this.getPosition());
-				          });
-				       }
-					}
-				},
-				error: function(textStatus, errorThrown) {
-				alert("Status: " + textStatus); alert("Error :"+errorThrown);
-				}
-		    });
+	    subwayinfo();
 	});
 		
 	  //맵 움직일시 작동하는 코드 (위이 코드와 동일하며 맵 드래그 이벤트 기존 마커를 지우고 움직인 위치에따른 좌표값을 기준으로 마커를 찍고 정보를 불러온다.)
@@ -218,17 +306,8 @@ html, body {
 		        if($("#moveSerch").is(":checked")){
 		        	var infowindow = new google.maps.InfoWindow();
 		        	google.maps.event.addListener(map, 'dragend', function() {
-		        		
-		        		swLat = map.getBounds().getSouthWest().lat(); 
-		        	    swLng = map.getBounds().getSouthWest().lng(); 
-		        	    neLat = map.getBounds().getNorthEast().lat(); 
-		        	    neLng = map.getBounds().getNorthEast().lng(); 
-		        	    cenLat = map.getBounds().getCenter().lat(); 
-		        	    cenLng = map.getBounds().getCenter().lng(); 
 
-		        	   
-		        	    var allData = new Array(swLat, swLng, neLat, neLng);
-		        	    var centerData = new Array(cenLat,cenLng);
+		        		startFuc();
 		        	    deleteMarkers();
 
 		        		//내위치 마커 찍기
@@ -238,140 +317,13 @@ html, body {
 		        			icon: me
 		        			}); 
 		        		markers.push(myMarker);
+		        	    locations = new Array;
+		        		string = centerData[0]+"/"+centerData[1];
 		        		
-		        	    var locations = new Array;
-
-		        		var string = centerData[0]+"/"+centerData[1];
-		        		
-		        	    $.ajax({
-		        			url: "/MeetWhen/bus/returnCenter.mw",
-		        			type: "post",
-		        			data: {string : string},
-		        			success : function(data){
-		        				locations = data;
-		        				for (i = 0; i < locations.length; i++) {
-			        				
-		        				      marker = new google.maps.Marker({
-		        				          id: i,
-		        				          position: new google.maps.LatLng(locations[i][2], locations[i][1]),
-		        				          icon: busIcon,
-		        				          map: map
-		        				        });
-		        				        markers.push(marker);
-
-		        				     
-		        				        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-		        				          return function() {
-		        				              var title = locations[i][0];
-		        				              $.ajax({
-		        				              	url: "/MeetWhen/bus/returnBSinfo.mw",
-		        				              	type: "post",
-		        				              	data: {arsId : locations[i][3]},
-		        				              	success : function(data){
-		        				              	  	var busArray = data;
-		        				              		var str = '</br>'+'<TR><TD>버스</TD><TD>도착 시간</TD><TD>승객</TD></TR>';
-		        				              		for (var i in busArray) {
-		        				              		str += '<TR><TD rowspan="2">' + busArray[i][0]+'</br>'+ busArray[i][1]
-		        				              		 +'</TD> <TD>' + busArray[i][2] + '</TD> <TD>' + busArray[i][3] +'</TD></TR>'+
-		        				              		'<TR><TD>'+ busArray[i][4] +'</TD><TD>' + busArray[i][5] +  '</TD></TR>';     
-		        				              	}
-		        				              	str += '</br>';
-		        				              	infowindow.setContent(
-		        				              		'<h3>' + title +'</h3>' +
-		        				              		'<table id="boardList" border="1">' + '</table>');
-		        				              		 $("#boardList").append(str); 
-		        				              	},
-		        				              	error: function(textStatus, errorThrown) {
-		        				              	alert("Status: " + textStatus); alert("Error :"+errorThrown);
-		        				              	}
-		        				              });
-		        				            infowindow.open(map, marker);
-		        				          }
-		        				        })
-		        				        
-		        				        (marker, i));
-		        				        
-		        				        if(marker)
-		        				        {
-		        				          marker.addListener('click', function() {
-		        				            map.setZoom(17);
-		        				            map.setCenter(this.getPosition());
-		        				          });
-		        				        }
-		        				      }
-		        			},
-		        			error: function(textStatus, errorThrown) {
-		        			alert("Status: " + textStatus); alert("Error :"+errorThrown);
-		        			}
-		        			});
-
-
+		        		//버스 정보 가져오기
+		        	    businfo();
 		        		//지하철 정보 가져오는부분
-		        		    var subfor = allData[0]+"/"+allData[1]+"/"+ allData[2]+"/"+allData[3];
-		        		    $.ajax({
-		        				url: "/MeetWhen/bus/findSB.mw",
-		        				type: "post",
-		        				data: {subfor : subfor},
-		        				success : function(data){
-		        					var subArray = data;
-		        					
-	        					for (i = 0; i < subArray.length; i++) {
-	        						console.log(subArray[i][0]);
-	        						submarker = new google.maps.Marker({
-		        				          id: i,
-		        				          position: new google.maps.LatLng(subArray[i][1], subArray[i][2]),
-		        				          icon: subway,
-		        				          map: map
-		        				        });
-		        				        markers.push(submarker);
-		        				        
-		        				        google.maps.event.addListener(submarker, 'click', (function(submarker, i) {
-			        				          return function() {
-			        				        	  var title = subArray[i][0];
-			        				              $.ajax({
-			        				              	url: "/MeetWhen/bus/returnSBinfo.mw",
-			        				              	type: "post",
-			        				              	data: {stationNm : subArray[i][0]},
-			        				              	success : function(data){
-			        				              	  	var subway = data;
-			        				              		var str = '</br></br>';
-			        				              		for (var i in subway) {
-			        				              		str += '<TR><TD colsapn="5"></TD></TR><TR><TD colspan="3">' 
-				        				              		+ subway[i][1]+'</TD><TD colspan="2">'+ subway[i][2] +'</TD></TR>'+
-			        				              		'<TR rowspan="2"><TD>'+ subway[i][0] +'</TD><TD colspan="4" rowspan="2">' 
-			        				              		+ subway[i][4] + "(" + subway[i][3] + ")"+ '</TD></TR>'+
-			        				              		'<TR></TR>';     
-			        				              	}
-			        				              	str += '</br>';
-			        				              	infowindow.setContent(
-			        				              		'<h3>' + title +'역 </h3>' + '가장 먼저 도착하는 순서입니다.'+
-			        				              		'<table id="subList" border="1">' + '</table>');
-			        				              		 $("#subList").append(str); 
-			        				              	},
-			        				              	error: function(textStatus, errorThrown) {
-			        				              	alert("Status: " + textStatus); alert("Error :"+errorThrown);
-			        				              	}
-			        				              });
-			        				            infowindow.open(map, submarker);
-			        				          }
-			        				        })
-			        				        
-			        				        (submarker, i));
-			        				        
-			        				        if(submarker)
-			        				        {
-			        				        	submarker.addListener('click', function() {
-			        				            map.setZoom(17);
-			        				            map.setCenter(this.getPosition());
-			        				          });
-			        				       }
-		        					}
-		        				},
-		        				error: function(textStatus, errorThrown) {
-		        				alert("Status: " + textStatus); alert("Error :"+errorThrown);
-		        				}
-		        			});
-
+		        		subwayinfo();
 		        		});
 		        
 		        }else{
@@ -380,9 +332,12 @@ html, body {
 		    });
 		});
 
+		
 
-
-	
+	function foo() {
+		  // possibly long task
+		  setTimeout(foo, 1500);
+		}
 	
 	//마커 제거 함수
    function setMapOnAll(map) {
