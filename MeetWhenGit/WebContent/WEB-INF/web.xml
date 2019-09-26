@@ -40,11 +40,11 @@
 	<!-- 에러 페이지 설정 -->
 	<error-page>
 		<error-code>404</error-code>
-		<location>/Error/code404.jsp</location>
+		<location>/Error/code404.mw</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>/Error/code500.jsp</location>
+		<location>/Error/code500.mw</location>
 	</error-page>
 
 </web-app>

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/Main/")
-public class BootsBean {
+public class MainBean {
 	
 	@RequestMapping("boots_original.mw")  //BootStrap ¿øº»
 	public String boots_original() {
