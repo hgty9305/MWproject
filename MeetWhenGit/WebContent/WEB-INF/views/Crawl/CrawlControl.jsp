@@ -7,17 +7,18 @@
 <style>
 	 .tabb {
     width: 100%;
-    border-top: 1px solid #444444;
+    border-top: 1px solid #D5D5D5;
     border-collapse: collapse;
   }
   th, td {
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #D5D5D5;
     padding: 10px;
     text-align: center;
     font-weight:bold;
+    color:white;
   }
   .tabb {
-    background-color: #bbdefb;
+    background-color: #F15F5F;
   }
 </style>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>

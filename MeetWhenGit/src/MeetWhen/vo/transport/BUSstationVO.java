@@ -1,4 +1,4 @@
-package MeetWhen.vo;
+package MeetWhen.vo.transport;
 
 public class BUSstationVO {
 	private String b_stationId; //정류소아이디

@@ -4,17 +4,17 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="sv" type="MeetWhen.vo.SubwayVO"/>
-		<typeAlias alias="siv" type="MeetWhen.vo.SubwayinfoVO"/>
-		<typeAlias alias="av" type="MeetWhen.vo.AdressVO"/>
+		<typeAlias alias="sv" type="MeetWhen.vo.transport.SubwayVO"/>
+		<typeAlias alias="siv" type="MeetWhen.vo.transport.SubwayinfoVO"/>
+		<typeAlias alias="av" type="MeetWhen.vo.transport.AdressVO"/>
 		
-		<typeAlias alias="cv" type="MeetWhen.spring.vo.ContryVO"/>
-		<typeAlias alias="rv" type="MeetWhen.spring.vo.RegionVO"/>
-		<typeAlias alias="lcv" type="MeetWhen.spring.vo.LContryVO"/>
-		<typeAlias alias="lrv" type="MeetWhen.spring.vo.LRegionVO"/>
-		<typeAlias alias="cwa1" type="MeetWhen.spring.vo.CrawlA1VO"/>
-		<typeAlias alias="cwa2" type="MeetWhen.spring.vo.CrawlA2VO"/>
-		<typeAlias alias="cwb" type="MeetWhen.spring.vo.CrawlBVO"/>
+		<typeAlias alias="cv" type="MeetWhen.vo.airport.ContryVO"/>
+		<typeAlias alias="rv" type="MeetWhen.vo.airport.RegionVO"/>
+		<typeAlias alias="lcv" type="MeetWhen.vo.airport.LContryVO"/>
+		<typeAlias alias="lrv" type="MeetWhen.vo.airport.LRegionVO"/>
+		<typeAlias alias="cwa1" type="MeetWhen.vo.airport.CrawlA1VO"/>
+		<typeAlias alias="cwa2" type="MeetWhen.vo.airport.CrawlA2VO"/>
+		<typeAlias alias="cwb" type="MeetWhen.vo.airport.CrawlBVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="/hwanSQL/subwaySQL.xml" />

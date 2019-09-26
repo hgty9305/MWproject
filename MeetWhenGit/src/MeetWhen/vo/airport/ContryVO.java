@@ -1,4 +1,4 @@
-package MeetWhen.spring.vo;
+package MeetWhen.vo.airport;
 
 /*전체 공항통계 정보 저장 변수*/
 public class ContryVO {

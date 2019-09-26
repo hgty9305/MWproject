@@ -11,7 +11,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import MeetWhen.vo.BUSstationVO;
+import MeetWhen.vo.transport.BUSstationVO;
 
 public class BusStationSerch {
 	public static ArrayList<BUSstationVO> main(String xlat, String ylat, String radius) {

@@ -1,11 +1,9 @@
-package MeetWhen.vo;
+package MeetWhen.vo.transport;
 
 public class SubwayVO {
 	private String subwayname;
 	private double xlat;
 	private double ylat;
-	
-	
 	
 	public String getSubwayname() {
 		return subwayname;
@@ -25,6 +23,4 @@ public class SubwayVO {
 	public void setYlat(double ylat) {
 		this.ylat = ylat;
 	}
-	
-	
 }

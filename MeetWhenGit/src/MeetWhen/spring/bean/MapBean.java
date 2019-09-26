@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import MeetWhen.spring.vo.LContryVO;
-import MeetWhen.spring.vo.LRegionVO;
+import MeetWhen.vo.airport.LContryVO;
+import MeetWhen.vo.airport.LRegionVO;
 /*지도에 관련된 모든 것 */
 @Controller
 @RequestMapping("/Map/")
@@ -165,6 +165,4 @@ public class MapBean {
 			request.setAttribute("listSize", listSize);
 			return "/Map/map8";
 		}
-	
-
 }

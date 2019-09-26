@@ -1,4 +1,4 @@
-package MeetWhen.vo;
+package MeetWhen.vo.transport;
 
 public class SubwayinfoVO {
 	private String ARSID;

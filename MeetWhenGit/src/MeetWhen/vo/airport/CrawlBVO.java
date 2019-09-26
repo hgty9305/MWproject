@@ -1,4 +1,4 @@
-package MeetWhen.spring.vo;
+package MeetWhen.vo.airport;
 
 public class CrawlBVO {
 	private int cwb_num;		//기사고유번호

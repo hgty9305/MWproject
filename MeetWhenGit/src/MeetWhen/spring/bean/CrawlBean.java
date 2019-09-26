@@ -17,11 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import MeetWhen.spring.vo.ContryVO;
-import MeetWhen.spring.vo.CrawlA1VO;
-import MeetWhen.spring.vo.CrawlA2VO;
-import MeetWhen.spring.vo.CrawlBVO;
-import MeetWhen.spring.vo.RegionVO;
+import MeetWhen.vo.airport.ContryVO;
+import MeetWhen.vo.airport.CrawlA1VO;
+import MeetWhen.vo.airport.CrawlA2VO;
+import MeetWhen.vo.airport.CrawlBVO;
+import MeetWhen.vo.airport.RegionVO;
 
 @Controller
 @RequestMapping("/Crawl/")
@@ -565,10 +565,10 @@ public class CrawlBean {
 		return "/Crawl/doShowCrawlc";
 	}
 	/*CrawlControl : DB를 주기적으로 리셋&생성 시킴-----------------------------------------------------------------*/
-	@RequestMapping("doCrawlControl.mw")
+	@RequestMapping("CrawlControl.mw")
 	public String doCrawlControl() {
 		System.out.println("[특정 시간이 지나면 DB에 정보 리셋 후 저장 하는 페이지]");
-		return"/Crawl/doCrawlControl";
+		return"/Crawl/CrawlControl";
 	}
 
 }

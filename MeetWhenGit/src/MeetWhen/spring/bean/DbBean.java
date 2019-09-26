@@ -1,8 +1,6 @@
 package MeetWhen.spring.bean;
 
-/*
- * DB1~DB4 정보저장, 포멧, 정보 보여주기 기능 
- * PLUS)
+/* DB1~DB4 정보저장, 포멧, 정보 보여주기 기능 
  * 	파일 경로 >>> 학원은 D:  집은 C:
  * */
 
@@ -20,10 +18,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import MeetWhen.spring.vo.ContryVO;
-import MeetWhen.spring.vo.LContryVO;
-import MeetWhen.spring.vo.LRegionVO;
-import MeetWhen.spring.vo.RegionVO;
+import MeetWhen.vo.airport.ContryVO;
+import MeetWhen.vo.airport.LContryVO;
+import MeetWhen.vo.airport.LRegionVO;
+import MeetWhen.vo.airport.RegionVO;
 
 @Controller
 @RequestMapping("/Db/")
@@ -376,7 +374,4 @@ public class DbBean {
 		request.setAttribute("dataList", rsList);
 		return "/Db/dbInfoCheck";
 	}
-
-
-
 }

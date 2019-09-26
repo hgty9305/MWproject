@@ -46,9 +46,9 @@ html, body {
 	var infowindow = new google.maps.InfoWindow();
 	
 	////마커 관련 옵션---------------------------------------
-	var busIcon = new google.maps.MarkerImage("/MeetWhen/imgs/BUSstation2.png", null, null, null, new google.maps.Size(20,40));
-	var me = new google.maps.MarkerImage("/MeetWhen/imgs/me.png", null, null, null, new google.maps.Size(30,30));
-	var subway = new google.maps.MarkerImage("/MeetWhen/imgs/subway.png", null,null,null,new google.maps.Size(20,20));
+	var busIcon = new google.maps.MarkerImage("/MeetWhen/img/transport/BUSstation2.png", null, null, null, new google.maps.Size(20,40));
+	var me = new google.maps.MarkerImage("/MeetWhen/img/transport/me.png", null, null, null, new google.maps.Size(30,30));
+	var subway = new google.maps.MarkerImage("/MeetWhen/img/transport/subway.png", null,null,null,new google.maps.Size(20,20));
 	
 	//반복문으로 자바스크립트 배열내에 이름과 좌표를 넣어야한다.
 	var locations = new Array;

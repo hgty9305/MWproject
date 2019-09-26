@@ -1,4 +1,4 @@
-package MeetWhen.spring.vo;
+package MeetWhen.vo.airport;
 
 /*공항통계 + 위도,경도 정보 저장 변수*/
 public class LContryVO {
