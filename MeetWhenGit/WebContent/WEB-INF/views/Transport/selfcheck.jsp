@@ -14,7 +14,7 @@
     </style>
   </head>
 <body id="page-top">
- <jsp:include page="/Main/boots_menubar.mw"/>
+ <jsp:include page="/Boots/boots_menubar.mw"/>
  <div class="container">
  	<div class="row">
  		<div class="col-lg-12 text-center">
@@ -146,6 +146,6 @@
     <input type="hidden" name="xlat" value="document.lat"/>
   	<input type="hidden" name="xlat" value="document.lng"/>
 
-  	<jsp:include page="/Main/boots_footer.mw"/>
+  	<jsp:include page="/Boots/boots_footer.mw"/>
   </body>
 </html>

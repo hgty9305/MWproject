@@ -40,6 +40,9 @@
             <li class="list-inline-item">
               <a href="#">Terms of Use</a>
             </li>
+             <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
           </ul>
         </div>
       </div>
