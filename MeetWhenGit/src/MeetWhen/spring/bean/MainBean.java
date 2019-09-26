@@ -30,4 +30,9 @@ public class MainBean {
 	public String main() {
 		return "/Main/main";
 	}
+	
+	@RequestMapping("allServices.mw")  //전체 서비스
+	public String allServices() {
+		return "/Main/allServices";
+	}
 }

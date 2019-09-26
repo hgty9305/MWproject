@@ -70,7 +70,7 @@
 		<div class="container">
 			<div class="intro-text">
 				<div class="intro-lead-in"></div>
-				<div class="intro-heading text-uppercase">Welcome To MeetWhen</div>
+				<div class="intro-heading text-uppercase">Welcome To 'MeetWhen'</div>
 				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 					href="/MeetWhenGit/Member/join.mw">Join Us</a>
 			</div>

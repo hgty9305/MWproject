@@ -41,7 +41,7 @@
               <a href="#">Terms of Use</a>
             </li>
              <li class="list-inline-item">
-              <a href="#">서비스 전체보기</a>
+              <a href="allServices.mw">서비스 전체보기</a>
             </li>
           </ul>
         </div>
