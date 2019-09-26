@@ -7,19 +7,8 @@
 		<typeAlias alias="sv" type="MeetWhen.vo.SubwayVO"/>
 		<typeAlias alias="siv" type="MeetWhen.vo.SubwayinfoVO"/>
 		<typeAlias alias="av" type="MeetWhen.vo.AdressVO"/>
-		<typeAlias alias="cv" type="MeetWhen.spring.vo.ContryVO"/>
-		<typeAlias alias="rv" type="MeetWhen.spring.vo.RegionVO"/>
-		<typeAlias alias="lcv" type="MeetWhen.spring.vo.LContryVO"/>
-		<typeAlias alias="lrv" type="MeetWhen.spring.vo.LRegionVO"/>
-		<typeAlias alias="cwa1" type="MeetWhen.spring.vo.CrawlA1VO"/>
-		<typeAlias alias="cwa2" type="MeetWhen.spring.vo.CrawlA2VO"/>
-		<typeAlias alias="cwb" type="MeetWhen.spring.vo.CrawlBVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="/hwanSQL/subwaySQL.xml" />
-		<mapper resource="/sql/airportSQL.xml" />
-		<mapper resource="/sql/latlonSQL.xml" />
-		<mapper resource="/sql/memberSQL.xml" />
-		<mapper resource="/sql/crawlSQL.xml" />
 	</mappers>
 </configuration>
