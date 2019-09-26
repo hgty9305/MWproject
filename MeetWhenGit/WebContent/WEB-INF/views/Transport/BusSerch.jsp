@@ -21,7 +21,7 @@ html, body {
 </style>
 </head>
 <body id="page-top">
- <jsp:include page="/boots_menubar.jsp"/>
+ <jsp:include page="/Main/boots_menubar.mw"/>
  <div class="container">
  	<div class="row">
  		<div class="col-lg-12 text-center">
@@ -104,7 +104,7 @@ html, body {
 	//움직일때마다 사용되는 지하철정보
 	function subwayinfo(){
 		$.ajax({
-			url: "/MeetWhen/bus/findSB.mw",
+			url: "/MeetWhen/Transport/findSB.mw",
 			type: "post",
 			data: {subfor : subfor},
 			success : function(data){
@@ -123,7 +123,7 @@ html, body {
 				          return function() {
 				        	  var title = subArray[i][0];
 				              $.ajax({
-				              	url: "/MeetWhen/bus/returnSBinfo.mw",
+				              	url: "/MeetWhen/Transport/returnSBinfo.mw",
 				              	type: "post",
 				              	data: {stationNm : subArray[i][0]},
 				              	success : function(data){
@@ -175,7 +175,7 @@ html, body {
 	//움직일때마다 사용되는 버스정보
 	function businfo(){
 		$.ajax({
-			url: "/MeetWhen/bus/returnCenter.mw",
+			url: "/MeetWhen/Transport/returnCenter.mw",
 			type: "post",
 			data: {string : string},
 			success : function(data){
@@ -195,7 +195,7 @@ html, body {
 				          return function() {
 				              var title = locations[i][0];
 				              $.ajax({
-				              	url: "/MeetWhen/bus/returnBSinfo.mw",
+				              	url: "/MeetWhen/Transport/returnBSinfo.mw",
 				              	type: "post",
 				              	data: {arsId : locations[i][3]},
 				              	success : function(data){
@@ -259,7 +259,7 @@ html, body {
 	        return function() {
 	            var title = locations[i][0];
 	            $.ajax({
-	            	url: "/MeetWhen/bus/returnBSinfo.mw",
+	            	url: "/MeetWhen/Transport/returnBSinfo.mw",
 	            	type: "post",
 	            	data: {arsId : locations[i][3]},
 	            	success : function(data){
@@ -355,11 +355,11 @@ html, body {
     
     //다시 검색 함수
     function reSerch(){
-    	location.href="/MeetWhen/bus/selfcheck.mw?latX="+${myylat}+"&latY="+${myxlat};
+    	location.href="/MeetWhen/Transport/selfcheck.mw?latX="+${myylat}+"&latY="+${myxlat};
         };
 </script>
 
-<jsp:include page="/boots_footer.jsp"/>
+<jsp:include page="/Main/boots_footer.mw"/>
 </body>
 
 </html>

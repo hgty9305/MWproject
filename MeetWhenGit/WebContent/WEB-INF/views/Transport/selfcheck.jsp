@@ -14,7 +14,7 @@
     </style>
   </head>
 <body id="page-top">
- <jsp:include page="/boots_menubar.jsp"/>
+ <jsp:include page="/Main/boots_menubar.mw"/>
  <div class="container">
  	<div class="row">
  		<div class="col-lg-12 text-center">
@@ -89,7 +89,7 @@
                   marker.addListener('click', function() {
 	               	  lat = marker.getPosition().lat();
 	                  lng = marker.getPosition().lng();   
-	               	  infowindow.setContent('<a id="link" href="/MeetWhen/bus/BusSerch.mw?selfX='+ lng +'&selfY='+ lat +'" ><h2>내 주변 대중교통 찾기</h2></a>');
+	               	  infowindow.setContent('<a id="link" href="/MeetWhen/Transport/BusSerch.mw?selfX='+ lng +'&selfY='+ lat +'" ><h2>내 주변 대중교통 찾기</h2></a>');
 	                  infowindow.open(map, marker);
                   });
                 
@@ -124,7 +124,7 @@
     	}
   	
       function goreset(){
-    	  	location.href="/MeetWhen/bus/selfcheck.mw";
+    	  	location.href="/MeetWhen/Transport/selfcheck.mw";
   		}
       
       function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
@@ -137,7 +137,7 @@
 		document.form.zipNo.value = zipNo;
 		document.form.entX.value = entX;
 		document.form.entY.value = entY; */
-		location.href="/MeetWhen/bus/selfcheck.mw?entX="+entX+"&entY="+entY;
+		location.href="/MeetWhen/Transport/selfcheck.mw?entX="+entX+"&entY="+entY;
 		}
 
     </script>
@@ -146,6 +146,6 @@
     <input type="hidden" name="xlat" value="document.lat"/>
   	<input type="hidden" name="xlat" value="document.lng"/>
 
-  	<jsp:include page="/boots_footer.jsp"/>
+  	<jsp:include page="/Main/boots_footer.mw"/>
   </body>
 </html>

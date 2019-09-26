@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@RequestMapping("/bus/")
+@RequestMapping("/Transport/")
 public class mapControler {
 	
 	@Autowired
@@ -45,12 +45,7 @@ public class mapControler {
 	
 	@RequestMapping("jusoPopup.mw")
 	public String jusoPopup() {
-		return "/jusoPopup";
-	}
-	
-	@RequestMapping("Mainpage.mw")
-	public String mainViewpage() {
-		return "/Mainpage";
+		return "/Transport/jusoPopup";
 	}
 	
 	@RequestMapping("selfcheck.mw")
@@ -73,7 +68,7 @@ public class mapControler {
 			model.addAttribute("xlat", "1");
 			model.addAttribute("ylat", "1");
 		}
-		return "/selfcheck";
+		return "/Transport/selfcheck";
 	}
 
 	
@@ -121,7 +116,7 @@ public class mapControler {
 		//밑에 보내는 xlat ylat은 기존에 검색한 자기 위치 또는 검색한위치의 좌표이다.
 		model.addAttribute("myxlat", xlat);   
 		model.addAttribute("myylat", ylat);
-		return "/BusSerch";
+		return "/Transport/BusSerch";
 	}
 	
 	@RequestMapping(value="returnBSinfo.mw", method=RequestMethod.POST) 

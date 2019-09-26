@@ -64,8 +64,6 @@ function init(){
 		<input type="hidden" id="confmKey" name="confmKey" value=""/>
 		<input type="hidden" id="returnUrl" name="returnUrl" value=""/>
 		<input type="hidden" id="resultType" name="resultType" value=""/>
-
-
 	</form>
 </body>
 </html>
