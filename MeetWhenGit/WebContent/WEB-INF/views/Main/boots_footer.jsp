@@ -41,7 +41,7 @@
               <a href="#">Terms of Use</a>
             </li>
              <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
+              <a href="#">서비스 전체보기</a>
             </li>
           </ul>
         </div>
