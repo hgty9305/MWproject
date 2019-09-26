@@ -4,6 +4,7 @@
 		 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
 		 id="WebApp_ID" version="3.1">
 
+	<!-- 인코딩 설정 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -21,6 +22,8 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	
+	<!-- spring 설정 -->
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -34,7 +37,7 @@
 		<url-pattern>*.mw</url-pattern>
 	</servlet-mapping>
 	
-	<!-- 에러 페이지  -->
+	<!-- 에러 페이지 설정 -->
 	<error-page>
 		<error-code>404</error-code>
 		<location>/Error/code404.jsp</location>
