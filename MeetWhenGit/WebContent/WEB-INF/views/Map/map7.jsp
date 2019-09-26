@@ -183,7 +183,7 @@
 </script>
 </head>
 <body class="bdColor" onload="clickBtn(); initialize(); getArticle()">
-	<jsp:include page="/Boots/boots_menubar.mw"/>
+	<jsp:include page="/Main/boots_menubar.mw"/>
 	<!-- Map -->
   	<section class="page-section" id="about">
 		<div class="container">
@@ -238,6 +238,6 @@
 			</div>
 		</div>
 	</section>
-  <jsp:include page="/Boots/boots_footer.mw"/>
+  <jsp:include page="/Main/boots_footer.mw"/>
 </body>
 </html>
