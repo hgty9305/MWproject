@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Boot Footer</title>
 <style>
 a{
@@ -12,6 +13,8 @@ a{
 </head>
 <body>
  <!-- Footer -->
+   <!-- Navigation -->
+  
   <footer class="footer">
     <div class="container">
       <div class="row align-items-center">
@@ -45,9 +48,6 @@ a{
             <li class="list-inline-item">
               <a href="#">Terms of Use</a>
             </li>
-             <li class="list-inline-item">
-              <a href="allServices.mw">서비스 전체보기</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -55,14 +55,14 @@ a{
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/MeetWhen/vendor/jquery/jquery.min.js"></script>
-  <script src="/MeetWhen/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/MeetWhenGit/vendor/jquery/jquery.min.js"></script>
+  <script src="/MeetWhenGit/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Plugin JavaScript -->
-  <script src="/MeetWhen/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/MeetWhenGit/vendor/jquery-easing/jquery.easing.min.js"></script>
   <!-- Contact form JavaScript -->
-  <script src="/MeetWhen/js/jqBootstrapValidation.js"></script>
-  <script src="/MeetWhen/js/contact_me.js"></script>
+  <script src="/MeetWhenGit/js/jqBootstrapValidation.js"></script>
+  <script src="/MeetWhenGit/js/contact_me.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="/MeetWhen/js/agency.min.js"></script>
+  <script src="/MeetWhenGit/js/agency.min.js"></script>
 </body>
 </html>

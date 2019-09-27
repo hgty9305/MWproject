@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-myabatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<!-- 장소등록 @@@@@@@@@-->
+	<mapper namespace = "address">
+		<insert id = "insertadd1" parameterType="avo" >
+			insert into mwaddress values(address_seq.nextval,#{postal_code},#{address1},#{address2},#{address3},#{lat1},#{long1},#{lat2},#{lat3},#{long2},#{long3},#{m_id},#{status})
+		</insert>
+		
+		<select id = "selectPlace" resultType="avo" parameterType="String">
+			select * from mwaddress where m_id=#{m_id}
+		</select>
+		
+		
+		<select id = "searchAdd1" resultType="int">
+			select count(address1) from mwaddress where m_id = #{value}
+		</select>
+		<select id = "searchAdd2" resultType="String">
+			select address2 from mwaddress where m_id = #{value}
+		</select>
+		<select id = "searchAdd3" resultType="String">
+			select address3 from mwaddress where m_id = #{value}
+		</select>
+		
+		<select id = "selectlatlong1">
+			select lat1,long1 from mwaddress where m_id =#{m_id}
+		</select>
+		
+		
+		<update id="updateAdd1" parameterType="avo">
+			update mwaddress set address1=#{address1},lat1=#{lat1},long1=#{long1} where m_id = #{m_id} and status=1
+		</update>
+		
+		<update id="updateAdd2" parameterType="avo">
+			update mwaddress set address2 = #{address2},lat2=#{lat2},long2=#{long2} where m_id = #{m_id} and status = 1
+		</update>
+		<update id="updateAdd3" parameterType="avo">
+			update mwaddress set address3 = #{address3},lat3=#{lat3},long3=#{long3} where m_id = #{m_id} and status = 1
+		</update>
+		
+		<!-- currentPosition jsp -->
+		<resultMap type="mv" id="mv">
+			<result column="m_id" property="m_id"/>
+		</resultMap>
+		<resultMap type="avo" id="avo">
+			<result column="m_id" property="m_id"/>
+			<result column="lat1" property="lat1"/>
+			<result column="long1" property="long1"/>
+			<result column="lat2" property="lat2"/>
+			<result column="long2" property="long2"/>
+			<result column="lat3" property="lat3"/>
+			<result column="long3" property="long3"/>
+			<collection property="mv" resultMap="mv"></collection>
+		</resultMap>
+		
+		<select id ="extractadd1" parameterType="String" resultMap="avo">
+			select a.lat1,a.long1,a.m_id from mwaddress a left join mwmember m on a.m_id = m.m_id where a.m_id =#{m_id}
+		</select>
+		
+		<select id="getOnesdata" parameterType="String" resultType="avo">
+			select * from mwaddress where m_id=#{m_id}
+		</select>
+	</mapper>

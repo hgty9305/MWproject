@@ -10,17 +10,17 @@
   <title>MeetWhen?</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/MeetWhen/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/MeetWhenGit/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="/MeetWhen/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/MeetWhenGit/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="/MeetWhen/css/agency.min.css" rel="stylesheet">
+  <link href="/MeetWhenGit/css/agency.min.css" rel="stylesheet">
 </head>
 <body>
 	<!-- Navigation -->
@@ -50,7 +50,7 @@
             <a class="nav-link js-scroll-trigger" href="boots_calendar.mw">Ä¶¸°´õ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/MeetWhen/member/logOut.mw">·Î±×¾Æ¿ô</a>
+            <a class="nav-link " href="/MeetWhenGit/member/logOut.mw">·Î±×¾Æ¿ô</a>
           </li>
           </c:if>
         </ul>

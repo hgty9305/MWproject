@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="calendar">
+	
+	
+	<insert id="insertData">
+		insert into calendar values(calendar_seq.NEXTVAL ,#{title}, #{c_start}, #{c_end}, #{description}, #{type}, #{M_id}, #{backgroundColor}, #{textColor}, #{allDay}, #{groupid}, #{cdata})
+	</insert>
+
+
+
+	<update id="updateData">
+		update calendar set title=#{title}, c_start=#{c_start}, c_end=#{c_end}, description=#{description}, type=#{type}, backgroundColor=#{backgroundColor}, allDay=#{allDay} WHERE num=#{num}
+	</update>
+	
+	<update id="dataUpdate" parameterType="uvo">
+		update calendar set c_start=#{c_start}, c_end=#{c_end} where num=#{num}
+	</update>
+
+
+
+	<select id="serchData" parameterType="String" resultType="cal">
+		select num, title, c_start, c_end, description, type, m_id, backgroundColor, textColor, allDay from calendar where groupid=#{groupid} 
+	</select>
+	
+	<select id="numcall" parameterType="int">
+		select num from calendar where groupid=#{groupid} order by cdata asc
+	</select> 
+	
+	
+	<select id="onecall" parameterType="int" resultType="cal">
+		select * from calendar where num=#{a}
+	</select>
+	
+	
+	<delete id="deleteData" parameterType="int">
+		delete from calendar where num=#{num}
+	</delete>
+
+		
+</mapper>
