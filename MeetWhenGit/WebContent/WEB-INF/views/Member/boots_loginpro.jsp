@@ -8,7 +8,6 @@
 	 	alert("로그인 완료");
 	</script>
 </c:if>
-
 <c:if test="${loginState eq false}">
 	<script>
 	 	alert("아이디와 비밀번호가 일치하지않습니다");

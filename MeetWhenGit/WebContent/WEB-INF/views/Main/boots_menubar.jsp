@@ -46,7 +46,6 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/boots_MyPage.mw">회원정보</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link " href="/MeetWhenGit/Member/logOut.mw">로그아웃</a>
           </li>

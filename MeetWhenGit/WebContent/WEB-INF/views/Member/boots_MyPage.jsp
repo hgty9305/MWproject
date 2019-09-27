@@ -32,30 +32,21 @@ table.type03 td {
 <title>main</title>
 </head>
 <body id="page-top">
-      
  <jsp:include page="/Main/boots_menubar.mw"/>
  <c:set value="${vo}" var="vo"/>
  <div class="container">
  	<div class="row">
  <table class="type03">
  <tr>
- <th>프로필사진</th>
+<th>프로필사진</th>
 
-	<td><img src="/MeetWhenGit/img/${vo.m_profile_img}" width="100px"/>
-	<td><img src="/MeetWhenGit/img/qwqw.png" width="100px"/>
- ${vo.m_profile_img}
- <c:set var="img" value="${vo.m_profile_img}"/>
- 
- <c:if test="${img eq 'default.png' }">
-  ${img}
- 	<td><img src="/MeetWhenGit/images/default.png" width="100px"/>
- </td>
- </c:if>
-
-
- </tr>
- 
- </table>
+<td><img src="/MeetWhenGit/img/${vo.m_profile_img}" width="100px"/>
+<c:set var="img" value="${vo.m_profile_img}"/>
+<c:if test="${img eq 'default.png'}">
+ 	<td><img src="/MeetWhenGit/img/default.png" width="100px"/></td>
+</c:if>
+</tr>
+</table>
  <div>
 	<table class="type03">
 	<tr>
@@ -78,7 +69,7 @@ table.type03 td {
 	</div>
 	</div>
 </div>
-<jsp:include page="/MeetWhenGit/Main/boots_footer.mw"/>
+<jsp:include page="/Main/boots_footer.mw"/>
 
 </body>
 
