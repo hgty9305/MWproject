@@ -33,7 +33,7 @@ table.type03 td {
 </head>
 <body id="page-top">
       
- <jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
+ <jsp:include page="/Main/boots_menubar.mw"/>
  <c:set value="${vo}" var="vo"/>
  <div class="container">
  	<div class="row">
@@ -41,8 +41,8 @@ table.type03 td {
  <tr>
  <th>프로필사진</th>
 
-	<td><img src="/MeetWhenGit/images/${vo.m_profile_img}" width="100px"/>
-	<td><img src="/MeetWhenGit/images/qwqw.png" width="100px"/>
+	<td><img src="/MeetWhenGit/img/${vo.m_profile_img}" width="100px"/>
+	<td><img src="/MeetWhenGit/img/qwqw.png" width="100px"/>
  ${vo.m_profile_img}
  <c:set var="img" value="${vo.m_profile_img}"/>
  

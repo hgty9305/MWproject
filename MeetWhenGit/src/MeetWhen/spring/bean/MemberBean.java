@@ -87,7 +87,6 @@ public class MemberBean {
 	public String MemberJoin() {
 		return "Member/boots_join";
 	}
-
 	@RequestMapping(value = "boots_joinpro.mw", method = RequestMethod.POST)
 	public String MemberJoinPro(MultipartHttpServletRequest request, String m_name, String m_id, String m_email_1,
 			String m_email_2, String m_pw,Model model) {
@@ -121,7 +120,6 @@ public class MemberBean {
 			File f = new File(path + "//" + img);
 			String m_email = m_email_1 + m_email_2;
 			MWMemberVO vo = new MWMemberVO();
-
 			vo.setM_name(m_name);
 			vo.setM_id(m_id);
 			vo.setM_pw(m_pw);
@@ -142,10 +140,8 @@ public class MemberBean {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			
-		return "Member/boots_main2";
+		return "Main/main";
 	}
-
 	@RequestMapping("confirmId.mw")
 	public String MemberConfirmId(String m_id, Model model) {
 		int check = (Integer) sql.selectOne("memberSQL.confirmId", m_id);
@@ -153,16 +149,14 @@ public class MemberBean {
 		model.addAttribute("m_id", m_id);
 		return "Member/confirmId";
 	}
-
 	@RequestMapping("boots_login.mw")
 	public String MemberLogin() {
 		if (session.getAttribute("loginUser") == null) {
-			return "Member/boots_login";
+		return "Member/boots_login";
 		} else {
-			return "Member/boots_main2";
-		}
+		return "Main/main";
 	}
-
+}
 	@RequestMapping("boots_loginpro.mw")
 	public String MemberLoginPro(@RequestParam Map<String, String> paramMap, Model model, MWMemberVO vo) {
 		String returnPage = "Member/boots_login";
@@ -181,7 +175,6 @@ public class MemberBean {
 				session.setAttribute("loginUser", User.getM_id());
 				returnPage = "Main/main"; // 濡쒓렇�씤�꽦怨듭떆
 			}
-
 			model.addAttribute("loginState", loginState);
 		} catch (Exception ex) {
 			model.addAttribute("loginState", loginState);
