@@ -182,7 +182,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/team/2.jpg"
+						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/portfolio/csm.jpg"
 							alt="">
 						<h4>조성민</h4>
 						<p class="text-muted">Lead Marketer</p>
@@ -191,7 +191,7 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/team/2.jpg"
+						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/portfolio/jh.jpg"
 							alt="">
 						<h4>임지환</h4>
 						<p class="text-muted">Lead Developer</p>
