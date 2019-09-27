@@ -35,4 +35,12 @@ public class MainBean {
 	public String allServices() {
 		return "/Main/allServices";
 	}
+	@RequestMapping("allServicesA.mw")  //전체 서비스A
+	public String allServicesA() {
+		return "/Main/allServicesA";
+	}
+	@RequestMapping("allServicesB.mw")  //전체 서비스B
+	public String allServicesB() {
+		return "/Main/allServicesB";
+	}
 }

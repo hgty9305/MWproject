@@ -108,7 +108,7 @@
 		        
 		       var cut =name.indexOf('?');
 		       console.log(name.substr(cut));
-		       console.log('RealPath=http://localhost:8080/MeetWhen/Db/dbInfoCheck.mw'+name.substr(cut));
+		       console.log('RealPath=http://localhost:8080/MeetWhenGit/Db/dbInfoCheck.mw'+name.substr(cut));
 		    })
 		});
   	} 	
