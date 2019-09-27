@@ -55,14 +55,14 @@ a{
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="/MeetWhen/vendor/jquery/jquery.min.js"></script>
-  <script src="/MeetWhen/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/MeetWhenGit/vendor/jquery/jquery.min.js"></script>
+  <script src="/MeetWhenGit/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Plugin JavaScript -->
-  <script src="/MeetWhen/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/MeetWhenGit/vendor/jquery-easing/jquery.easing.min.js"></script>
   <!-- Contact form JavaScript -->
-  <script src="/MeetWhen/js/jqBootstrapValidation.js"></script>
-  <script src="/MeetWhen/js/contact_me.js"></script>
+  <script src="/MeetWhenGit/js/jqBootstrapValidation.js"></script>
+  <script src="/MeetWhenGit/js/contact_me.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="/MeetWhen/js/agency.min.js"></script>
+  <script src="/MeetWhenGit/js/agency.min.js"></script>
 </body>
 </html>

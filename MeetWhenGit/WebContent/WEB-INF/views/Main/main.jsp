@@ -11,20 +11,20 @@
   <title>MeetWhen</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/MeetWhen/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/MeetWhenGit/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="/MeetWhen/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/MeetWhenGit/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
-  <link href="/MeetWhen/css/agency.min.css" rel="stylesheet">
+  <link href="/MeetWhenGit/css/agency.min.css" rel="stylesheet">
 <style>
-	.bgblack{
-		background-color:white;
+	.cHead{
+		color:#FFD228;
 	}
 
 </style>
@@ -57,7 +57,7 @@
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="boots_calendar.mw">캘린더</a></li>
 						<li class="nav-item"><a class="nav-link "
-							href="/MeetWhen/member/logOut.mw">로그아웃</a></li>
+							href="/MeetWhenGit/member/logOut.mw">로그아웃</a></li>
 					</c:if>
 				</ul>
 
@@ -70,7 +70,7 @@
 		<div class="container">
 			<div class="intro-text">
 				<div class="intro-lead-in"></div>
-				<div class="intro-heading text-uppercase">Welcome To 'MeetWhen'</div>
+				<div class="intro-heading text-uppercase cHead">Welcome To 'MeetWhen'</div>
 				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 					href="/MeetWhenGit/Member/join.mw">Join Us</a>
 			</div>
@@ -184,7 +184,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="/MeetWhen/img/team/2.jpg"
+						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/team/2.jpg"
 							alt="">
 						<h4>조성민</h4>
 						<p class="text-muted">Lead Marketer</p>
@@ -193,7 +193,7 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img class="mx-auto rounded-circle" src="/MeetWhen/img/team/2.jpg"
+						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/team/2.jpg"
 							alt="">
 						<h4>임지환</h4>
 						<p class="text-muted">Lead Developer</p>

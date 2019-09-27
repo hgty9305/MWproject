@@ -1,19 +1,6 @@
-<%@ page contentType="text/html; charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Sing-In</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-	
-<body id="page-top">
-		<jsp:include page="/MeetWhenGit/Main/boots_menubar.mw" />
-	<script type="text/JavaScript">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <script type="text/JavaScript">
       function checkReg() {
          //var member = eval("document.member");
          var member = document.member;
@@ -83,66 +70,67 @@
     	 }
       }
    </script>
-	<%--
+   <%
       request.setCharacterEncoding("UTF-8");
-   --%>
-	<div id="container">
-		<form action="/MeetWhen/member/joinpro.mw" name="member" method="post"
-			align="center" enctype="multipart/form-data">
-			<table width="850" align="center">
-				<br>
-				<br>
-				<tr height="50" bgcolor="FDD262">
-					<th colspan="3"><font color="white">회원가입</font></th>
-				</tr>
-				<tr height="50">
-					<th>이 름(실명)</th>
-					<th><input type="text" autofocus name="m_name" required /></th>
-				</tr>
-				<tr height="50">
-					<th>ID</th>
-					<th><input type="text" autofocus name="m_id" required /></th>
-					<th><input type="button" value="중복확인" name="confirm_id"
-						onclick="openConfirmid(this.form)" /></th>
-				</tr>
-				<tr height="50">
-					<th>비밀번호</th>
-					<th><input type="password" name="m_pw" required /></th>
-				</tr>
-				<tr height="50">
-					<th>비밀번호 확인</th>
-					<th><input type="password" name="m_pwcheck" required /></th>
-				</tr>
-
-				<tr height="50">
-					<th>전화번호</th>
-					<th><input type="text" placeholder="010-0000-0000"
-						name="m_phone" required /></th>
-				</tr>
-				<tr height="50">
-					<th>이메일</th>
-					<th><input type="text" name="m_email_1" /></th>
-					<td><select name="m_email_2">
-							<option>@naver.com</option>
-							<option>@gmail.com</option>
-							<option>@daum.com</option>
-					</select></td>
-					<td><input type="button" value="이메일인증"
-						onclick="openEmailAuth(this.form)"></td>
-				</tr>
-				<tr height="50">
-					<th>프로필 사진</th>
-					<th><input type="file" align="center" name="m_profile_img" /></th>
-				</tr>
-			</table>
-			<br /> <input type="submit" value="가입하기"
-				style="height: 50px; width: 500px;" onclick="return checkReg()" />
-			<br /> <br /> <a href="/MeetWhen/Member/loginForm.mw">이미 회원이세요?</a>
-		</form>
-	</div>
-
-	<hr>
-	<jsp:include page="/MeetWhenGit/Main/boots_footer.mw" />
+   %>
+<html lang="en">
+<jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
+<body id="page-top">
+<div id="container">
+   <form action="/MeetWhenGit/member/boots_joinpro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
+      <table width="850" align="center">
+         <br><br>
+         <tr height="50" bgcolor="FDD262">
+            <th colspan="3"><font color="white">회원가입</font></th>
+         </tr>
+         <tr height="50">
+            <th>이 름(실명)</th>
+            <th><input type="text" autofocus name="m_name" required /></th>
+         </tr>
+         <tr height="50">
+            <th>ID</th>
+            <th><input type="text" autofocus name="m_id" required /> </th>  
+            <th><input type="button" value="중복확인" name="confirm_id"
+               onclick="openConfirmid(this.form)" /></th>
+         </tr>
+           <tr height="50">
+            <th>비밀번호</th>
+            <th><input type="password" name="m_pw" required /></th>
+         </tr>
+         <tr height="50">
+            <th>비밀번호 확인</th>
+            <th><input type="password" name="m_pwcheck" required /></th>
+         </tr>
+    
+         <tr height="50">
+            <th>전화번호</th>
+            <th><input type="text" placeholder="010-0000-0000"
+               name="m_phone" required /></th>
+         </tr>
+         <tr height="50">
+            <th>이메일</th>
+            <th><input type="text" name="m_email_1"/>           	
+            </th>
+             <td><select name = "m_email_2">
+               <option>@naver.com</option>
+               <option>@gmail.com</option>
+               <option>@daum.com</option>
+            </select>
+            </td>
+            <td><input type="button" value ="이메일인증" onclick="openEmailAuth(this.form)"></td>
+         </tr>
+   			<tr height="50">
+   			<th>프로필 사진</th>
+   			<th><input type="file" align="center" name="m_profile_img"/></th>
+   		</tr>
+      </table>
+      <br/> <input type="submit" value="가입하기"
+         style="height: 50px; width: 500px;" onclick="return checkReg()" /> <br/>
+      <br /> <a href="/MeetWhenGit/Member/boots_login.mw">이미 회원이세요?</a>
+   </form>
+  </div>
+   <hr>
+ <jsp:include page= "/MeetWhenGit/Main/boots_footer.mw"/>
 </body>
 
 </html>
