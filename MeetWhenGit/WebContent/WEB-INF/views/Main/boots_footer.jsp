@@ -1,12 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Boot Footer</title>
 </head>
 <body>
  <!-- Footer -->
+   <!-- Navigation -->
+  
   <footer class="footer">
     <div class="container">
       <div class="row align-items-center">
@@ -39,9 +42,6 @@
             </li>
             <li class="list-inline-item">
               <a href="#">Terms of Use</a>
-            </li>
-             <li class="list-inline-item">
-              <a href="allServices.mw">서비스 전체보기</a>
             </li>
           </ul>
         </div>
