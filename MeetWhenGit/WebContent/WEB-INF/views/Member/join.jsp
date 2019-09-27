@@ -80,7 +80,7 @@
    <form action="/MeetWhenGit/member/boots_joinpro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
       <table width="850" align="center">
          <br><br>
-         <tr height="50" bgcolor="FDD262">
+         <tr height="50" bgcolor="#FDD262">
             <th colspan="3"><font color="white">회원가입</font></th>
          </tr>
          <tr height="50">
