@@ -9,8 +9,8 @@
 		
 		<insert id = "signup" parameterType="mv" >
 			insert into MWmember values(#{m_id},#{m_pw},
-			#{m_name},#{m_friendlist},
-			#{m_serialnumber},#{m_profile_img},#{registrationdate},#{m_email})
+			#{m_name},#{m_serialnumber},#{m_profile_img},
+			#{registrationdate},#{m_email})
 		</insert>
 		<select id = "notSameSerial" resultType="String">
 			select M_SERIALNUMBER from mwmember

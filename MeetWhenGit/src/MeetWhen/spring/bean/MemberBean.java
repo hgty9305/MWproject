@@ -101,19 +101,23 @@ public class MemberBean {
 				if(m_serialnumber.equals(srlist.get(i))) {
 					
 				}
-				else { continue;}
+				else {continue;}
 			}
 			MultipartFile mf = request.getFile("m_profile_img"); // �씠履쎌씠 �븞�릺�뒗嫄곌컳���뜲�옞留� //湲곕낯媛� default.png�씤�뜲 �씠寃껊룄�븞李롰옒?洹멸굔紐곕옍
-			String path = request.getRealPath("images");
+			String path = request.getRealPath("img");
+			System.out.println(path);
 			String org = mf.getOriginalFilename();
 			System.out.println(mf);
 			String ext="";
 			String img="";
-			String def ="";
 			String newName ="";
 			File f= null;
+			
 			MWMemberVO vo = new MWMemberVO();
-			if(mf!=null){
+			
+			newName = "default.png";
+			vo.setM_profile_img(newName);
+			if(!mf.equals(null)){
 			ext = org.substring(org.lastIndexOf("."));
 			img = m_id + ext;
 			sql.insert("memberSQL.filenumsequence");
@@ -121,11 +125,11 @@ public class MemberBean {
 			int num = sql.selectOne("memberSQL.filemaxnum");
 			
 			newName = "image" + num + ext;
-			f = new File(path + "//" + img);
+			f = new File(path + "//" + newName);
+			mf.transferTo(f);
 			vo.setM_profile_img(newName);
 			}
-			newName = "default.png";
-			vo.setM_profile_img(newName);
+			System.out.println(newName);
 			
 			String m_email = m_email_1 + m_email_2;
 			
