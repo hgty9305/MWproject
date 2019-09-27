@@ -84,11 +84,6 @@ public class MemberBean {
 //		    }
 //		return "/Member/main";	
 //	}
-	@RequestMapping("boots_main.mw")
-	public String MemberMain() {
-
-		return "Member/boots_main";
-	}
 	@RequestMapping("boots_menubar.mw")
 	public String Menubar() {
 		
