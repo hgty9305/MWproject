@@ -83,23 +83,6 @@ public class MemberBean {
 //		    }
 //		return "/Member/main";	
 //	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	@RequestMapping("boots_menubar.mw")
-	public String Menubar() {
-		
-		return "Member/boots_menubar";
-	}
-	@RequestMapping("boots_footer.mw")
-	public String Footer() {
-		
-		return "Member/boots_footer";
-	}
->>>>>>> branch 'master' of https://github.com/hgty9305/MWproject.git
-=======
->>>>>>> branch 'master' of https://github.com/hgty9305/MWproject.git
-
 	@RequestMapping("boots_join.mw")
 	public String MemberJoin() {
 		return "Member/boots_join";
@@ -196,7 +179,7 @@ public class MemberBean {
 			} else {
 				loginState = true;
 				session.setAttribute("loginUser", User.getM_id());
-				returnPage = "Member/boots_main2"; // 濡쒓렇�씤�꽦怨듭떆
+				returnPage = "Main/main"; // 濡쒓렇�씤�꽦怨듭떆
 			}
 
 			model.addAttribute("loginState", loginState);
