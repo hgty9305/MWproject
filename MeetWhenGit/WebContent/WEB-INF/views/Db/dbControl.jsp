@@ -46,7 +46,7 @@
 		var msg = confirm("해당 DB의 내용을 삭제하시겠습니까?");
 		if(msg){
 			alert("삭제를 진행합니다.");
-			location.href="/MeetWhen/Db/dbDelete.mw?num="+num;
+			location.href="/MeetWhenGit/Db/dbDelete.mw?num="+num;
 		}
 		//else는 아무동작 x
 	}
