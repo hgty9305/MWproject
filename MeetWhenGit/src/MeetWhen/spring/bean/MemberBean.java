@@ -128,7 +128,7 @@ public class MemberBean {
 			f = new File(path + "//" + newName);
 			mf.transferTo(f);
 			vo.setM_profile_img(newName);
-			}
+			} 
 			System.out.println(newName);
 			
 			String m_email = m_email_1 + m_email_2;

@@ -37,7 +37,7 @@ table.type03 td {
  <div class="container">
  	<div class="row">
  <table class="type03">
- <tr>
+ <tr> 
 <th>프로필사진</th>
 <c:if test="${vo.m_profile_img ne 'default.png'}">
 <td><img src="/MeetWhenGit/img/${vo.m_profile_img}" width="100px"/>
