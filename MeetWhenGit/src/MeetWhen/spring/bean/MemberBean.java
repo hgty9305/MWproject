@@ -9,7 +9,11 @@ public class MemberBean {
 	
 	@RequestMapping("join.mw")
 	public String join() {
-		
 		return "/Member/join";
+	}
+	
+	@RequestMapping("travelStyle.mw")
+	public String travelStyle() {
+		return "/Member/travelStyle";
 	}
 }

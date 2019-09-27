@@ -16,5 +16,10 @@ public class ErrorBean {
 	public String code500() {
 		return "/Error/code500";
 	}
+	
+	@RequestMapping("cSoon.mw")
+	public String cSoon() {
+		return "/Error/cSoon";
+	}
 
 }

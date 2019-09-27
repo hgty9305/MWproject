@@ -4,6 +4,11 @@
 <head>
 <meta charset="EUC-KR">
 <title>Boot Footer</title>
+<style>
+a{
+	color:black;
+}
+</style>
 </head>
 <body>
  <!-- Footer -->
