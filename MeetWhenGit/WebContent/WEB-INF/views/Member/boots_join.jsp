@@ -76,10 +76,10 @@
       request.setCharacterEncoding("UTF-8");
    %>
 <html lang="en">
-<jsp:include page="boots_menubar.jsp"/>
+<jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
 <body id="page-top">
 <div id="container">
-   <form action="/MeetWhen/member/boots_joinpro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
+   <form action="/MeetWhenGit/Member/boots_joinpro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
       <table width="850" align="center">
          <br><br>
          <tr height="50" bgcolor="FDD262">
@@ -128,11 +128,10 @@
       </table>
       <br/> <input type="submit" value="가입하기"
          style="height: 50px; width: 500px;" onclick="return checkReg()" /> <br/>
-      <br /> <a href="/MeetWhen/Member/boots_login.mw">이미 회원이세요?</a>
+      <br /> <a href="/MeetWhenGit/Member/boots_login.mw">이미 회원이세요?</a>
    </form>
   </div>
    <hr>
- <jsp:include page= "boots_footer.jsp"/>
+ <jsp:include page= "/MeetWhenGit/Main/boots_footer.mw"/>
 </body>
-
 </html>
