@@ -1,11 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="EUC-KR">
-<title>MeetWhen : ÀüÃ¼º¸±â</title>
+<title>main</title>
 </head>
-<body>
-
+<style>
+.top-container{
+  display: inline;
+  padding: 10px;
+ }
+</style>
+<body id="page-top" onload="fetchPage('allServicesA.mw')">
+	<jsp:include page="boots_menubar.jsp" />
+	
+	<div class="top-container">
+		<span><button type="button" class="btn btn btn-dark"
+		onclick="fetchPage('allServicesA.mw')">ì£¼ì œë³„</button></span>
+		<span><button type="button" class="btn btn btn-dark"
+		onclick="fetchPage('allServicesB.mw')">ê°€ë‚˜ë‹¤ìˆœ</button></span>
+	</div>
+	<div id="AllContents"></div>
+	<script>
+		function fetchPage(name) {
+			fetch(name).then(function(response) {
+				response.text().then(function(text) {
+					document.querySelector('#AllContents').innerHTML = text;
+				})
+			});
+		}
+	</script>
+	<jsp:include page="boots_footer.jsp" />
 </body>
+
 </html>

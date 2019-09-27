@@ -11,6 +11,7 @@ public class MainBean {
 	public String boots_original() {
 		return "/Main/boots_original";
 	}
+	
 	@RequestMapping("boots_form.mw")  //공동 form
 	public String boots_form() {
 		return "/Main/boots_form";
@@ -34,5 +35,15 @@ public class MainBean {
 	@RequestMapping("allServices.mw")  //전체 서비스
 	public String allServices() {
 		return "/Main/allServices";
+	}
+	
+	@RequestMapping("allServicesA.mw")  //전체 서비스A
+	public String allServicesA() {
+		return "/Main/allServicesA";
+	}
+	
+	@RequestMapping("allServicesB.mw")  //전체 서비스B
+	public String allServicesB() {
+		return "/Main/allServicesB";
 	}
 }
