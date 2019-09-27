@@ -105,11 +105,6 @@
          </tr>
     
          <tr height="50">
-            <th>전화번호</th>
-            <th><input type="text" placeholder="010-0000-0000"
-               name="m_phone" required /></th>
-         </tr>
-         <tr height="50">
             <th>이메일</th>
             <th><input type="text" name="m_email_1"/>           	
             </th>

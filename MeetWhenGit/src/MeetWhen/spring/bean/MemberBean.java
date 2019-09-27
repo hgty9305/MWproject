@@ -103,35 +103,40 @@ public class MemberBean {
 				}
 				else { continue;}
 			}
+			
 			MultipartFile mf = request.getFile("m_profile_img"); // �씠履쎌씠 �븞�릺�뒗嫄곌컳���뜲�옞留� //湲곕낯媛� default.png�씤�뜲 �씠寃껊룄�븞李롰옒?洹멸굔紐곕옍
 			String path = request.getRealPath("images");
 			String org = mf.getOriginalFilename();
-			String ext = org.substring(org.lastIndexOf("."));
-			String img = m_id + ext;
-			String def = "default.png";
-			model.addAttribute("path", path);
-			System.out.println(path);
-			
+			String ext="";
+			String img="";
+			String def ="";
+			String newName ="";
+			File f= null;
+			if(mf!=null) {
+			ext = org.substring(org.lastIndexOf("."));
+			img = m_id + ext;
 			sql.insert("memberSQL.filenumsequence");
-
+			
 			int num = sql.selectOne("memberSQL.filemaxnum");
-			String newName = "image" + num + ext;
-
-			File f = new File(path + "//" + img);
+			newName = "image" + num + ext;
+			f = new File(path + "//" + img);
+			}else {
+				org = newName = "default.png";
+				
+			}
 			String m_email = m_email_1 + m_email_2;
 			MWMemberVO vo = new MWMemberVO();
 			vo.setM_name(m_name);
 			vo.setM_id(m_id);
 			vo.setM_pw(m_pw);
 			vo.setM_email(m_email);
-			vo.setM_friendlist("");
 			vo.setM_serialnumber(m_serialnumber);
 			vo.setRegistrationdate(new Timestamp(System.currentTimeMillis()));
 			if (!newName.equals("")) {
 				mf.transferTo(f);
 				vo.setM_profile_img(newName);
 				System.out.println("�돱�꽕�엫" + newName);
-			} /* �뙆�씪 �뾽濡쒕뱶�븞�븷�떆 湲곕낯 default.png �븞�맖 */
+			} 
 			else if (newName.equals("")) {
 				System.out.println(mf);
 				vo.setM_profile_img(def);
