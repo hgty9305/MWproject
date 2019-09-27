@@ -20,11 +20,10 @@
 		<typeAlias alias="cwb" type="MeetWhen.vo.airport.CrawlBVO"/>
 		
 		
-			<typeAlias alias="mv" type="meetwhen.vo.MWMemberVO"/>
-			<typeAlias alias="cvo" type="meetwhen.vo.MWCalendarVO"/>
-			<typeAlias alias="avo" type="meetwhen.vo.MWAddressVO"/>
-			<typeAlias alias="fvo" type="meetwhen.vo.MWFriendVO"/>
-
+			<typeAlias alias="mv" type="MeetWhen.spring.vo.Bri.MWMemberVO"/>
+			<typeAlias alias="cvo" type="MeetWhen.spring.vo.Bri.MWCalendarVO"/>
+			<typeAlias alias="avo" type="MeetWhen.spring.vo.Bri.MWAddressVO"/>
+			<typeAlias alias="fvo" type="MeetWhen.spring.vo.Bri.MWFriendVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="/hwanSQL/subwaySQL.xml" />
