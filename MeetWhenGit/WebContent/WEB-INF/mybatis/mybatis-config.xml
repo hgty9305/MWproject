@@ -19,14 +19,12 @@
 		<typeAlias alias="cwa2" type="MeetWhen.vo.airport.CrawlA2VO"/>
 		<typeAlias alias="cwb" type="MeetWhen.vo.airport.CrawlBVO"/>
 		
-<<<<<<< HEAD
 		
 			<typeAlias alias="mv" type="meetwhen.vo.MWMemberVO"/>
 			<typeAlias alias="cvo" type="meetwhen.vo.MWCalendarVO"/>
 			<typeAlias alias="avo" type="meetwhen.vo.MWAddressVO"/>
 			<typeAlias alias="fvo" type="meetwhen.vo.MWFriendVO"/>
-=======
->>>>>>> branch 'master' of https://github.com/hgty9305/MWproject.git
+
 	</typeAliases>
 	<mappers>
 		<mapper resource="/hwanSQL/subwaySQL.xml" />
