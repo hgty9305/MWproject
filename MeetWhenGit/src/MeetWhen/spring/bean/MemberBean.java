@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -84,16 +83,6 @@ public class MemberBean {
 //		    }
 //		return "/Member/main";	
 //	}
-	@RequestMapping("boots_menubar.mw")
-	public String Menubar() {
-		
-		return "Member/boots_menubar";
-	}
-	@RequestMapping("boots_footer.mw")
-	public String Footer() {
-		
-		return "Member/boots_footer";
-	}
 
 	@RequestMapping("boots_join.mw")
 	public String MemberJoin() {
