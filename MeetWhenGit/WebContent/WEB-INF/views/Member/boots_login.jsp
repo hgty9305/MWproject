@@ -31,7 +31,7 @@
 		    <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
 		  </div>
 		</form>
-		<a href="boots_join.mw">회원가입</a>
+		<a href="boots_join.mw">회원가입</a> 
 		</div>	
 		</div>	
 	</div>
