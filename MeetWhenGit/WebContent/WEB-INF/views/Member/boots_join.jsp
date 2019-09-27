@@ -118,8 +118,6 @@
                <option>@gmail.com</option>
                <option>@daum.com</option>
             </select>
-            </td>
-            <td><input type="button" value ="이메일인증" onclick="openEmailAuth(this.form)"></td>
          </tr>
    			<tr height="50">
    			<th>프로필 사진</th>
