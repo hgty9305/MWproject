@@ -1,37 +1,37 @@
 package MeetWhen.spring.bean;
 
 
-import MeetWhen.spring.func.BusStationSerch;
-import MeetWhen.spring.func.StationBusSerch;
-import MeetWhen.spring.func.SubwaySerch;
-import MeetWhen.vo.transport.AdressVO;
-import MeetWhen.vo.transport.BUSstationVO;
-import MeetWhen.vo.transport.SubwayVO;
-import MeetWhen.vo.transport.SubwayinfoVO;
-import MeetWhen.spring.bean.GeoPoint;
-import MeetWhen.spring.bean.GeoTrans;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.net.URL;
+
 import java.util.ArrayList;
+
+
 import java.util.List;
-import java.util.Map;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONObject;
+
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import MeetWhen.spring.func.BusStationSerch;
+import MeetWhen.spring.func.StationBusSerch;
+import MeetWhen.spring.func.SubwaySerch;
+
+import MeetWhen.vo.transport.AdressVO;
+import MeetWhen.vo.transport.BUSstationVO;
+import MeetWhen.vo.transport.SubwayVO;
 
 
 
@@ -47,6 +47,13 @@ public class mapControler {
 	public String jusoPopup() {
 		return "/Transport/jusoPopup";
 	}
+	
+	@RequestMapping("Mainpage.mw")
+	public String mainViewpage() {
+		return "/Transport/Mainpage";
+	}
+	
+
 	
 	@RequestMapping("selfcheck.mw")
 	public String selfcheck(Model model, HttpServletRequest request) {
@@ -93,10 +100,10 @@ public class mapControler {
 		ArrayList<BUSstationVO> buslist = bss.main(xlat, ylat, radius);
 		ArrayList<String[]> Blist = new ArrayList();
 		
-		//´ÙÁß¹è¿­ÇÔ¼ö¸¦ »ý¼ºÇÑ´Ù(Å©±â¸¦ ÁöÁ¤ÇØÁÖ´Â ÄÚµå´Ù)
+		//ï¿½ï¿½ï¿½ß¹è¿­ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½(Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Úµï¿½ï¿½)
 		String[][] total = new String[buslist.size()][4];
 		
-		//list¿¡ ´ã½Å voÇü½ÄÀÇ µ¥ÀÌÅÍ ÆÄÀÏÀ» ¹è¿­·Î Áý¾î³Ö¾î ÇÏ³ªÇÏ³ª ¸¸µå´Â ÀÛ¾÷ÀÌ´Ù.
+		//listï¿½ï¿½ ï¿½ï¿½ï¿½ voï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ ï¿½Ï³ï¿½ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½Ì´ï¿½.
 		for(int i=0;i<buslist.size();i++){
 		BUSstationVO bvo = buslist.get(i);
 		String ait = "'"+bvo.getB_stationName()+"'";
@@ -107,13 +114,13 @@ public class mapControler {
 			total[i][j] = a[j];
 			}
 		}
-		//total.length½áµµ µÇ´Â ºÎºÐÀÌÁö¸¸ ±×³É º¸³»ºÃ´Ù.
+		//total.lengthï¿½áµµ ï¿½Ç´ï¿½ ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½.
 		model.addAttribute("buslistsize", buslist.size());
 		
-		//½Ç½Ã°£ ¹ö½º Á¤º¸¸¦ ´ãÀº total´ÙÁß¹è¿­ÀÌ´Ù.
+		//ï¿½Ç½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ totalï¿½ï¿½ï¿½ß¹è¿­ï¿½Ì´ï¿½.
 		model.addAttribute("total", total);
 		
-		//¹Ø¿¡ º¸³»´Â xlat ylatÀº ±âÁ¸¿¡ °Ë»öÇÑ ÀÚ±â À§Ä¡ ¶Ç´Â °Ë»öÇÑÀ§Ä¡ÀÇ ÁÂÇ¥ÀÌ´Ù.
+		//ï¿½Ø¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ xlat ylatï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ú±ï¿½ ï¿½ï¿½Ä¡ ï¿½Ç´ï¿½ ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½Ì´ï¿½.
 		model.addAttribute("myxlat", xlat);   
 		model.addAttribute("myylat", ylat);
 		return "/Transport/BusSerch";
@@ -135,7 +142,7 @@ public class mapControler {
 	@ResponseBody
 	public String[][] findSB(@RequestParam(value="subfor") String subfor) throws Exception {
 		double Nx, Ny, Sx, Sy;
-		//³Ñ¾î¿Â String°ª spiltÀ¸·Î ÂÉ°³ ÀÎÆ®·Î »ÌÀºµÚ ÇØ´ç °ª ¹üÀ§³»ÀÇ µ¥ÀÌÅÍº£ÀÌ¼­ ¿ªÀÌ¸§°ú ÁÂÇ¥ »Ì¾Æ ¹è¿­¿¡ ´ã¾Æ Ãâ·Â
+		//ï¿½Ñ¾ï¿½ï¿½ Stringï¿½ï¿½ spiltï¿½ï¿½ï¿½ï¿½ ï¿½É°ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½Ì¾ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		
 		String[] ancy = subfor.split("/");
 		Sx = Double.parseDouble(ancy[0]);
@@ -191,7 +198,7 @@ public class mapControler {
 				
 		List buslist = rbs.reMain(lat, lng, radius);
 		
-		//´ÙÁß¹è¿­ÇÔ¼ö¸¦ »ý¼ºÇÑ´Ù(Å©±â¸¦ ÁöÁ¤ÇØÁÖ´Â ÄÚµå´Ù)
+		//ï¿½ï¿½ï¿½ß¹è¿­ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½(Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Úµï¿½ï¿½)
 		String[][] total = new String[buslist.size()][4];
 		
 		for(int i=0;i<buslist.size();i++) {
@@ -199,4 +206,10 @@ public class mapControler {
 		}
 		return total;
 	}
+	
+	
+	
+	
+	
+
 }
