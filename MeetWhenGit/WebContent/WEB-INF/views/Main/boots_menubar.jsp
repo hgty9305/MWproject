@@ -35,7 +35,7 @@
         <ul class="navbar-nav text-uppercase ml-auto">
         <c:if test="${empty sessionScope.loginUser}">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="boots_login.mw">로그인</a>
+            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/boots_login.mw">로그인</a>
           </li>
           </c:if>
           <c:if test="${not empty sessionScope.loginUser}">
@@ -44,11 +44,9 @@
             <label class="nav-link js-scroll-trigger">${sessionScope.loginUser}회원님</label>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="boots_MyPage.mw">회원정보</a>
+            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/boots_MyPage.mw">회원정보</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="boots_calendar.mw">캘린더</a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link " href="/MeetWhenGit/member/logOut.mw">로그아웃</a>
           </li>

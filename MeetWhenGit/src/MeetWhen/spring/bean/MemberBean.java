@@ -84,21 +84,6 @@ public class MemberBean {
 //		    }
 //		return "/Member/main";	
 //	}
-	@RequestMapping("boots_main.mw")
-	public String MemberMain() {
-
-		return "Member/boots_main";
-	}
-	@RequestMapping("boots_menubar.mw")
-	public String Menubar() {
-		
-		return "Member/boots_menubar";
-	}
-	@RequestMapping("boots_footer.mw")
-	public String Footer() {
-		
-		return "Member/boots_footer";
-	}
 
 	@RequestMapping("boots_join.mw")
 	public String MemberJoin() {
@@ -160,7 +145,7 @@ public class MemberBean {
 			e.printStackTrace();
 		}
 			
-		return "Member/boots_main";
+		return "Member/boots_main2";
 	}
 
 	@RequestMapping("confirmId.mw")
@@ -176,7 +161,7 @@ public class MemberBean {
 		if (session.getAttribute("loginUser") == null) {
 			return "Member/boots_login";
 		} else {
-			return "Member/boots_main";
+			return "Member/boots_main2";
 		}
 	}
 

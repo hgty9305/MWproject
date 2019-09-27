@@ -25,6 +25,9 @@
 			<typeAlias alias="avo" type="MeetWhen.spring.vo.Bri.MWAddressVO"/>
 			<typeAlias alias="fvo" type="MeetWhen.spring.vo.Bri.MWFriendVO"/>
 	</typeAliases>
+	
+	
+	
 	<mappers>
 		<mapper resource="/hwanSQL/subwaySQL.xml" />
 		<mapper resource="/hwanSQL/calendarSQL.xml" />
