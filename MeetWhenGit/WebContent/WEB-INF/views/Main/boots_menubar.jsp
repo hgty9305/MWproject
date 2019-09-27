@@ -48,11 +48,10 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="/MeetWhenGit/member/logOut.mw">·Î±×¾Æ¿ô</a>
+            <a class="nav-link " href="/MeetWhenGit/Member/logOut.mw">·Î±×¾Æ¿ô</a>
           </li>
           </c:if>
         </ul>
-
       </div>
     </div>
   </nav>
