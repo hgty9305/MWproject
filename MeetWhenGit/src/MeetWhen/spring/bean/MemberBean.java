@@ -99,48 +99,42 @@ public class MemberBean {
 			
 			for(int i =0; i<srlist.size(); i++) {
 				if(m_serialnumber.equals(srlist.get(i))) {
-					//�옖�뜡�쓣 �떎�떆�룎由댁� 
+					
 				}
 				else { continue;}
 			}
-			
 			MultipartFile mf = request.getFile("m_profile_img"); // �씠履쎌씠 �븞�릺�뒗嫄곌컳���뜲�옞留� //湲곕낯媛� default.png�씤�뜲 �씠寃껊룄�븞李롰옒?洹멸굔紐곕옍
 			String path = request.getRealPath("images");
 			String org = mf.getOriginalFilename();
+			System.out.println(mf);
 			String ext="";
 			String img="";
 			String def ="";
 			String newName ="";
 			File f= null;
-			if(mf!=null) {
+			MWMemberVO vo = new MWMemberVO();
+			if(mf!=null){
 			ext = org.substring(org.lastIndexOf("."));
 			img = m_id + ext;
 			sql.insert("memberSQL.filenumsequence");
 			
 			int num = sql.selectOne("memberSQL.filemaxnum");
+			
 			newName = "image" + num + ext;
 			f = new File(path + "//" + img);
-			}else {
-				org = newName = "default.png";
-				
+			vo.setM_profile_img(newName);
 			}
+			newName = "default.png";
+			vo.setM_profile_img(newName);
+			
 			String m_email = m_email_1 + m_email_2;
-			MWMemberVO vo = new MWMemberVO();
+			
 			vo.setM_name(m_name);
 			vo.setM_id(m_id);
 			vo.setM_pw(m_pw);
 			vo.setM_email(m_email);
 			vo.setM_serialnumber(m_serialnumber);
 			vo.setRegistrationdate(new Timestamp(System.currentTimeMillis()));
-			if (!newName.equals("")) {
-				mf.transferTo(f);
-				vo.setM_profile_img(newName);
-				System.out.println("�돱�꽕�엫" + newName);
-			} 
-			else if (newName.equals("")) {
-				System.out.println(mf);
-				vo.setM_profile_img(def);
-			}
 			sql.insert("memberSQL.signup", vo);
 		} catch (Exception e) {
 			e.printStackTrace();
