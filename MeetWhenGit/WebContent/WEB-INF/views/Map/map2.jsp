@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/MeetWhen/css/category.css">
+<link rel="stylesheet" href="/MeetWhenGit/css/category.css">
 <style>
 /*for map*/
 #goMap {
@@ -115,7 +115,7 @@
 							//ajax 구현- crawl 1(o)
 							$.ajax({
 								type:"post",
-								url: "/MeetWhen/Crawl/showCrawla2.mw",
+								url: "/MeetWhenGit/Crawl/showCrawla2.mw",
 								data:{cont : total[i][0] },
 								success : showResult1,
 								error : reqError(1)
@@ -124,7 +124,7 @@
 							//ajax 구현- crawlb(ing)
 							$.ajax({
 								type:"post",
-								url: "/MeetWhen/Crawl/doShowCrawlc.mw",
+								url: "/MeetWhenGit/Crawl/doShowCrawlc.mw",
 								data:{cont : total[i][0] },
 								success : showResult2,
 								error : reqError(2)
@@ -172,7 +172,7 @@
 	function getArticle(){
 		$.ajax({
 			type:"post",
-			url: "/MeetWhen/Crawl/showCrawlb.mw",
+			url: "/MeetWhenGit/Crawl/showCrawlb.mw",
 			data:{dbNum : 2 },
 			success : showResult3,
 			error : reqError(3)

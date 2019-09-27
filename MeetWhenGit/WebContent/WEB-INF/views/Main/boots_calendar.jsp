@@ -1,32 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html >
 
 <head>
-	<style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-	
-	
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FullCalendar Example</title>
-    <link rel=" shortcut icon" href="/MeetWhen/img/favicon.ico">
+<style>
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+</style>
 
-    <link rel="stylesheet" href="/MeetWhen/vendor/css/fullcalendar.min.css" />
-    <link rel="stylesheet" href="/MeetWhen/vendor/css/bootstrap.min.css">
-    <link rel="stylesheet" href='/MeetWhen/vendor/css/select2.min.css' />
-    <link rel="stylesheet" href='/MeetWhen/vendor/css/bootstrap-datetimepicker.min.css' />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FullCalendar Example</title>
+<link rel=" shortcut icon" href="/MeetWhenGit/img/favicon.ico">
 
-    <link rel="stylesheet" href="/MeetWhen/css/main.css">
+<link rel="stylesheet"
+	href="/MeetWhenGit/vendor/css/fullcalendar.min.css" />
+<link rel="stylesheet" href="/MeetWhenGit/vendor/css/bootstrap.min.css">
+<link rel="stylesheet" href='/MeetWhenGit/vendor/css/select2.min.css' />
+<link rel="stylesheet"
+	href='/MeetWhenGit/vendor/css/bootstrap-datetimepicker.min.css' />
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<link rel="stylesheet" href="/MeetWhenGit/css/main.css">
 
 
 
@@ -180,17 +183,17 @@
         <!-- /.filter panel -->
     </div>
     <!-- /.container -->
-    <script src="/MeetWhen/vendor/js/jquery.min.js"></script>
-    <script src="/MeetWhen/vendor/js/bootstrap.min.js"></script>
-    <script src="/MeetWhen/vendor/js/moment.min.js"></script>
-    <script src="/MeetWhen/vendor/js/fullcalendar.min.js"></script>
-    <script src="/MeetWhen/vendor/js/ko.js"></script>
-    <script src="/MeetWhen/vendor/js/select2.min.js"></script>
-    <script src="/MeetWhen/vendor/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="/MeetWhen/js/main.js"></script>
-    <script src="/MeetWhen/js/addEvent.js"></script>
-    <script src="/MeetWhen/js/editEvent.js"></script>
-    <script src="/MeetWhen/js/etcSetting.js"></script>
+    <script src="/MeetWhenGit/vendor/js/jquery.min.js"></script>
+    <script src="/MeetWhenGit/vendor/js/bootstrap.min.js"></script>
+    <script src="/MeetWhenGit/vendor/js/moment.min.js"></script>
+    <script src="/MeetWhenGit/vendor/js/fullcalendar.min.js"></script>
+    <script src="/MeetWhenGit/vendor/js/ko.js"></script>
+    <script src="/MeetWhenGit/vendor/js/select2.min.js"></script>
+    <script src="/MeetWhenGit/vendor/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/MeetWhenGit/js/main.js"></script>
+    <script src="/MeetWhenGit/js/addEvent.js"></script>
+    <script src="/MeetWhenGit/js/editEvent.js"></script>
+    <script src="/MeetWhenGit/js/etcSetting.js"></script>
 </body>
 
 </html>

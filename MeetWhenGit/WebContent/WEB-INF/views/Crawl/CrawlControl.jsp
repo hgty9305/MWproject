@@ -27,7 +27,7 @@ function callCrawlA1(){
 	$(document).ready(function(){	
 			$.ajax({
 				type :"post",
-				url : "/MeetWhen/Crawl/doCrawla1.mw",
+				url : "/MeetWhenGit/Crawl/doCrawla1.mw",
 				success : function(){
 					$("#resultA1").text("실행 완료!");	}, 
 				error : function(){
@@ -40,7 +40,7 @@ function callCrawlA2(){
 	$(document).ready(function(){	
 		$.ajax({
 			type :"post",
-			url : "/MeetWhen/Crawl/doCrawla2.mw",
+			url : "/MeetWhenGit/Crawl/doCrawla2.mw",
 			success : function(){
 				$("#resultA2").text("실행 완료!");	}, 
 			error : function(){
@@ -53,7 +53,7 @@ function callCrawlB1(){
 	$(document).ready(function(){	
 			$.ajax({
 				type :"post",
-				url : "/MeetWhen/Crawl/doCrawlb.mw?dbNum=1",
+				url : "/MeetWhenGit/Crawl/doCrawlb.mw?dbNum=1",
 				success : function(){
 					$("#resultB1").text("실행 완료!");	}, 
 				error : function(){
@@ -66,7 +66,7 @@ function callCrawlB2(){
 	$(document).ready(function(){	
 			$.ajax({
 				type :"post",
-				url : "/MeetWhen/Crawl/doCrawlb.mw?dbNum=2",
+				url : "/MeetWhenGit/Crawl/doCrawlb.mw?dbNum=2",
 				success : function(){
 					$("#resultB2").text("실행 완료!");	}, 
 				error : function(){
@@ -79,7 +79,7 @@ function callCrawlB3(){
 	$(document).ready(function(){	
 			$.ajax({
 				type :"post",
-				url : "/MeetWhen/Crawl/doCrawlb.mw?dbNum=3",
+				url : "/MeetWhenGit/Crawl/doCrawlb.mw?dbNum=3",
 				success : function(){
 					$("#resultB3").text("실행 완료!");	}, 
 				error : function(){
@@ -92,7 +92,7 @@ function callCrawlB4(){
 	$(document).ready(function(){	
 			$.ajax({
 				type :"post",
-				url : "/MeetWhen/Crawl/doCrawlb.mw?dbNum=4",
+				url : "/MeetWhenGit/Crawl/doCrawlb.mw?dbNum=4",
 				success : function(){
 					$("#resultB4").text("실행 완료!");	}, 
 				error : function(){
@@ -105,7 +105,7 @@ function callCrawlB5(){
 	$(document).ready(function(){	
 			$.ajax({
 				type :"post",
-				url : "/MeetWhen/Crawl/doCrawlb.mw?dbNum=5",
+				url : "/MeetWhenGit/Crawl/doCrawlb.mw?dbNum=5",
 				success : function(){
 					$("#resultB5").text("실행 완료!");	}, 
 				error : function(){
@@ -118,7 +118,7 @@ function callCrawlB6(){
 	$(document).ready(function(){	
 			$.ajax({
 				type :"post",
-				url : "/MeetWhen/Crawl/doCrawlb.mw?dbNum=6",
+				url : "/MeetWhenGit/Crawl/doCrawlb.mw?dbNum=6",
 				success : function(){
 					$("#resultB6").text("실행 완료!");	}, 
 				error : function(){

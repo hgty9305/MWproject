@@ -21,7 +21,7 @@
 <body>
 <div class="cen">
 	<h3>${clickCont}의추천 명소</h3>
-	<img id="opp" src="/MeetWhen/img/recom/recom0.jpg" alt="RecomPlace" width="700" height="300">
+	<img id="opp" src="/MeetWhenGit/img/recom.jpg" alt="RecomPlace" width="700" height="300">
 </div>
 
 </body>
