@@ -1,4 +1,4 @@
-package MeetWhen.spring.vo.Bri;
+package MeetWhen.vo.bri;
 
 import java.sql.Timestamp;
 
