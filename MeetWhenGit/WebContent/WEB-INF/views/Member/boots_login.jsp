@@ -9,7 +9,7 @@
 <title>Login Demo - Kakao JavaScript SDK</title>
 </head>
 <body id="page-top">
- <jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
+ <jsp:include page="/Main/boots_menubar.mw"/>
 
  <DIV id="container">
 	<hr/>
@@ -37,7 +37,7 @@
 	</div>
 	<hr/>  
 </DIV>
-<jsp:include page="/MeetWhenGit/Main/boots_footer.mw"/>
+<jsp:include page="/Main/boots_footer.mw"/>
 <c:if test="${loginState eq false}">
 	<script>
 	 	alert("아이디와 비밀번호가 일치하지않습니다");

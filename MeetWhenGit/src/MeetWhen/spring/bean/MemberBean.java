@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -85,6 +84,7 @@ public class MemberBean {
 //		return "/Member/main";	
 //	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	@RequestMapping("boots_menubar.mw")
 	public String Menubar() {
@@ -96,6 +96,8 @@ public class MemberBean {
 		
 		return "Member/boots_footer";
 	}
+>>>>>>> branch 'master' of https://github.com/hgty9305/MWproject.git
+=======
 >>>>>>> branch 'master' of https://github.com/hgty9305/MWproject.git
 
 	@RequestMapping("boots_join.mw")

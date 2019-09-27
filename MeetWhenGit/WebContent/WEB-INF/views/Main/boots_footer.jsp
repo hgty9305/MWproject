@@ -46,7 +46,7 @@ a{
               <a href="#">Privacy Policy</a>
             </li>
             <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
+              <a href="/MeetWhenGit/Main/allServices.mw">서비스 전체 보기</a>
             </li>
           </ul>
         </div>

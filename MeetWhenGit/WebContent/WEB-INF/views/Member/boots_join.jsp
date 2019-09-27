@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
  
    <script type="text/JavaScript">
       function checkReg() {
@@ -76,10 +76,10 @@
       request.setCharacterEncoding("UTF-8");
    %>
 <html lang="en">
-<jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
 <body id="page-top">
+	<jsp:include page="/Main/boots_menubar.mw"/>
 <div id="container">
-   <form action="/MeetWhenGit/Member/boots_joinpro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
+   <form action="boots_joinpro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
       <table width="850" align="center">
          <br><br>
          <tr height="50" bgcolor="FDD262">
@@ -126,10 +126,10 @@
       </table>
       <br/> <input type="submit" value="가입하기"
          style="height: 50px; width: 500px;" onclick="return checkReg()" /> <br/>
-      <br /> <a href="/MeetWhenGit/Member/boots_login.mw">이미 회원이세요?</a>
+      <br /> <a href="boots_login.mw">이미 회원이세요?</a>
    </form>
   </div>
    <hr>
- <jsp:include page= "/MeetWhenGit/Main/boots_footer.mw"/>
+ <jsp:include page= "/Main/boots_footer.mw"/>
 </body>
 </html>
