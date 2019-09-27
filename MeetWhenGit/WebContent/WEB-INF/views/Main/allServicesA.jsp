@@ -52,10 +52,14 @@ a{
   <div class="item3">
   	<h3>사용 API</h3>
   	<ul>
+  		<li><a href=" https://fullcalendar.io/"></a>캘린더</li>
+  		<li><a href="https://www.data.go.kr/dataset/15000332/openapi.do"></a>버스 정보</li>
+  		<li><a href="http://data.seoul.go.kr/dataList/datasetView.do?infId=OA-12764&srvType=F&serviceKind=1&currentPageNo=1&searchValue=&searchKey=null">지하철 정보</a></li>
+  		<li><a href="https://www.juso.go.kr/CommonPageLink.do?link=/addrlink/devAddrLinkRequestSample">주소 정보</a></li>
     	<li><a href="https://cloud.google.com/maps-platform/">구글 지도</a></li>
-        <li>버스 정보</li>
-        <li>캘린더</li>
-        <li><a href="https://www.juso.go.kr/CommonPageLink.do?link=/addrlink/devAddrLinkRequestSample">주소 정보</a></li>
+        
+        
+        
     </ul>
   </div>  
   <div class="item4">
