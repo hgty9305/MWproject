@@ -26,9 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import MeetWhen.spring.bean.GeoPoint;
 import MeetWhen.spring.bean.GeoTrans;
-import MeetWhen.spring.vo.Bri.MWAddressVO;
-import MeetWhen.spring.vo.Bri.MWFriendVO;
-import MeetWhen.spring.vo.Bri.MWMemberVO;
+import MeetWhen.vo.bri.MWAddressVO;
+import MeetWhen.vo.bri.MWFriendVO;
+import MeetWhen.vo.bri.MWMemberVO;
 
 
 @Controller
@@ -43,8 +43,8 @@ public class MemberBean {
 
 //	@RequestMapping("main.mw")
 //	public String MemberMain(HttpServletRequest request) throws UnsupportedEncodingException {
-//		   String clientId = "IFQYtQGmVdD6mqkfDGew";//애플리케이션 클라이언트 아이디값";
-//		    String clientSecret = "co1qBbOgUD";//애플리케이션 클라이언트 시크릿값";
+//		   String clientId = "IFQYtQGmVdD6mqkfDGew";//�븷�뵆由ъ��씠�뀡 �겢�씪�씠�뼵�듃 �븘�씠�뵒媛�";
+//		    String clientSecret = "co1qBbOgUD";//�븷�뵆由ъ��씠�뀡 �겢�씪�씠�뼵�듃 �떆�겕由욧컪";
 //		    String code = request.getParameter("code");
 //		    String state = request.getParameter("state");
 //		    String redirectURI = URLEncoder.encode("http://localhost:8080/MeetWhen/member/main.mw", "UTF-8");
@@ -65,9 +65,9 @@ public class MemberBean {
 //		      int responseCode = con.getResponseCode();
 //		      BufferedReader br;
 //		      System.out.print("responseCode="+responseCode);
-//		      if(responseCode==200) { // 정상 호출
+//		      if(responseCode==200) { // �젙�긽 �샇異�
 //		        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//		      } else {  // 에러 발생
+//		      } else {  // �뿉�윭 諛쒖깮
 //		        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 //		      }
 //		      String inputLine;
@@ -84,6 +84,19 @@ public class MemberBean {
 //		    }
 //		return "/Member/main";	
 //	}
+<<<<<<< HEAD
+=======
+	@RequestMapping("boots_menubar.mw")
+	public String Menubar() {
+		
+		return "Member/boots_menubar";
+	}
+	@RequestMapping("boots_footer.mw")
+	public String Footer() {
+		
+		return "Member/boots_footer";
+	}
+>>>>>>> branch 'master' of https://github.com/hgty9305/MWproject.git
 
 	@RequestMapping("boots_join.mw")
 	public String MemberJoin() {
@@ -94,7 +107,7 @@ public class MemberBean {
 	public String MemberJoinPro(MultipartHttpServletRequest request, String m_name, String m_id, String m_email_1,
 			String m_email_2, String m_pw,Model model) {
 		try {
-			// 회원고유번호 @@@@@@@@@@@@@@@@@@@@겹치는 번호 방지코드 추가예정
+			// �쉶�썝怨좎쑀踰덊샇 @@@@@@@@@@@@@@@@@@@@寃뱀튂�뒗 踰덊샇 諛⑹�肄붾뱶 異붽��삁�젙
 			Random rd = new Random();
 			String m_serialnumber = Integer.toString(rd.nextInt(9998));
 			
@@ -102,11 +115,11 @@ public class MemberBean {
 			
 			for(int i =0; i<srlist.size(); i++) {
 				if(m_serialnumber.equals(srlist.get(i))) {
-					//랜덤을 다시돌릴지 
+					//�옖�뜡�쓣 �떎�떆�룎由댁� 
 				}
 				else { continue;}
 			}
-			MultipartFile mf = request.getFile("m_profile_img"); // 이쪽이 안되는거같은데잠만 //기본값 default.png인데 이것도안찎힘?그건몰랔
+			MultipartFile mf = request.getFile("m_profile_img"); // �씠履쎌씠 �븞�릺�뒗嫄곌컳���뜲�옞留� //湲곕낯媛� default.png�씤�뜲 �씠寃껊룄�븞李롰옒?洹멸굔紐곕옍
 			String path = request.getRealPath("images");
 			String org = mf.getOriginalFilename();
 			String ext = org.substring(org.lastIndexOf("."));
@@ -134,8 +147,8 @@ public class MemberBean {
 			if (!newName.equals("")) {
 				mf.transferTo(f);
 				vo.setM_profile_img(newName);
-				System.out.println("뉴네임" + newName);
-			} /* 파일 업로드안할시 기본 default.png 안됨 */
+				System.out.println("�돱�꽕�엫" + newName);
+			} /* �뙆�씪 �뾽濡쒕뱶�븞�븷�떆 湲곕낯 default.png �븞�맖 */
 			else if (newName.equals("")) {
 				System.out.println(mf);
 				vo.setM_profile_img(def);
@@ -181,7 +194,7 @@ public class MemberBean {
 			} else {
 				loginState = true;
 				session.setAttribute("loginUser", User.getM_id());
-				returnPage = "Member/boots_main2"; // 로그인성공시
+				returnPage = "Member/boots_main2"; // 濡쒓렇�씤�꽦怨듭떆
 			}
 
 			model.addAttribute("loginState", loginState);
@@ -243,8 +256,8 @@ public class MemberBean {
 		
 		int postal_code = Integer.parseInt(zipNo);
 		
-		x = Double.parseDouble(entX); //평면도 뒤 파라미터== 경도 퇴근늦어도됨?응 한 9시까지 열ㅋ어서 ㅋㅋㅋ 나오늘 공부하느라 밤샐듯 너가?내일면접이라 헐 방해하는거아니냐 ㄴㄴㅋㅋㅋㅋㅋ
-		y = Double.parseDouble(entY); //평면도 앞 파라미터 == 위도
+		x = Double.parseDouble(entX); //�룊硫대룄 �뮘 �뙆�씪誘명꽣== 寃쎈룄 �눜洹쇰뒭�뼱�룄�맖?�쓳 �븳 9�떆源뚯� �뿴�뀑�뼱�꽌 �뀑�뀑�뀑 �굹�삤�뒛 怨듬��븯�뒓�씪 諛ㅼ깘�벏 �꼫媛�?�궡�씪硫댁젒�씠�씪 �뿉 諛⑺빐�븯�뒗嫄곗븘�땲�깘 �꽩�꽩�뀑�뀑�뀑�뀑�뀑
+		y = Double.parseDouble(entY); //�룊硫대룄 �븵 �뙆�씪誘명꽣 == �쐞�룄
 
 	    GeoPoint pt1 = new GeoPoint(x, y);
 	    GeoPoint tm_pt = GeoTrans.convert(GeoTrans.UTMK, GeoTrans.GEO, pt1);
@@ -362,9 +375,9 @@ public class MemberBean {
 			String m_id = (String)session.getAttribute("loginUser");
 	    try {
 
-			/* 친구리스트 */
+			/* 移쒓뎄由ъ뒪�듃 */
 	    	
-	    	System.out.println("세션 :"+m_id);
+	    	System.out.println("�꽭�뀡 :"+m_id);
 			List<MWFriendVO> flist= sql.selectList("memberSQL.frilist", m_id); 
 			int listCount = (int)sql.selectOne("memberSQL.countfrilist", m_id);
 			
@@ -397,18 +410,18 @@ public class MemberBean {
     	System.out.println(map.get("m_id"));
     	
       	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
-    	System.out.println("검색결과 갯수 :" + count);
+    	System.out.println("寃��깋寃곌낵 媛��닔 :" + count);
     	 Slist = sql.selectList("memberSQL.memberSearch", map);
     	
-    	System.out.println("검색 결좌 첫번째  놈 : " + Slist.get(0).getM_id());
-    	System.out.println("검색 결좌 2번째  놈 : " + Slist.get(1).getM_id());
+    	System.out.println("寃��깋 寃곗쥖 泥ル쾲吏�  �냸 : " + Slist.get(0).getM_id());
+    	System.out.println("寃��깋 寃곗쥖 2踰덉㎏  �냸 : " + Slist.get(1).getM_id());
     	model.addAttribute("slist", Slist);
     	
     	if(count !=0) {
     	model.addAttribute("cntFrnd", count);
     	}
     	else if(count==0) {
-    		String NResult = "검색결과 없음";
+    		String NResult = "寃��깋寃곌낵 �뾾�쓬";
     		model.addAttribute("NR", NResult);
     	}
 		}catch(Exception e){e.printStackTrace();}
@@ -428,7 +441,7 @@ public class MemberBean {
     	System.out.println(map.get("m_id"));
     	
       	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
-    	System.out.println("검색결과 갯수 :" + count);
+    	System.out.println("寃��깋寃곌낵 媛��닔 :" + count);
     	 Slist = sql.selectList("memberSQL.memberSearch", map);
     	
     	model.addAttribute("slist", Slist);
@@ -437,7 +450,7 @@ public class MemberBean {
     	model.addAttribute("cntFrnd", count);
     	}
     	else if(count==0) {
-    		String NResult = "검색결과 없음";
+    		String NResult = "寃��깋寃곌낵 �뾾�쓬";
     		model.addAttribute("NR", NResult);
     	}
 		}catch(Exception e){e.printStackTrace();}
