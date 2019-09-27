@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/MeetWhen/css/category.css">
+<link rel="stylesheet" href="/MeetWhenGit/css/category.css">
 <style>
 /*for map*/
 #goMap {
-	height: 600px;
-	width: 600px;
+	height: 900px;
+	width: 900px;
 }
 /*배경색 그레이*/
 .bdColor{
@@ -79,8 +79,8 @@
 <%--맵을 초기화 하기 위한 함수--%>
 	function initialize() {
 		var mapOp = {
-			center : new google.maps.LatLng(-3.490528, 23.573684), //아프리카
-			zoom : 3.2,
+			center : new google.maps.LatLng(-0.302953, 23.898834), //아프리카
+			zoom : 4,
 			mapTypeId : google.maps.MapTypeId.ROADMAP,
 			disableDefaultUI : true,
 			panControl : false,
@@ -115,7 +115,7 @@
 							//ajax 구현- crawl 1(o)
 							$.ajax({
 								type:"post",
-								url: "/MeetWhen/Crawl/showCrawla2.mw",
+								url: "/MeetWhenGit/Crawl/showCrawla2.mw",
 								data:{cont : total[i][0] },
 								success : showResult1,
 								error : reqError(1)
@@ -124,7 +124,7 @@
 							//ajax 구현- crawlc(임의로 설정됨)
 							$.ajax({
 								type:"post",
-								url: "/MeetWhen/Crawl/doShowCrawlc.mw",
+								url: "/MeetWhenGit/Crawl/doShowCrawlc.mw",
 								data:{cont : total[i][0] },
 								success : showResult2,
 								error : reqError(2)
@@ -145,8 +145,8 @@
 		};
 		google.maps.event.addListener(map, 'click', function(event) {
 			infowindow.close();
-			map.setCenter(new google.maps.LatLng(-3.490528, 23.573684));
-			map.setZoom(3.2);
+			map.setCenter(new google.maps.LatLng(-0.302953, 23.898834));
+			map.setZoom(4);
 		});
 	}
 	function showResult1(data){
@@ -173,7 +173,7 @@
 	function getArticle(){
 		$.ajax({
 			type:"post",
-			url: "/MeetWhen/Crawl/showCrawlb.mw",
+			url: "/MeetWhenGit/Crawl/showCrawlb.mw",
 			data:{dbNum : 3 },
 			success : showResult3,
 			error : reqError(3)

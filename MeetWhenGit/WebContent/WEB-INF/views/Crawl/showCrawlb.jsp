@@ -60,7 +60,7 @@
 <body>
 	<div class="row">
   		<div class="column" onclick="location.href='${topURL}'">
-    		<img src="/MeetWhen/img/article/newsLogo.jpg" width=195px; />
+    		<img src="/MeetWhenGit/img/article/newsLogo.jpg" width=195px; />
     		 <div class="overlay newTitle">
 				<c:if test="${dbNum==1}">세계 뉴스로 이동</c:if>
 				<c:if test="${dbNum==2}">유럽 뉴스로 이동</c:if>
