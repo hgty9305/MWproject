@@ -78,5 +78,21 @@
 			update mwmember set m_pw=#{},m_email=#{},m_profile_img=#{}  where m_id=#{}
 		</update>
 		-->
-		
+		<!-- 로그인 체크 & id중복 확인 -->
+	<select id="confirmUser" parameterType="mv" resultType="int">
+		select count(*) from MWMEMBER
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="m_id!=null">
+				m_id=#{m_id}
+			</if>
+			<if test="m_pw!=null">
+				and m_pw=#{m_pw}
+			</if>
+		</trim>
+	</select>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMember" parameterType="String">
+		delete from MWMEMBER where m_id=#{m_id}		
+	</delete>
 	</mapper>
