@@ -407,8 +407,8 @@ public class MemberBean {
 		return Slist;
 	}
 	
-	@RequestMapping("SearchResult.mw")
-	public String Sfri2(Model model, String searchFromAll){
+	@RequestMapping("searchResult.mw")
+	public String searchResult(Model model, String searchFromAll){
 		List<MWMemberVO> Slist = null;
 		String m_id = (String)session.getAttribute("loginUser");
 		try {
@@ -433,6 +433,6 @@ public class MemberBean {
     		model.addAttribute("NR", NResult);
     	}
 		}catch(Exception e){e.printStackTrace();}
-		return "/Member/SearchResult";
+		return "/Member/searchResult";
 	}
 }
