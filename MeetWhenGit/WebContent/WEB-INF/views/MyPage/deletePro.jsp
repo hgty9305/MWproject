@@ -30,6 +30,7 @@ table.type03 td {
 	<jsp:include page="/Main/boots_menubar.mw" />
 	<div class="container">
 		<div class="row">
+			<div class="col-lg-12 text-center">
 			<form method="post" action="/MeetWhenGit/Main/main.mw" name="userinput">
 			<table class="type03">
 				<tr>
@@ -48,6 +49,7 @@ table.type03 td {
 				</tr>
 			</table>
 			</form>
+		</div>
 		</div>
 	</div>
 </c:if>
