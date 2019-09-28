@@ -9,7 +9,7 @@
 </head>
 <body id="page-top">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
+    <jsp:include page="/Main/boots_menubar.mw"/>
     <div id="searchForm">
         <form onsubmit="searchajax(); return false;">
             <input type="text" size="20" id="searchFromAll" name="searchFromAll"/>&nbsp;
@@ -21,11 +21,11 @@
      <div id="smtest">ksm</div>
     </c:forEach>
  --%>
- 	<div id="smtest"></div>
+ 	<div id="flist"></div>
 
 
   
-<jsp:include page="/MeetWhenGit/Main/boots_footer.mw"/>
+<jsp:include page="/Main/boots_footer.mw"/>
    
 <script>
 var content ="";
@@ -38,10 +38,10 @@ var flist =[];
 			}else{
 					$.ajax({
 						type : 'POST',
-						url : 'Sfri2.mw',
+						url : 'SearchResult.mw',
 						data : {searchFromAll : words},
 						success : function(data){
-							$("#smtest").html(data);
+							$("#flist").html(data);
 						}
 					})
 				}

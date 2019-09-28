@@ -36,7 +36,7 @@ table.type03 td {
 </head>
 
 <body id="page-top">
- <jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
+ <jsp:include page="/Main/boots_menubar.mw"/>
  
 		<p3>등록된 주소들</p3>
 		<br/>
@@ -82,7 +82,7 @@ table.type03 td {
  	 	<input type="button" value="Reload " onclick="Javascript:fnGetCurrentPosition();" />
  	 	
  	 	<div id="map" style="width:760px;height:400px;margin-top:20px;"></div>
-<jsp:include page="/MeetWhenGit/Main/boots_footer.mw"/>
+<jsp:include page="/Main/boots_footer.mw"/>
 <script>
 var selectedAddress = new Array();
 $("#tbl_addressInfo tr").click(function(){
