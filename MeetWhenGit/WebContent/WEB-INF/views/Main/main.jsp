@@ -45,7 +45,7 @@
 				<ul class="navbar-nav text-uppercase ml-auto">
 					<c:if test="${empty sessionScope.loginUser}">
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="/MeetWhenGit/Member/boots_login.mw">로그인</a></li>
+							href="/MeetWhenGit/Member/login.mw">로그인</a></li>
 					</c:if>
 					<c:if test="${not empty sessionScope.loginUser}">
 
@@ -53,7 +53,7 @@
 							class="nav-link js-scroll-trigger">${sessionScope.loginUser}회원님</label>
 						</li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="/MeetWhenGit/Member/boots_MyPage.mw">회원정보</a></li>
+							href="/MeetWhenGit/Member/myPage.mw">회원정보</a></li>
 
 						<li class="nav-item"><a class="nav-link "
 							href="/MeetWhenGit/Member/logOut.mw">로그아웃</a></li>
@@ -70,7 +70,7 @@
 				<div class="intro-lead-in"></div>
 				<div class="intro-heading text-uppercase cHead">Welcome To 'MeetWhen'</div>
 				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-					href="/MeetWhenGit/Member/boots_join.mw">Join Us</a>
+					href="/MeetWhenGit/Member/join.mw">Join Us</a>
 			</div>
 		</div>
 	</header>
