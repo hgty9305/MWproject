@@ -79,7 +79,7 @@
 <body id="page-top">
 	<jsp:include page="/Main/boots_menubar.mw"/>
 <div id="container">
-   <form action="boots_joinpro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
+   <form action="joinPro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
       <table width="850" align="center">
          <br><br>
          <tr height="50" bgcolor="FDD262">

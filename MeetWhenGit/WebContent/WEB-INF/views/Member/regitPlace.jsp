@@ -24,8 +24,8 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 </head>
 
 <body id="page-top">
- <jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
-<form name="form" id="form" method="post" action="boots_regitPlacePro.mw">
+ <jsp:include page="/Main/boots_menubar.mw"/>
+<form name="form" id="form" method="post" action="regitPlacePro.mw">
 	<input type="hidden" id="addressTarget" name="addressTarget" value="${param.id}" />
 	<table >
 			<colgroup>
@@ -62,9 +62,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			</table>
 		<input type ="submit" value ="장소등록"/>
 </form>
-  
-<jsp:include page="/MeetWhenGit/Main/boots_footer.mw"/>
-
+<jsp:include page="/Main/boots_footer.mw"/>
 </body>
-
 </html>

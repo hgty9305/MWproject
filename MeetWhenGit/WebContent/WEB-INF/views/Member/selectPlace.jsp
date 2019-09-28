@@ -36,7 +36,7 @@ table.type03 td {
 </head>
 
 <body id="page-top">
- <jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
+ <jsp:include page="/Main/boots_menubar.mw"/>
  
 		<p3>등록된 주소들</p3>
 		<br/>
@@ -59,14 +59,14 @@ table.type03 td {
 				<td>${addressInfo.address1}</td>
 				<td>${addressInfo.lat1}</td>
 				<td>${addressInfo.long1}</td> 
-				<td><a href="/MeetWhenGit/Member/boots_regitPlace.mw?id=1">등록/수정</a> </td>
+				<td><a href="/MeetWhenGit/Member/regitPlace.mw?id=1">등록/수정</a> </td>
 			</tr>
 			<tr>
 				<td><input type="radio" name="seletedAddress"></td>
 				<td>${addressInfo.address2}</td>
 				<td>${addressInfo.lat2}</td>
 				<td>${addressInfo.long2}</td> 
-				<td><a href="/MeetWhen/Member/boots_regitPlace.mw?id=2">등록/수정</a> </td>
+				<td><a href="/MeetWhen/Member/regitPlace.mw?id=2">등록/수정</a> </td>
 				
 			</tr>
 			<tr>
@@ -74,7 +74,7 @@ table.type03 td {
 				<td>${addressInfo.address3}</td>
 				<td>${addressInfo.lat3}</td>
 				<td>${addressInfo.long3}</td> 
-				<td><a href="/MeetWhen/Member/boots_regitPlace.mw?id=3">등록/수정</a> </td>
+				<td><a href="/MeetWhen/Member/regitPlace.mw?id=3">등록/수정</a> </td>
 			</tr>
 		</tbody>
 		</table>
@@ -82,7 +82,7 @@ table.type03 td {
  	 	<input type="button" value="Reload " onclick="Javascript:fnGetCurrentPosition();" />
  	 	
  	 	<div id="map" style="width:760px;height:400px;margin-top:20px;"></div>
-<jsp:include page="/MeetWhenGit/Main/boots_footer.mw"/>
+<jsp:include page="/Main/boots_footer.mw"/>
 <script>
 var selectedAddress = new Array();
 $("#tbl_addressInfo tr").click(function(){
@@ -166,10 +166,8 @@ $(document).ready(function() {
                markers.push(Marker);
                
                
-            },function(error)
-            {
-                switch(error.code)
-                {
+            },function(error){
+                switch(error.code){
                     case 1:
                         $("#errormsg").html("User denied the request for Geolocation.");
                         break;
@@ -185,12 +183,10 @@ $(document).ready(function() {
                 }
             });
         }
-        else
-        {
+        else{
             $("#errormsg").html("Geolocation is not supported by this browser.");
         }
     }
 </script>
 </body>
-
 </html>

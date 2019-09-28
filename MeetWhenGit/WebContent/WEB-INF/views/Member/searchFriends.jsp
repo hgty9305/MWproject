@@ -2,14 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-
-</head>
+<head></head>
 <body id="page-top">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
+    <jsp:include page="/Main/boots_menubar.mw"/>
     <div id="searchForm">
         <form onsubmit="searchajax(); return false;">
             <input type="text" size="20" id="searchFromAll" name="searchFromAll"/>&nbsp;
@@ -25,8 +22,7 @@
 
 
   
-<jsp:include page="/MeetWhenGit/Main/boots_footer.mw"/>
-   
+<jsp:include page="/Main/boots_footer.mw"/> 
 <script>
 var content ="";
 var id = [];
@@ -47,7 +43,5 @@ var flist =[];
 				}
 			};
 </script>
-
 </body>
-
 </html>
