@@ -9,10 +9,10 @@
   <title>MeetWhen?</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="/MeetWhen/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/MeetWhenGit/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
-  <link href="/MeetWhen/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/MeetWhenGit/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -50,7 +50,7 @@
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/MeetWhen/Main/cate1_All.mw">Map</a>
+            <a class="nav-link " href="/MeetWheGit/Main/cate1_All.mw">Map</a>
           </li>
         </ul>
       </div>
@@ -123,7 +123,7 @@
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="/MeetWhen/img/portfolio/01-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="/MeetWheGit/img/portfolio/01-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
             <h4>Threads</h4>
@@ -137,7 +137,7 @@
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="/MeetWhen/img/portfolio/02-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="/MeetWheGit/img/portfolio/02-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
             <h4>Explore</h4>
@@ -151,7 +151,7 @@
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="/MeetWhen/img/portfolio/03-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="/MeetWheGit/img/portfolio/03-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
             <h4>Finish</h4>
@@ -165,7 +165,7 @@
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="/MeetWhen/img/portfolio/04-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="/MeetWheGit/img/portfolio/04-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
             <h4>Lines</h4>
@@ -179,7 +179,7 @@
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="/MeetWhen/img/portfolio/05-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="/MeetWheGit/img/portfolio/05-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
             <h4>Southwest</h4>
@@ -193,7 +193,7 @@
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="/MeetWhen/img/portfolio/06-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="/MeetWheGit/img/portfolio/06-thumbnail.jpg" alt="">
           </a>
           <div class="portfolio-caption">
             <h4>Window</h4>
@@ -218,7 +218,7 @@
           <ul class="timeline">
             <li>
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="/MeetWhen/img/about/1.jpg" alt="">
+                <img class="rounded-circle img-fluid" src="/MeetWheGit/img/about/1.jpg" alt="">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -232,7 +232,7 @@
             </li>
             <li class="timeline-inverted">
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="/MeetWhen/img/about/2.jpg" alt="">
+                <img class="rounded-circle img-fluid" src="/MeetWheGit/img/about/2.jpg" alt="">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -260,7 +260,7 @@
             </li>
             <li class="timeline-inverted">
               <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="/MeetWhen/img/about/4.jpg" alt="">
+                <img class="rounded-circle img-fluid" src="/MeetWheGit/img/about/4.jpg" alt="">
               </div>
               <div class="timeline-panel">
                 <div class="timeline-heading">
@@ -297,7 +297,7 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="/MeetWhen/img/team/1.jpg" alt="">
+            <img class="mx-auto rounded-circle" src="/MeetWheGit/img/team/1.jpg" alt="">
             <h4>Kay Garland</h4>
             <p class="text-muted">Lead Designer</p>
             <ul class="list-inline social-buttons">
@@ -321,7 +321,7 @@
         </div>
         <div class="col-sm-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="/MeetWhen/img/team/2.jpg" alt="">
+            <img class="mx-auto rounded-circle" src="/MeetWheGit/img/team/2.jpg" alt="">
             <h4>Larry Parker</h4>
             <p class="text-muted">Lead Marketer</p>
             <ul class="list-inline social-buttons">
@@ -345,7 +345,7 @@
         </div>
         <div class="col-sm-4">
           <div class="team-member">
-            <img class="mx-auto rounded-circle" src="/MeetWhen/img/team/3.jpg" alt="">
+            <img class="mx-auto rounded-circle" src="/MeetWheGit/img/team/3.jpg" alt="">
             <h4>Diana Pertersen</h4>
             <p class="text-muted">Lead Developer</p>
             <ul class="list-inline social-buttons">
@@ -382,22 +382,22 @@
       <div class="row">
         <div class="col-md-3 col-sm-6">
           <a href="#">
-            <img class="img-fluid d-block mx-auto" src="/MeetWhen/img/logos/envato.jpg" alt="">
+            <img class="img-fluid d-block mx-auto" src="/MeetWheGit/img/logos/envato.jpg" alt="">
           </a>
         </div>
         <div class="col-md-3 col-sm-6">
           <a href="#">
-            <img class="img-fluid d-block mx-auto" src="/MeetWhen/img/logos/designmodo.jpg" alt="">
+            <img class="img-fluid d-block mx-auto" src="/MeetWheGit/img/logos/designmodo.jpg" alt="">
           </a>
         </div>
         <div class="col-md-3 col-sm-6">
           <a href="#">
-            <img class="img-fluid d-block mx-auto" src="/MeetWhen/img/logos/themeforest.jpg" alt="">
+            <img class="img-fluid d-block mx-auto" src="/MeetWheGit/img/logos/themeforest.jpg" alt="">
           </a>
         </div>
         <div class="col-md-3 col-sm-6">
           <a href="#">
-            <img class="img-fluid d-block mx-auto" src="/MeetWhen/img/logos/creative-market.jpg" alt="">
+            <img class="img-fluid d-block mx-auto" src="/MeetWheGit/img/logos/creative-market.jpg" alt="">
           </a>
         </div>
       </div>
@@ -507,7 +507,7 @@
                 <!-- Project Details Go Here -->
                 <h2 class="text-uppercase">Project Name</h2>
                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                <img class="img-fluid d-block mx-auto" src="/MeetWhen/img/portfolio/01-full.jpg" alt="">
+                <img class="img-fluid d-block mx-auto" src="/MeetWheGit/img/portfolio/01-full.jpg" alt="">
                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                 <ul class="list-inline">
                   <li>Date: January 2017</li>
@@ -541,7 +541,7 @@
                 <!-- Project Details Go Here -->
                 <h2 class="text-uppercase">Project Name</h2>
                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                <img class="img-fluid d-block mx-auto" src="/MeetWhen/img/portfolio/02-full.jpg" alt="">
+                <img class="img-fluid d-block mx-auto" src="/MeetWheGit/img/portfolio/02-full.jpg" alt="">
                 <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
                 <ul class="list-inline">
                   <li>Date: January 2017</li>
