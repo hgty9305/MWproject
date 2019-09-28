@@ -7,7 +7,7 @@
 </head>
 <body id="page-top">
 
-<jsp:include page="/MeetWhenGit/Main/boots_menubar.mw"/>
+<jsp:include page="/Main/boots_menubar.mw"/>
 
 	    <div id="friendList">
         <table id="bList" width="800" border="3" bordercolor="lightgray">
@@ -24,7 +24,7 @@
             </c:forEach>
         </table>
     </div>
-<jsp:include page="/MeetWhenGit/Main/boots_footer.mw"/>
+<jsp:include page="/Main/boots_footer.mw"/>
 
 </body>
 

@@ -79,7 +79,7 @@
 <body id="page-top">
 	<jsp:include page="/Main/boots_menubar.mw"/>
 <div id="container">
-   <form action="boots_joinpro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
+   <form action="joinPro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
       <table width="850" align="center">
          <br><br>
          <tr height="50" bgcolor="FDD262">
@@ -121,7 +121,7 @@
       </table>
       <br/> <input type="submit" value="가입하기"
          style="height: 50px; width: 500px;" onclick="return checkReg()" /> <br/>
-      <br /> <a href="boots_login.mw">이미 회원이세요?</a>
+      <br /> <a href="login.mw">이미 회원이세요?</a>
    </form>
   </div>
    <hr>

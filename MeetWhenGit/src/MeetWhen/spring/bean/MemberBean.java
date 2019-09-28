@@ -83,12 +83,12 @@ public class MemberBean {
 //		    }
 //		return "/Member/main";	
 //	}
-	@RequestMapping("boots_join.mw")
-	public String MemberJoin() {
-		return "Member/boots_join";
+	@RequestMapping("join.mw")
+	public String join() {
+		return "Member/join";
 	}
-	@RequestMapping(value = "boots_joinpro.mw", method = RequestMethod.POST)
-	public String MemberJoinPro(MultipartHttpServletRequest request, String m_name, String m_id, String m_email_1,
+	@RequestMapping(value = "joinPro.mw", method = RequestMethod.POST)
+	public String joinPro(MultipartHttpServletRequest request, String m_name, String m_id, String m_email_1,
 			String m_email_2, String m_pw,Model model) {
 		try {
 			// �쉶�썝怨좎쑀踰덊샇 @@@@@@@@@@@@@@@@@@@@寃뱀튂�뒗 踰덊샇 諛⑹�肄붾뱶 異붽��삁�젙
@@ -152,17 +152,18 @@ public class MemberBean {
 		model.addAttribute("m_id", m_id);
 		return "Member/confirmId";
 	}
-	@RequestMapping("boots_login.mw")
-	public String MemberLogin() {
-		if (session.getAttribute("loginUser") == null) {
-		return "Member/boots_login";
-		} else {
-		return "Main/main";
+	@RequestMapping("login.mw")
+	public String login() {
+		String result="";
+		if (session.getAttribute("loginUser") == null) 
+			result="Member/login";
+		else 
+			result="Main/main";
+		return result;
 	}
-}
-	@RequestMapping("boots_loginpro.mw")
-	public String MemberLoginPro(@RequestParam Map<String, String> paramMap, Model model, MWMemberVO vo) {
-		String returnPage = "Member/boots_login";
+	@RequestMapping("loginPro.mw")
+	public String loginPro(@RequestParam Map<String, String> paramMap, Model model, MWMemberVO vo) {
+		String returnPage = "Member/login";
 		boolean loginState = true;
 		String userId = paramMap.get("m_id");
 		String userPw = paramMap.get("m_pw");
@@ -176,7 +177,7 @@ public class MemberBean {
 			} else {
 				loginState = true;
 				session.setAttribute("loginUser", User.getM_id());
-				returnPage = "Main/main"; // 濡쒓렇�씤�꽦怨듭떆
+				returnPage = "Main/main"; // 로그인 성공시 메인페이지로 이동
 			}
 			model.addAttribute("loginState", loginState);
 		} catch (Exception ex) {
@@ -187,47 +188,47 @@ public class MemberBean {
 	}
 
 	@RequestMapping("logOut.mw")
-	public String MemberLoginOut() {
+	public String logOut() {
 		session.invalidate();
-		return "Member/boots_login";
+		return "Member/login";
 	}
 
-	@RequestMapping("boots_MyPage.mw")
-	public String MemberMyProfile(HttpSession session, HttpServletRequest request) {
+	@RequestMapping("myPage.mw")
+	public String myPage(HttpSession session, HttpServletRequest request) {
 		String id = (String) session.getAttribute("loginUser");
 
 		MWMemberVO ls = sql.selectOne("memberSQL.getMyinfo", id);
 
 		request.setAttribute("vo", ls);
 
-		return "/Member/boots_MyPage";
+		return "/Member/myPage";
 	}
 
-	@RequestMapping("boots_calendar.mw")
+	@RequestMapping("boots_calendar.mw")// 삭제해야하는 건가?_ksm
 	public String Calendar() {
 		return "/Member/boots_calendar";
 	}
 
-	@RequestMapping("boots_MapOnView.mw")
-	public String MapOnView() {
+	@RequestMapping("mapOnView.mw")
+	public String mapOnView() {
 
-		return "/Member/boots_MapOnView";
+		return "/Member/mapOnView";
 	}
 
-	@RequestMapping("boots_editInfo.mw")
-	public String boots_editInfo(HttpServletRequest request) throws UnsupportedEncodingException {
+	@RequestMapping("editInfo.mw")
+	public String editInfo(HttpServletRequest request) throws UnsupportedEncodingException {
 
-		return "/Member/boots_boots_editInfo";
+		return "/Member/editInfo";
 	}
 
-	@RequestMapping("boots_regitPlace.mw")
-	public String RegitPlace() {
+	@RequestMapping("regitPlace.mw")
+	public String regitPlace() {
 
-		return "/Member/boots_regitPlace";
+		return "/Member/regitPlace";
 	}
 
-	@RequestMapping("boots_regitPlacePro.mw")
-	public String RegitPlacePro(HttpSession session, HttpServletRequest request, MWAddressVO avo, int addressTarget,
+	@RequestMapping("regitPlacePro.mw")
+	public String regitPlacePro(HttpSession session, HttpServletRequest request, MWAddressVO avo, int addressTarget,
 			String confmKey, String zipNo, String roadAddrPart1, String addrDetail, String roadAddrPart2, String entX,
 			String entY, Double x, Double y) {
 		
@@ -303,22 +304,19 @@ public class MemberBean {
 		if(addressTarget==3&&check1==1&&!check2.equals(null)&&!check3.equals(null)) {
 				sql.update("address.updateAdd3", avo);
 		}
-		
-		 
-		return "/Member/boots_regitPlacePro";
+		return "/Member/regitPlacePro";
 	}
 
 	@RequestMapping("jusoPopup.mw")
 	public String JusoPopup() {
-
 		return "/Member/jusoPopup";
 	}
 
-	@RequestMapping("boots_selectPlace.mw")
-	public String SelectPlace(Model model, HttpSession session) {
+	@RequestMapping("selectPlace.mw")
+	public String selectPlace(Model model, HttpSession session) {
 		String m_id = (String) session.getAttribute("loginUser");
 
-		String returnPage = "/Member/boots_selectPlace";
+		String returnPage = "/Member/selectPlace";
 		try {
 			MWAddressVO vo = (MWAddressVO) sql.selectOne("address.selectPlace", m_id);
 			
@@ -329,8 +327,8 @@ public class MemberBean {
 
 		return returnPage;
 	}
-	@RequestMapping("boots_currentPostion.mw")
-	public String CurrentPos(HttpSession session,Model model,MWAddressVO addressInfo,String id) {
+	@RequestMapping("currentPostion.mw")
+	public String currentPostion(HttpSession session,Model model,MWAddressVO addressInfo,String id) {
 		String m_id = (String)session.getAttribute("loginUser"); 
 		
 		MWAddressVO avo =(MWAddressVO)sql.selectOne("address.getOnesdata", m_id);
@@ -349,10 +347,10 @@ public class MemberBean {
 		model.addAttribute("addressInfo",addressInfo);
 		
 		
-		return "boots_currentPosition";
+		return "currentPostion";
 	}
-	@RequestMapping("boots_addFriends.mw")
-	public String AddFriends (HttpSession session, String SearchId, Model model,String searchFromAll) {
+	@RequestMapping("addFriends.mw")
+	public String addFriends (HttpSession session, String SearchId, Model model,String searchFromAll) {
 			String m_id = (String)session.getAttribute("loginUser");
 	    try {
 
@@ -368,12 +366,12 @@ public class MemberBean {
 	            
 	    } catch(Exception e) {e.printStackTrace();}
 
-		return "/Member/boots_addFriends";
+		return "/Member/addFriends";
 	}
-	@RequestMapping("boots_searchFriends.mw")
-	public String SearchFri(){
+	@RequestMapping("searchFriends.mw")
+	public String searchFriends(){
 		
-		return "/Member/boots_searchFriends";
+		return "/Member/searchFriends";
 	}
 	
 	@RequestMapping("Sfri.mw")
