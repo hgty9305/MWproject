@@ -79,46 +79,48 @@
 	<jsp:include page="/Main/boots_menubar.mw"/>
 <div id="container">
    <form action="joinPro.mw" name="member" method="post" align="center" enctype="multipart/form-data">
-      <table width="850" align="center">
+      <table width="550" align="center">
          <br><br>
          <tr height="50" bgcolor="FDD262">
             <th colspan="3"><font color="white">회원가입</font></th>
          </tr>
          <tr height="50">
             <th>이 름(실명)</th>
-            <th><input type="text" autofocus name="m_name" required /></th>
+            <td align=center><input type="text" autofocus name="m_name" required /></td>
          </tr>
          <tr height="50">
             <th>ID</th>
-            <th><input type="text" autofocus name="m_id" required /> </th>  
-            <th><input type="button" value="중복확인" name="confirm_id"
-               onclick="openConfirmid(this.form)" /></th>
+            <td align=center><input type="text" autofocus name="m_id" required /> </td>  
+            <td align=left><input type="button" value="아이디 확인" name="confirm_id"
+               onclick="openConfirmid(this.form)" /></td>
          </tr>
            <tr height="50">
             <th>비밀번호</th>
-            <th><input type="password" name="m_pw" required /></th>
+            <td align=center><input type="password" name="m_pw" required /></td>
          </tr>
          <tr height="50">
             <th>비밀번호 확인</th>
-            <th><input type="password" name="m_pwcheck" required /></th>
+            <td align=center><input type="password" name="m_pwcheck" required /></td>
          </tr>
     
          <tr height="50">
-            <th>이메일</th>
-            <th><input type="text" name="m_email_1"/>           	
-            </th>
-             <td><select name = "m_email_2">
+            <th width="50">이메일</th>
+            <td align=center><input type="text" name="m_email_1"/>           	
+            </td>
+             <td>
+             <select name = "m_email_2">
                <option>@naver.com</option>
                <option>@gmail.com</option>
                <option>@daum.com</option>
             </select>
+            </td>
          </tr>
    			<tr height="50">
    			<th>프로필 사진</th>
-   			<th><input type="file" align="center" name="m_profile_img"/></th>
+   			<td align=center><input type="file" align="center" name="m_profile_img" align=center/></td>
    		</tr>
       </table>
-      <br/> <input type="submit" value="가입하기"
+      <br/> <input type="submit" value="가입하기" bgcolor="FDD262"
          style="height: 50px; width: 500px;" onclick="return checkReg()" /> <br/>
       <br /> <a href="login.mw">이미 회원이세요?</a>
    </form>

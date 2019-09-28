@@ -354,9 +354,6 @@ public class MemberBean {
 			String m_id = (String)session.getAttribute("loginUser");
 	    try {
 
-			/* 移쒓뎄由ъ뒪�듃 */
-	    	
-	    	System.out.println("�꽭�뀡 :"+m_id);
 			List<MWFriendVO> flist= sql.selectList("memberSQL.frilist", m_id); 
 			int listCount = (int)sql.selectOne("memberSQL.countfrilist", m_id);
 			
@@ -374,39 +371,7 @@ public class MemberBean {
 		return "/Member/searchFriends";
 	}
 	
-	@RequestMapping("Sfri.mw")
-	@ResponseBody
-	public List Sfri(Model model, String searchFromAll){
-		List<MWMemberVO> Slist = null;
-		System.out.print(searchFromAll);
-		String m_id = (String)session.getAttribute("loginUser");
-		try {
-    	Map<String, String> map = new HashMap<String, String>();
-   	 
-    	map.put("searchFromAll", searchFromAll);
-    	map.put("m_id", m_id);
-    	System.out.println(map.get("searchFromAll"));
-    	System.out.println(map.get("m_id"));
-    	
-      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
-    	System.out.println("寃��깋寃곌낵 媛��닔 :" + count);
-    	 Slist = sql.selectList("memberSQL.memberSearch", map);
-    	
-    	System.out.println("寃��깋 寃곗쥖 泥ル쾲吏�  �냸 : " + Slist.get(0).getM_id());
-    	System.out.println("寃��깋 寃곗쥖 2踰덉㎏  �냸 : " + Slist.get(1).getM_id());
-    	model.addAttribute("slist", Slist);
-    	
-    	if(count !=0) {
-    	model.addAttribute("cntFrnd", count);
-    	}
-    	else if(count==0) {
-    		String NResult = "寃��깋寃곌낵 �뾾�쓬";
-    		model.addAttribute("NR", NResult);
-    	}
-		}catch(Exception e){e.printStackTrace();}
-		return Slist;
-	}
-	
+
 	@RequestMapping("searchResult.mw")
 	public String searchResult(Model model, String searchFromAll){
 
