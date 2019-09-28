@@ -28,18 +28,24 @@ var id = [];
 	<jsp:include page="/Main/boots_menubar.mw"/>
 	<section class="page-section">
 		<div class="container">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading text-uppercase">아이디로 친구 검색</h2>
+          		<h3 class="section-subheading text-muted">친구의 아이디를 이용하여, 그룹을 만들어보세요.</h3>
+          	</div>
 			<div id="searchForm">
         		<form onsubmit="searchajax(); return false;">
             		<input type="text" size="20" id="searchFromAll" name="searchFromAll"/>&nbsp;
             		<button type="submit">검색</button>
         		</form>    
-    		</div>
+    		</div><br>
     <%--
     <c:forEach var="i" items="${flist}" begin="0" end="${flist.size() }" >
      <div id="smtest">ksm</div>
     </c:forEach>
  --%>
-     		<div id="searchResult">${i.m_id}</div>
+     		<div id="searchResult">${i.m_id}</div><br><br>
+     		
+     		<button>그룹방 만들기</button>
 		</div>
 	</section>
 

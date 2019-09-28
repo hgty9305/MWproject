@@ -2,7 +2,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
  <c:forEach var="i" items="${slist}" >
-     <div id="smtest">${i.m_id }</div>
-
-
+    <p><input type="checkbox" name="friendId" value="${i.m_id}"/><label>${i.m_id}</label></p>
 </c:forEach>

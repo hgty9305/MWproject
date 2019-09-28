@@ -436,4 +436,10 @@ public class MemberBean {
 		}catch(Exception e){e.printStackTrace();}
 		return "/Member/searchResult";
 	}
+	
+	@RequestMapping("/searchFriendsPop")
+	public String searchFriendsPop() {
+		
+		return"/Member/searchFriendsPop";
+	}
 }
