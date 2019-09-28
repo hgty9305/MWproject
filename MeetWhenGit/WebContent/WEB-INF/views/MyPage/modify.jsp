@@ -9,22 +9,14 @@
 	float: left;
 	width: 25%;
 	padding: 10px;
-	height: 400px; /* Should be removed. Only for demonstration */
+	height: 600px; /* Should be removed. Only for demonstration */
 }
 
 .column2 {
 	float: left;
 	width: 75%;
 	padding: 10px;
-	height: 400px; /* Should be removed. Only for demonstration */
-}
-
-/* Clear floats after the columns */
-.colAfter:after {
-	content: "";
-	display: table;
-	clear: both;
-	width: 100%;
+	height: 600px; /* Should be removed. Only for demonstration */
 }
 
 /*sideBar*/
@@ -72,6 +64,20 @@ table.type03 td {
 	vertical-align:middle;
 }
 </style>
+
+<script language="JavaScript">
+    function checkIt() {
+        var userinput = eval("document.userinput");
+        if(!userinput.email.value) {
+            alert("이메일을 입력하세요");
+            return false;
+        }
+        if(!userinput.passwd.value ) {
+            alert("비밀번호를 입력하세요");
+            return false;
+        }   
+    }
+</script>
 </head>
 <body id="page-top">
 
@@ -84,35 +90,63 @@ table.type03 td {
 			<div class="column1">
 				<div class="vertical-menu">
 					<a href="myPage.mw" class="active" style="text-align:center">회원 정보 관리</a> 
-					<a href="myInfo.mw">개인정보 수정</a>
-					<a href="#">주소 수정</a> 
-					<a href="#">여행 스타일 수정</a> 
-					<a href="#">회원 탈퇴</a> 
+					<a href="myInfo.mw">개인정보 확인</a>
+					<a href="modify.mw">개인정보 수정</a>
+					<a href="#">주소 등록/수정</a> 
+					<a href="#">여행 스타일 등록/수정</a> 
+					<a href="delete.mw">회원 탈퇴</a> 
 				</div>
 			</div>
 			<div class="column2">
-				<h2>Column 2</h2>
-				<c:set var="img" value="${vo.m_profile_img}" />
+				<h3>회원님의 정보를 수정합니다.</h3>
+				<form method="post" action="modifyPro.mw" name="userinput" 
+						enctype="multipart/form-data"	onsubmit="return checkIt()">
 				<table class="type03">
-				<tr>
-					<td>
-					<c:if test="${img ne 'default.png'}">
-						<img src="/MeetWhenGit/img/${vo.m_profile_img}" width="100px" />
-					</c:if>
-					<c:if test="${img eq 'default.png'}">
-						<td><img src="/MeetWhenGit/img/default.png" width="100px" />
-					</c:if>
-					</td>
-					<td><h3>${vo.m_name}</h3>님 환영합니다.</td>
-				</tr>
-			</table>
+					<tr>
+						<th>프로필사진</th>
+						<td><c:if test="${img ne 'default.png'}">
+								<img src="/MeetWhenGit/img/${vo.m_profile_img}" width="100px" />
+							</c:if> <c:if test="${img eq 'default.png'}">
+								<td><img src="/MeetWhenGit/img/default.png" width="100px" />
+							</c:if></td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<input type="file" align="center" name="img"/>
+						</td>
+					</tr>
+				</table>
+
+				<table class="type03">
+					<tr>
+						<th scope="row">이름</th>
+						<td><c:out value="${vo.m_name}"></c:out></td>
+					</tr>
+					<tr>
+						<th scope="row">아이디</th>
+						<td><c:out value="${vo.m_id}"></c:out></td>
+					</tr>
+					<tr>
+						<th scope="row">이메일</th>
+						<td>
+							<input type="text" name="email" value="${vo.m_email}"/>  				
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">비밀번호</th>
+						<td><input type="password" name="passwd" value="${vo.m_email}" required /></td>
+					</tr>
+				</table>
+				<input type="submit" value="수정" onclick="return checkIt()"/>
+				<input type="reset" value="취소" onclick="window.location.href='myPage.mw'"/>
+				</form>
 			</div>
 		</div>
-
-
 	</div>
 
-	<jsp:include page="/Main/boots_footer.mw" />
+		<jsp:include page="/Main/boots_footer.mw" />
+			
 
 </body>
 

@@ -74,24 +74,21 @@ table.type03 td {
 </style>
 </head>
 <body id="page-top">
-
 	<jsp:include page="/Main/boots_menubar.mw" />
-	
 	<c:set value="${vo}" var="vo" />
-	
 	<div class="container">
 		<div class="row">
 			<div class="column1">
 				<div class="vertical-menu">
 					<a href="myPage.mw" class="active" style="text-align:center">회원 정보 관리</a> 
-					<a href="myInfo.mw">개인정보 수정</a>
-					<a href="#">주소 수정</a> 
-					<a href="#">여행 스타일 수정</a> 
-					<a href="#">회원 탈퇴</a> 
+					<a href="myInfo.mw">개인정보 확인</a>
+					<a href="modify.mw">개인정보 수정</a>
+					<a href="#">주소 등록/수정</a> 
+					<a href="#">여행 스타일 등록/수정</a> 
+					<a href="delete.mw">회원 탈퇴</a> 
 				</div>
 			</div>
 			<div class="column2">
-				<h2>Column 2</h2>
 				<c:set var="img" value="${vo.m_profile_img}" />
 				<table class="type03">
 				<tr>
@@ -111,9 +108,6 @@ table.type03 td {
 
 
 	</div>
-
 	<jsp:include page="/Main/boots_footer.mw" />
-
 </body>
-
 </html>

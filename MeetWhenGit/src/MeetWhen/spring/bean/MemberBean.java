@@ -455,4 +455,47 @@ public class MemberBean {
 
 		return "/MyPage/myInfo";
 	}
+	
+	
+	@RequestMapping("modify.mw")
+	public String modify(HttpServletRequest request, HttpSession session) {
+		String id=(String)session.getAttribute("loginUser");
+		
+		MWMemberVO vo = sql.selectOne("memberSQL.getMyinfo", id);
+		request.setAttribute("vo",vo);
+		
+		return"/MyPage/modify";
+	}
+	@RequestMapping("modifyPro.mw")
+	public String modifyPro(MultipartHttpServletRequest request,
+					HttpSession session, String email, String passwd) {
+		//이미지 처리
+		String id = (String) session.getAttribute("loginUser");
+		MWMemberVO orgVo = sql.selectOne("memberSQL.getMyinfo", id);
+		
+		MWMemberVO vo = new MWMemberVO();
+		//이미지 
+		vo.setM_name(orgVo.getM_name());
+		vo.setM_id(orgVo.getM_id());
+		vo.setM_pw(passwd);
+		vo.setM_email(email);
+		vo.setM_serialnumber(orgVo.getM_serialnumber());
+		vo.setRegistrationdate(orgVo.getRegistrationdate());
+		//vo로 가능한지 모르겟움..
+		//sql.update("member.modifyInfo",vo);
+		return"/MyPage/modifyPro";
+	}
+	
+	
+	@RequestMapping("delete.mw")
+	public String delete() {
+		return"/MyPage/delete";
+	}
+	@RequestMapping("deletePro.mw")
+	public String deletePro() {
+		return"/MyPage/deletePro";
+	}
+	
+	
+	
 }
