@@ -174,6 +174,7 @@ public class MemberBean {
 			MWMemberVO User = (MWMemberVO) sql.selectOne("memberSQL.loginPro", vo);
 			if (User == null) {
 				loginState = false;
+				session.setAttribute("loginUser", null); // 받는값없으면 세션에 null대입
 			} else {
 				loginState = true;
 				session.setAttribute("loginUser", User.getM_id());
@@ -192,7 +193,6 @@ public class MemberBean {
 		session.invalidate();
 		return "Member/login";
 	}
-
 	@RequestMapping("myPage.mw")
 	public String myPage(HttpSession session, HttpServletRequest request) {
 		String id = (String) session.getAttribute("loginUser");
@@ -374,53 +374,21 @@ public class MemberBean {
 		return "/Member/searchFriends";
 	}
 	
-	@RequestMapping("Sfri.mw")
-	@ResponseBody
-	public List Sfri(Model model, String searchFromAll){
-		List<MWMemberVO> Slist = null;
-		System.out.print(searchFromAll);
-		String m_id = (String)session.getAttribute("loginUser");
-		try {
-    	Map<String, String> map = new HashMap<String, String>();
-   	 
-    	map.put("searchFromAll", searchFromAll);
-    	map.put("m_id", m_id);
-    	System.out.println(map.get("searchFromAll"));
-    	System.out.println(map.get("m_id"));
-    	
-      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
-    	System.out.println("寃��깋寃곌낵 媛��닔 :" + count);
-    	 Slist = sql.selectList("memberSQL.memberSearch", map);
-    	
-    	System.out.println("寃��깋 寃곗쥖 泥ル쾲吏�  �냸 : " + Slist.get(0).getM_id());
-    	System.out.println("寃��깋 寃곗쥖 2踰덉㎏  �냸 : " + Slist.get(1).getM_id());
-    	model.addAttribute("slist", Slist);
-    	
-    	if(count !=0) {
-    	model.addAttribute("cntFrnd", count);
-    	}
-    	else if(count==0) {
-    		String NResult = "寃��깋寃곌낵 �뾾�쓬";
-    		model.addAttribute("NR", NResult);
-    	}
-		}catch(Exception e){e.printStackTrace();}
-		return Slist;
-	}
-	
-	@RequestMapping("SearchResult.mw")
+
+	@RequestMapping("searchResult.mw")
 	public String Sfri2(Model model, String searchFromAll){
 		List<MWMemberVO> Slist = null;
 		String m_id = (String)session.getAttribute("loginUser");
 		try {
     	Map<String, String> map = new HashMap<String, String>();
-   	 
+   	 	
     	map.put("searchFromAll", searchFromAll);
     	map.put("m_id", m_id);
     	System.out.println("========="+map.get("searchFromAll"));
     	System.out.println(map.get("m_id"));
     	
       	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
-    	System.out.println("寃��깋寃곌낵 媛��닔 :" + count);
+    	System.out.println("검색결과 갯수 :" + count);
     	 Slist = sql.selectList("memberSQL.memberSearch", map);
     	
     	model.addAttribute("slist", Slist);
@@ -429,10 +397,10 @@ public class MemberBean {
     	model.addAttribute("cntFrnd", count);
     	}
     	else if(count==0) {
-    		String NResult = "寃��깋寃곌낵 �뾾�쓬";
+    		String NResult = "결과값이 없습니다.";
     		model.addAttribute("NR", NResult);
     	}
 		}catch(Exception e){e.printStackTrace();}
-		return "/Member/SearchResult";
+		return "/Member/searchResult";
 	}
 }

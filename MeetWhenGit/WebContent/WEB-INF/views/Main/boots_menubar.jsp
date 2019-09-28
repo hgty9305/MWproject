@@ -47,10 +47,10 @@
             <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/myPage.mw">회원정보</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/boots_searchFriends.mw">그룹원 구성</a>
+            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/MeetWhenGit/Member/boots_selectPlace.mw">장소등록</a>
+            <a class="nav-link " href="/MeetWhenGit/Member/selectPlace.mw">장소등록</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/MeetWhenGit/Member/logOut.mw">로그아웃</a>

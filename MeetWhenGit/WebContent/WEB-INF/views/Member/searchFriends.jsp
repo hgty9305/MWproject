@@ -18,7 +18,9 @@
      <div id="smtest">ksm</div>
     </c:forEach>
  --%>
- 	<div id="smtest"></div>
+
+     <div id="searchResult">${i.m_id}</div>
+
 
 
   
@@ -26,7 +28,7 @@
 <script>
 var content ="";
 var id = [];
-var flist =[];
+
 	function searchajax(){
 		var words= $("#searchFromAll").val();	
 			if(words==""){
@@ -34,10 +36,10 @@ var flist =[];
 			}else{
 					$.ajax({
 						type : 'POST',
-						url : 'Sfri2.mw',
+						url : 'searchResult.mw',
 						data : {searchFromAll : words},
 						success : function(data){
-							$("#smtest").html(data);
+							$("#searchResult").html(data);
 						}
 					})
 				}
