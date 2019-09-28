@@ -374,7 +374,6 @@ public class MemberBean {
 		return "/Member/searchFriends";
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping("Sfri.mw")
 	@ResponseBody
 	public List Sfri(Model model, String searchFromAll){
@@ -410,11 +409,7 @@ public class MemberBean {
 	
 	@RequestMapping("searchResult.mw")
 	public String searchResult(Model model, String searchFromAll){
-=======
 
-	@RequestMapping("searchResult.mw")
-	public String Sfri2(Model model, String searchFromAll){
->>>>>>> refs/remotes/origin/master
 		List<MWMemberVO> Slist = null;
 		String m_id = (String)session.getAttribute("loginUser");
 		try {
