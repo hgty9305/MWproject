@@ -69,8 +69,15 @@
 			<div class="intro-text">
 				<div class="intro-lead-in"></div>
 				<div class="intro-heading text-uppercase cHead">Welcome To 'MeetWhen'</div>
-				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+				<c:if test="${empty sessionScope.loginUser}">
+					<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
 					href="/MeetWhenGit/Member/join.mw">Join Us</a>
+				</c:if>
+				<c:if test="${not empty sessionScope.loginUser}">
+					<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+					href="#">Enjoy it</a>
+				</c:if>
+					
 			</div>
 		</div>
 	</header>
