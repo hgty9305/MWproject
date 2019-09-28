@@ -193,16 +193,7 @@ public class MemberBean {
 		session.invalidate();
 		return "Member/login";
 	}
-	@RequestMapping("myPage.mw")
-	public String myPage(HttpSession session, HttpServletRequest request) {
-		String id = (String) session.getAttribute("loginUser");
-
-		MWMemberVO ls = sql.selectOne("memberSQL.getMyinfo", id);
-
-		request.setAttribute("vo", ls);
-
-		return "/Member/myPage";
-	}
+	
 
 	@RequestMapping("boots_calendar.mw")// 삭제해야하는 건가?_ksm
 	public String Calendar() {
@@ -441,5 +432,27 @@ public class MemberBean {
 	public String searchFriendsPop() {
 		
 		return"/Member/searchFriendsPop";
+	}
+	//마이페이지 -----------------------------------------------------------------------
+	@RequestMapping("myPage.mw")
+	public String myPage(HttpSession session, HttpServletRequest request) {
+		String id = (String) session.getAttribute("loginUser");
+
+		MWMemberVO ls = sql.selectOne("memberSQL.getMyinfo", id);
+
+		request.setAttribute("vo", ls);
+
+		return "/MyPage/myPage";
+	}
+	
+	@RequestMapping("myInfo.mw")
+	public String myInfo(HttpSession session, HttpServletRequest request) {
+		String id = (String) session.getAttribute("loginUser");
+
+		MWMemberVO ls = sql.selectOne("memberSQL.getMyinfo", id);
+
+		request.setAttribute("vo", ls);
+
+		return "/MyPage/myInfo";
 	}
 }

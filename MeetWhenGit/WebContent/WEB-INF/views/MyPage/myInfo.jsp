@@ -40,14 +40,14 @@ table.type03 td {
 			<table class="type03">
 				<tr>
 					<th>프로필사진</th>
-					<c:if test="${vo.m_profile_img ne 'default.png'}">
-						<td><img src="/MeetWhenGit/img/${vo.m_profile_img}"
-							width="100px" /></td>
+					<td>
+					<c:if test="${img ne 'default.png'}">
+						<img src="/MeetWhenGit/img/${vo.m_profile_img}" width="100px" />
 					</c:if>
-					<c:set var="img" value="${vo.m_profile_img}" />
 					<c:if test="${img eq 'default.png'}">
-						<td><img src="/MeetWhenGit/img/default.png" width="100px" /></td>
+						<td><img src="/MeetWhenGit/img/default.png" width="100px" />
 					</c:if>
+					</td>
 				</tr>
 			</table>
 			<div>
