@@ -143,7 +143,7 @@ public class MemberBean {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "Main/joinPro";//변경함_ksm
+		return "Main/main";
 	}
 	@RequestMapping("confirmId.mw")
 	public String MemberConfirmId(String m_id, Model model) {
@@ -190,7 +190,7 @@ public class MemberBean {
 	@RequestMapping("logOut.mw")
 	public String logOut() {
 		session.invalidate();
-		return "Member/boots_login";
+		return "Member/login";
 	}
 
 	@RequestMapping("myPage.mw")
