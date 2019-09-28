@@ -38,7 +38,7 @@ table.type03 td {
 <body id="page-top">
  <jsp:include page="/Main/boots_menubar.mw"/>
  
-		<p3>등록된 주소들</p3>
+		<h3>등록된 주소들</h3>
 		<br/>
 		<hr/><hr/>
 		
@@ -66,7 +66,7 @@ table.type03 td {
 				<td>${addressInfo.address2}</td>
 				<td>${addressInfo.lat2}</td>
 				<td>${addressInfo.long2}</td> 
-				<td><a href="/MeetWhen/Member/regitPlace.mw?id=2">등록/수정</a> </td>
+				<td><a href="/MeetWhenGit/Member/regitPlace.mw?id=2">등록/수정</a> </td>
 				
 			</tr>
 			<tr>
@@ -74,7 +74,7 @@ table.type03 td {
 				<td>${addressInfo.address3}</td>
 				<td>${addressInfo.lat3}</td>
 				<td>${addressInfo.long3}</td> 
-				<td><a href="/MeetWhen/Member/regitPlace.mw?id=3">등록/수정</a> </td>
+				<td><a href="/MeetWhenGit/Member/regitPlace.mw?id=3">등록/수정</a> </td>
 			</tr>
 		</tbody>
 		</table>
@@ -110,14 +110,20 @@ $(document).ready(function() {
         {
             $("#userLocation").html("");
             $("#errormsg").html("");
-            navigator.geolocation.getCurrentPosition (function (pos)
-           {
-                lat = pos.coords.latitude;
+            navigator.geolocation.getCurrentPosition (function (pos){
+				//현재 자신의 위도경도
+                lat = pos.coords.latitude; 
                 lng = pos.coords.longitude;
+
+                //Address1 위도경도
                 lat1 =  ${addressInfo.lat1};
                 lng1 =  ${addressInfo.long1};
+
+                //Address2 
                 lat2 =  ${addressInfo.lat2};
                 lng2 =  ${addressInfo.long2};
+
+                //Address3e
                 lat3 =  ${addressInfo.lat3};
                 lng3 =  ${addressInfo.long3}; 
                 

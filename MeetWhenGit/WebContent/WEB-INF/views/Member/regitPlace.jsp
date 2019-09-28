@@ -23,7 +23,6 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 </script>
 </head>
 
-<body id="page-top">
  <jsp:include page="/Main/boots_menubar.mw"/>
 <form name="form" id="form" method="post" action="regitPlacePro.mw">
 	<input type="hidden" id="addressTarget" name="addressTarget" value="${param.id}" />
