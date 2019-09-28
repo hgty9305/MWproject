@@ -122,7 +122,7 @@ $(document).ready(function() {
                 //Address2 
                 lat2 =  ${addressInfo.lat2};
                 lng2 =  ${addressInfo.long2};
-
+ 
                 //Address3e
                 lat3 =  ${addressInfo.lat3};
                 lng3 =  ${addressInfo.long3}; 

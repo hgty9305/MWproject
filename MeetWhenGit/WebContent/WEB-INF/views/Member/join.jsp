@@ -114,7 +114,7 @@
                <option>@daum.com</option>
             </select>
             </td>
-         </tr>
+         </tr> 
    			<tr height="50">
    			<th>프로필 사진</th>
    			<td align=center><input type="file" align="center" name="m_profile_img" align=center/></td>

@@ -49,7 +49,7 @@ var id = [];
 							$("#searchResult").html(data);
 						}
 					})
-				}
+				} 
 			};
 			
 		function openPop(){
