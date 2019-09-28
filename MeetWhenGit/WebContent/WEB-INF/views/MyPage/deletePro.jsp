@@ -43,7 +43,8 @@ table.type03 td {
 				</td>
 				</tr>
 				<tr>
-					<td align="center"><input type="submit" value="확인"></td>
+					<td align="center">
+					<button type="submit" class="btn btn btn-success">확인</button>
 				</tr>
 			</table>
 			</form>
