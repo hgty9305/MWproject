@@ -21,6 +21,11 @@
 
   <!-- Custom styles for this template -->
   <link href="/MeetWhenGit/css/agency.min.css" rel="stylesheet">
+<style>
+	.cBlack{
+	color:black;
+	}
+</style>
 </head>
 <body>
 	<!-- Navigation -->
@@ -41,18 +46,18 @@
           <c:if test="${not empty sessionScope.loginUser}">
                     
           <li class="nav-item">
-            <label class="nav-link js-scroll-trigger">${sessionScope.loginUser}회원님</label>
+            <label class="nav-link js-scroll-trigger">${sessionScope.loginUser}님 환영합니다.</label>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/myPage.mw">회원정보</a>
+          <li class="nav-item cBlack">
+            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/myPage.mw">마이페이지</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item cBlack">
             <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item cBlack">
             <a class="nav-link " href="/MeetWhenGit/Member/selectPlace.mw">장소등록</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item cBlack">
             <a class="nav-link " href="/MeetWhenGit/Member/logOut.mw">로그아웃</a>
           </li>
           </c:if>
