@@ -43,18 +43,13 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ml-auto">
-					<c:if test="${empty sessionScope.loginUser}">
-						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="/MeetWhenGit/Member/login.mw">로그인</a></li>
-					</c:if>
+			
 					<c:if test="${not empty sessionScope.loginUser}">
-
 						<li class="nav-item"><label
 							class="nav-link js-scroll-trigger">${sessionScope.loginUser}님 환영합니다</label>
 						</li>
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
 							href="/MeetWhenGit/Member/myPage.mw">마이페이지</a></li>
-
 						<li class="nav-item"><a class="nav-link "
 							href="/MeetWhenGit/Member/logOut.mw">로그아웃</a></li>
 					</c:if>
