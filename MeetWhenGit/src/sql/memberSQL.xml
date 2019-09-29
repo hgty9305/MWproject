@@ -112,9 +112,7 @@
 		select * from MWLINKINFO order by m_id
 	</select>
 	<!-- 검색창에서  html로 입력할 값쓰기 뽑기 -->
-	<resultMap type="mv" id="mv">
-		<result column="m_id" property="m_id" />
-	</resultMap>
+
 	<resultMap type="avo" id="avo">
 		<result column="m_id" property="m_id" />
 		<result column="lat1" property="lat1" />
@@ -122,7 +120,7 @@
 		<result column="address1" property="address1" />
 		<collection property="m_id" resultMap="mv"></collection>
 	</resultMap>
-	<select id = "extractAddr1" resultMap="">
+	<select id = "extractAddr1" resultMap="avo">
 		select b.m_id,address1,b.lat1,b.long1 from mwaddress 
 		join mwmember a on a.m_id = b.m_id	where a.m_id=#{value} 
 		</select>
