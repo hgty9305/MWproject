@@ -194,7 +194,6 @@
 							alt="">
 						<h4>조성민</h4>
 						<p class="text-muted">Lead Marketer</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -203,7 +202,6 @@
 							alt="">
 						<h4>임지환</h4>
 						<p class="text-muted">Lead Developer</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -213,7 +211,6 @@
 						<h4>김성민</h4>
 						<p class="text-muted">여행을 좋아하는 1인으로써, 공항통계 자료를 한 눈에 볼 수있으면
 							좋겠다는 생각에 구현해보게 되었습니다.</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 			</div>
