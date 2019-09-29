@@ -113,6 +113,21 @@
 		select * from MWLINKINFO order by m_id
 	</select>
 	
+	<!-- 해당아이디의 존재유무, 1이면 존재, 0이면 없음  -->
+	<select id="existOrNot" parameterType="String" resultType="int">
+		select count(*) from mwmember where m_id=#{m_id} 
+	</select>
+	<!-- 한사람의 정보 검색  -->
+	<select id="getOneMemInfo" parameterType="String" resultType="mv">
+		select * from MWMember where m_id=#{m_id}
+	</select>
+	<select id="getOneAddInfo" parameterType="String" resultType="avo">
+		select * from MWADDRESS where m_id=#{m_id}
+	</select>
+	<select id="getOneLinkInfo" parameterType="String" resultType="fvo">
+		select * from MWLINKINFO where m_id=#{m_id}
+	</select>
+	
 	
 </mapper>
 	

@@ -83,8 +83,8 @@ table.type03 td {
 					</c:if>
 					<c:if test="${sessionScope.loginUser eq 'admin' }">
 						<a href="/MeetWhenGit/Db/dbControl.mw">DB 정보 관리</a>
-						<a href="/Admin/#">회원 관리</a> 
-						<a href="/Admin/#">회원 탈퇴 관리</a> 
+						<a href="/MeetWhenGit/Db/selectMem.mw">회원 정보 조회</a> 
+						<a href="/MeetWhenGit/Db/deleteMem.mw">회원 탈퇴 관리</a> 
 					</c:if>
 					<%-- 
 						<a href="#">주소 등록/수정</a> 
