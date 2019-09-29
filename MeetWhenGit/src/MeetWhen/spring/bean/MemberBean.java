@@ -202,13 +202,13 @@ public class MemberBean {
 
 	@RequestMapping("getCenter.mw")
 	public String mapOnView() {
-
+		
 		return "/Member/getCenter";
 	}
 
 	@RequestMapping("editInfo.mw")
 	public String editInfo(HttpServletRequest request) throws UnsupportedEncodingException {
-
+		
 		return "/Member/editInfo";
 	}
 
