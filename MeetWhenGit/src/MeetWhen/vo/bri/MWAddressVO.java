@@ -2,38 +2,7 @@ package MeetWhen.vo.bri;
 
 public class MWAddressVO {
 	private int adnum;
-	
-	private String m_id;
-	private String address1;
-	private String address2;
-	private String address3;
-	
-	private String lat1;
-	private String long1;
-	
-	private String lat2;
-	private String long2;
-	
-	private String lat3;
-	private String long3;
-	
-	private int status;
-	
-//	  private double latOne; 
-//	  private double longOne; 
-//	  private double latTwo; 
-//	  private double longTwo; 
-//	  private double latThrd; 
-//	  private double longThrd;
-	 
 
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	
 	public int getAdnum() {
 		return adnum;
 	}
@@ -115,6 +84,29 @@ public class MWAddressVO {
 	}
 	public void setPostal_code(int postal_code) {
 		this.postal_code = postal_code;
+	}
+	private String m_id;
+	private String address1;
+	private String address2;
+	private String address3;
+	
+	private String lat1;
+	private String long1;
+	private String lat2;
+	private String long2;
+	private String lat3;
+	private String long3;
+	private int status;
+	
+	  private double latOne; private double longOne; private double latTwo; private
+	  double longTwo; private double latThrd; private double longThrd;
+	 
+
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 }

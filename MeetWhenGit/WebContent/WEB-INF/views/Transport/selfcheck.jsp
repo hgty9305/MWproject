@@ -89,7 +89,7 @@
                   marker.addListener('click', function() {
 	               	  lat = marker.getPosition().lat();
 	                  lng = marker.getPosition().lng();   
-	               	  infowindow.setContent('<a id="link" href="/MeetWhen/Transport/BusSerch.mw?selfX='+ lng +'&selfY='+ lat +'" ><h2>내 주변 대중교통 찾기</h2></a>');
+	               	  infowindow.setContent('<a id="link" href="/MeetWhenGit/Transport/BusSerch.mw?selfX='+ lng +'&selfY='+ lat +'" ><h2>내 주변 대중교통 찾기</h2></a>');
 	                  infowindow.open(map, marker);
                   });
                 
@@ -124,7 +124,7 @@
     	}
   	
       function goreset(){
-    	  	location.href="/MeetWhen/Transport/selfcheck.mw";
+    	  	location.href="/MeetWhenGit/Transport/selfcheck.mw";
   		}
       
       function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
@@ -137,7 +137,7 @@
 		document.form.zipNo.value = zipNo;
 		document.form.entX.value = entX;
 		document.form.entY.value = entY; */
-		location.href="/MeetWhen/Transport/selfcheck.mw?entX="+entX+"&entY="+entY;
+		location.href="/MeetWhenGit/Transport/selfcheck.mw?entX="+entX+"&entY="+entY;
 		}
 
     </script>

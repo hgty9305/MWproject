@@ -43,26 +43,17 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ml-auto">
+					<c:if test="${empty sessionScope.loginUser}">
+				        <li class="nav-item">
+				          <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/login.mw">로그인</a>
+				        </li>
+				    </c:if>
 					<c:if test="${not empty sessionScope.loginUser}">
 						<li class="nav-item"><label
 							class="nav-link js-scroll-trigger">${sessionScope.loginUser}님 환영합니다</label>
 						</li>
-						<c:if test="${sessionScope.loginUser eq 'admin'}">
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
-							href="/MeetWhenGit/Member/myPage.mw">관리자페이지</a></li>
-						</c:if>
-						<c:if test="${sessionScope.loginUser ne 'admin'}">
-						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" 
 							href="/MeetWhenGit/Member/myPage.mw">마이페이지</a></li>
-						<li class="nav-item cBlack"> <a class="nav-link js-scroll-trigger"
-							href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a></li>
-						<li class="nav-item cBlack"><a class="nav-link "
-							href="/MeetWhenGit/Member/selectPlace.mw">장소등록</a></li>
-						<li class="nav-item cBlack"><a class="nav-link "
-							href="/MeetWhenGit/Map/map1.mw">해외정보</a></li>
-						</c:if>
-						
 						<li class="nav-item"><a class="nav-link "
 							href="/MeetWhenGit/Member/logOut.mw">로그아웃</a></li>
 					</c:if>
@@ -84,7 +75,7 @@
 				</c:if>
 				<c:if test="${not empty sessionScope.loginUser}">
 					<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-					href="#">Enjoy it</a>
+					href="/MeetWhenGit/Main/boots_calendar.mw">Enjoy it</a>
 				</c:if>
 					
 			</div>
@@ -106,8 +97,8 @@
 					<ul class="timeline">
 						<li>
 							<div class="timeline-image bgblack">
-								<img class="rounded-circle img-fluid"
-									src="/MeetWhenGit/img/main/friend.png" alt="">
+								<a href="/MeetWhenGit/Member/searchFriends.mw"><img class="rounded-circle img-fluid"
+									src="/MeetWhenGit/img/main/friend.png" alt=""></a>
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -123,8 +114,8 @@
 						</li>
 						<li class="timeline-inverted">
 							<div class="timeline-image">
-								<img class="rounded-circle img-fluid"
-									src="/MeetWhenGit/img/main/calendar.png" alt="">
+								<a href="/MeetWhenGit/Main/calendar_Form.mw"><img class="rounded-circle img-fluid"
+									src="/MeetWhenGit/img/main/calendar.png" alt=""></a>
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -140,8 +131,8 @@
 						</li>
 						<li>
 							<div class="timeline-image">
-								<img class="rounded-circle img-fluid"
-									src="/MeetWhenGit/img/main/subway.png" alt="">
+								<a href="/MeetWhenGit/Transport/selfcheck.mw"><img class="rounded-circle img-fluid"
+									src="/MeetWhenGit/img/main/subway.png" alt=""></a>
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -157,8 +148,8 @@
 						</li>
 						<li class="timeline-inverted">
 							<div class="timeline-image">
-								<img class="rounded-circle img-fluid" 
-									src="/MeetWhenGit/img/main/passport.png" alt="">
+								<a href="/MeetWhenGit/Map/map1.mw"><img class="rounded-circle img-fluid" 
+									src="/MeetWhenGit/img/main/passport.png" alt=""></a>
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -202,6 +193,7 @@
 							alt="">
 						<h4>조성민</h4>
 						<p class="text-muted">일이나 학업에 치여 친구를 만나기힘든 사람들에게 약속을 정할 때 편의성을 제공하는 서비스를 제공하는 것을 목표로 했습니다.</p>
+						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -209,7 +201,8 @@
 						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/portfolio/jh.jpg"
 							alt="">
 						<h4>임지환</h4>
-						<p class="text-muted">Lead Developer</p>
+						<p class="text-muted">귀차니즘과 불편함은 <br/>아이디어의 아주 좋은 공급원입니다.</p>
+						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -219,6 +212,7 @@
 						<h4>김성민</h4>
 						<p class="text-muted">여행을 좋아하는 1인으로써, 공항통계 자료를 한 눈에 볼 수있으면
 							좋겠다는 생각에 구현해보게 되었습니다.</p>
+						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 			</div>

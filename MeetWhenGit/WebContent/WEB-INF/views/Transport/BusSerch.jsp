@@ -46,9 +46,9 @@ html, body {
 	var infowindow = new google.maps.InfoWindow();
 	
 	////마커 관련 옵션---------------------------------------
-	var busIcon = new google.maps.MarkerImage("/MeetWhen/img/transport/BUSstation2.png", null, null, null, new google.maps.Size(20,40));
-	var me = new google.maps.MarkerImage("/MeetWhen/img/transport/me.png", null, null, null, new google.maps.Size(30,30));
-	var subway = new google.maps.MarkerImage("/MeetWhen/img/transport/subway.png", null,null,null,new google.maps.Size(20,20));
+	var busIcon = new google.maps.MarkerImage("/MeetWhenGit/img/transport/BUSstation2.png", null, null, null, new google.maps.Size(20,40));
+	var me = new google.maps.MarkerImage("/MeetWhenGit/img/transport/me.png", null, null, null, new google.maps.Size(30,30));
+	var subway = new google.maps.MarkerImage("/MeetWhenGit/img/transport/subway.png", null,null,null,new google.maps.Size(20,20));
 	
 	//반복문으로 자바스크립트 배열내에 이름과 좌표를 넣어야한다.
 	var locations = new Array;
@@ -104,7 +104,7 @@ html, body {
 	//움직일때마다 사용되는 지하철정보
 	function subwayinfo(){
 		$.ajax({
-			url: "/MeetWhen/Transport/findSB.mw",
+			url: "/MeetWhenGit/Transport/findSB.mw",
 			type: "post",
 			data: {subfor : subfor},
 			success : function(data){
@@ -123,7 +123,7 @@ html, body {
 				          return function() {
 				        	  var title = subArray[i][0];
 				              $.ajax({
-				              	url: "/MeetWhen/Transport/returnSBinfo.mw",
+				              	url: "/MeetWhenGit/Transport/returnSBinfo.mw",
 				              	type: "post",
 				              	data: {stationNm : subArray[i][0]},
 				              	success : function(data){
@@ -175,7 +175,7 @@ html, body {
 	//움직일때마다 사용되는 버스정보
 	function businfo(){
 		$.ajax({
-			url: "/MeetWhen/Transport/returnCenter.mw",
+			url: "/MeetWhenGit/Transport/returnCenter.mw",
 			type: "post",
 			data: {string : string},
 			success : function(data){
@@ -195,7 +195,7 @@ html, body {
 				          return function() {
 				              var title = locations[i][0];
 				              $.ajax({
-				              	url: "/MeetWhen/Transport/returnBSinfo.mw",
+				              	url: "/MeetWhenGit/Transport/returnBSinfo.mw",
 				              	type: "post",
 				              	data: {arsId : locations[i][3]},
 				              	success : function(data){
@@ -259,7 +259,7 @@ html, body {
 	        return function() {
 	            var title = locations[i][0];
 	            $.ajax({
-	            	url: "/MeetWhen/Transport/returnBSinfo.mw",
+	            	url: "/MeetWhenGit/Transport/returnBSinfo.mw",
 	            	type: "post",
 	            	data: {arsId : locations[i][3]},
 	            	success : function(data){
@@ -355,7 +355,7 @@ html, body {
     
     //다시 검색 함수
     function reSerch(){
-    	location.href="/MeetWhen/Transport/selfcheck.mw?latX="+${myylat}+"&latY="+${myxlat};
+    	location.href="/MeetWhenGit/Transport/selfcheck.mw?latX="+${myylat}+"&latY="+${myxlat};
         };
 </script>
 

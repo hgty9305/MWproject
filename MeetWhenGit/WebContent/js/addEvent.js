@@ -8,10 +8,8 @@ var editType = $('#edit-type');
 var editColor = $('#edit-color');
 var editDesc = $('#edit-desc');
 var editNum = $('#id');
-
 var addBtnContainer = $('.modalBtnContainer-addEvent');
 var modifyBtnContainer = $('.modalBtnContainer-modifyEvent');
-
 
 /* ****************
  *  새로운 일정 생성
@@ -28,7 +26,7 @@ var newEvent = function (start, end, eventType) {
     modifyBtnContainer.hide();
     eventModal.modal('show');
 
-
+    
 
     //새로운 일정 저장버튼 클릭
     $('#save-event').unbind();
@@ -40,7 +38,7 @@ var newEvent = function (start, end, eventType) {
             end: editEnd.val(),
             description: editDesc.val(),
             type: editType.val(),
-            username: '사나',//세션 아이디 
+            username: "${sessionScope.loginUser}",//세션 아이디 
             backgroundColor: editColor.val(),
             textColor: '#ffffff',
             allDay: false

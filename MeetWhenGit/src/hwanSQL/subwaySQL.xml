@@ -6,8 +6,4 @@
 	<select id="subwayCheck" parameterType="av" resultType="sv">
 		<![CDATA[select SUBWAYNAME, XLAT, YLAT from SUBWAYINFO where XLAT>#{Sx} and #{Nx}>XLAT and YLAT>#{Sy} and #{Ny}>YLAT]]>
  	</select>
- 	
- 	<select id="getAll" resultType="siv">
- 		select * from subwayinfo order by subwayname
- 	</select>
 </mapper>
