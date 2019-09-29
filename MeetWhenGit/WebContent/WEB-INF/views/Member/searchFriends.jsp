@@ -33,24 +33,7 @@
      		<div class="right">
      		<c:set value="${addresslist}" var="adlist"/>
      		
-     		<table border="1">
-     		
-     			<tr>
-     			<th>아이디</th>
-     			<th>주소</th>
-     			<th>위도</th>
-     			<th>경도</th>
-     			</tr>
-     			<c:forEach items="${addresslist}" var="i" begin="0" end="${addresslist.size()}">
-     			<tr> 
-     			<th>${i.m_id}</th>
-     			<th>${i.address1}</th>
-     			<th>${i.lat1}</th>
-     			<th>${i.long1}</th>
-     			</tr>
-     			</c:forEach>
-     		</table>
-			
+ 
 			</div>
 		</div>
 	</section>
