@@ -178,6 +178,7 @@ public class MemberBean {
 			} else {
 				loginState = true;
 				session.setAttribute("loginUser", User.getM_id());
+				session.setAttribute("loginName", User.getM_name());
 				returnPage = "Main/main"; // 로그인 성공시 메인페이지로 이동
 			}
 			model.addAttribute("loginState", loginState);
@@ -485,6 +486,7 @@ public class MemberBean {
 		//sql.update("member.modifyInfo",vo);
 		return"/MyPage/modifyPro";
 	}
+	
 	
 	@RequestMapping("delete.mw")
 	public String delete() {

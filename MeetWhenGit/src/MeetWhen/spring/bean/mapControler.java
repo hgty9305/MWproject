@@ -99,11 +99,9 @@ public class mapControler {
 		BusStationSerch bss = new BusStationSerch();
 		ArrayList<BUSstationVO> buslist = bss.main(xlat, ylat, radius);
 		ArrayList<String[]> Blist = new ArrayList();
-		
-		//���߹迭�Լ��� �����Ѵ�(ũ�⸦ �������ִ� �ڵ��)
+
 		String[][] total = new String[buslist.size()][4];
 		
-		//list�� ��� vo������ ������ ������ �迭�� ����־� �ϳ��ϳ� ����� �۾��̴�.
 		for(int i=0;i<buslist.size();i++){
 		BUSstationVO bvo = buslist.get(i);
 		String ait = "'"+bvo.getB_stationName()+"'";
@@ -114,13 +112,8 @@ public class mapControler {
 			total[i][j] = a[j];
 			}
 		}
-		//total.length�ᵵ �Ǵ� �κ������� �׳� �����ô�.
 		model.addAttribute("buslistsize", buslist.size());
-		
-		//�ǽð� ���� ������ ���� total���߹迭�̴�.
 		model.addAttribute("total", total);
-		
-		//�ؿ� ������ xlat ylat�� ������ �˻��� �ڱ� ��ġ �Ǵ� �˻�����ġ�� ��ǥ�̴�.
 		model.addAttribute("myxlat", xlat);   
 		model.addAttribute("myylat", ylat);
 		return "/Transport/BusSerch";
@@ -142,7 +135,6 @@ public class mapControler {
 	@ResponseBody
 	public String[][] findSB(@RequestParam(value="subfor") String subfor) throws Exception {
 		double Nx, Ny, Sx, Sy;
-		//�Ѿ�� String�� spilt���� �ɰ� ��Ʈ�� ������ �ش� �� �������� �����ͺ��̼� ���̸��� ��ǥ �̾� �迭�� ��� ���
 		
 		String[] ancy = subfor.split("/");
 		Sx = Double.parseDouble(ancy[0]);
@@ -156,12 +148,9 @@ public class mapControler {
 		av.setNy(Ny);
 		av.setSx(Sx);
 		av.setSy(Sy);
-		String[][] resultSB = null;
-		
+		String[][] resultSB = null;	
 		List<Object> sublist = new ArrayList();
-		
 		sublist = sql.selectList("sub.subwayCheck",av);
-		
 		System.out.println(sublist.size());
 		resultSB = new String[sublist.size()][3];
 		for(int i=0;i<sublist.size();i++) {
@@ -194,13 +183,9 @@ public class mapControler {
 		String[] a = string.split("/");
 		String lat = a[0];
 		String lng = a[1];
-		String radius= "300";
-				
+		String radius= "300";	
 		List buslist = rbs.reMain(lat, lng, radius);
-		
-		//���߹迭�Լ��� �����Ѵ�(ũ�⸦ �������ִ� �ڵ��)
-		String[][] total = new String[buslist.size()][4];
-		
+		String[][] total = new String[buslist.size()][4];	
 		for(int i=0;i<buslist.size();i++) {
 			total[i] = (String[])buslist.get(i);
 		}
