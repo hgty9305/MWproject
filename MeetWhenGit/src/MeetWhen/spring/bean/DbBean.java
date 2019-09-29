@@ -365,8 +365,27 @@ public class DbBean {
 		case 4:
 			rsList = sql.selectList("latlon.getLRegion");
 			break;
+			//subway
+		case 5:
+			rsList = sql.selectList("sub.getAll");
+			break;
+			//member
+		case 6:
+			rsList = sql.selectList("memberSQL.getMemberAll");
+			break;
+		case 7:
+			rsList = sql.selectList("memberSQL.getAdressAll");
+			break;
+		case 8:
+			rsList = sql.selectList("memberSQL.getFriendAll");
+			break;
+		case 9:
+			rsList = sql.selectList("calendar.getAll");
+			break;
 		}
+		
 		siz = rsList.size();
+		System.out.println(siz);
 		System.out.println("->DB"+num+"내용 확인");
 		
 		request.setAttribute("num", num);

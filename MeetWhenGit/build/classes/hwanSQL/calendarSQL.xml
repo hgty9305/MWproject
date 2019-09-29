@@ -39,6 +39,11 @@
 	<delete id="deleteData" parameterType="int">
 		delete from calendar where num=#{num}
 	</delete>
+	
+	<!-- 모든 정보 -->
+	<select id="getAll" resultType="cal">
+		select * from calendar order by m_id
+	</select>
 
 		
 </mapper>

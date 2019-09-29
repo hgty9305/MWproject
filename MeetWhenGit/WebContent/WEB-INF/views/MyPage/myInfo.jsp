@@ -78,8 +78,9 @@ table.type03 td {
 					<a href="myPage.mw" class="active" style="text-align:center">회원 정보 관리</a> 
 					<a href="myInfo.mw">개인정보 확인</a>
 					<a href="modify.mw">개인정보 수정</a>
-					<a href="#">주소 등록/수정</a> 
-					<a href="#">여행 스타일 등록/수정</a> 
+					<%-- 
+						<a href="#">주소 등록/수정</a> 
+						<a href="#">여행 스타일 등록/수정</a> --%> 
 					<a href="delete.mw">회원 탈퇴</a>
 				</div>
 			</div>

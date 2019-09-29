@@ -3,6 +3,7 @@ package MeetWhen.vo.bri;
 import java.sql.Timestamp;
 
 public class MWCalendarVO {
+	/*
 	private String m_id;
 	public String getM_id() {
 		return m_id;
@@ -66,4 +67,5 @@ public class MWCalendarVO {
 	private String isshare;
 	private Timestamp createdate;
 	private Timestamp editdate;
+	*/
 }
