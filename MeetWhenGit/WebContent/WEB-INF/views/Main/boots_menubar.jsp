@@ -63,13 +63,10 @@
 						<li class="nav-item cBlack"><a
 							class="nav-link js-scroll-trigger"
 							href="/MeetWhenGit/Member/myPage.mw"> 
-							<c:if test="${sessionScope.loginUser ne 'admin' }">마이페이지</c:if> 
+							<c:if test="${sessionScope.loginUser ne 'admin'&& sessionScope.loginUser ne null}">마이페이지</c:if> 
 							<c:if test="${sessionScope.loginUser eq 'admin' }">관리자페이지</c:if>
 						</a></li>
 						<c:if test="${sessionScope.loginUser ne 'admin'}">
-						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" 
-							href="/MeetWhenGit/Member/myPage.mw">마이페이지</a></li>
 						<li class="nav-item cBlack"> <a class="nav-link js-scroll-trigger"
 							href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a></li>
 						<li class="nav-item cBlack"><a class="nav-link "

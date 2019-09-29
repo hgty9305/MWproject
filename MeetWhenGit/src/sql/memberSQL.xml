@@ -117,11 +117,14 @@
 		<result column="address1" property="address1" />
 		<collection property="m_id" resultMap="mv"></collection>
 	</resultMap>
-	<select id = "extractAddr1" resultMap="avo">
+	<select id = "extractAddr1" resultMap="avo" parameterType="String">
 		select b.m_id,address1,b.lat1,b.long1 from mwaddress 
 		join mwmember a on a.m_id = b.m_id	where a.m_id=#{value} 
-		</select>
-
+	</select>
+	
+	<select id = "getAddrUser" parameterType="String" resultType="avo">
+		select m_id,address1, lat1, long1  from mwaddress where m_id = #{value}
+	</select>
 	
 	<!-- 해당아이디의 존재유무, 1이면 존재, 0이면 없음  -->
 	<select id="existOrNot" parameterType="String" resultType="int">

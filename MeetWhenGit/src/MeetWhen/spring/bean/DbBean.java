@@ -1,7 +1,5 @@
 package MeetWhen.spring.bean;
 
-import java.awt.event.MouseWheelListener;
-
 /* DB1~DB4 정보저장, 포멧, 정보 보여주기 기능 
  * 	파일 경로 >>> 학원은 D:  집은 C:
  * */
@@ -17,7 +15,6 @@ import org.rosuda.REngine.RList;
 import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import MeetWhen.vo.airport.ContryVO;
@@ -48,7 +45,6 @@ public class DbBean {
 		boolean rs=true;
 		int cnt=0;  //DB정보 갯수 담을 변수
 		String msg="";
-
 		while(rs) {
 			switch(num) {
 			case 1:
@@ -72,9 +68,9 @@ public class DbBean {
 				RConnection conn = new RConnection();
 				//경로 재 설정 및 라이브러리 설치,추가
 				conn.eval("setwd('C:/R-workspace')");
-				conn.eval("install.packages(\"xlsx\")");
+				//conn.eval("install.packages(\"xlsx\")");
 				conn.eval("library(xlsx)");
-				conn.eval("install.packages(\"ggmap\")");
+				//conn.eval("install.packages(\"ggmap\")");
 				conn.eval("library(ggmap)");
 				conn.eval("register_google(key='AIzaSyCexlJx5Gqv4JLwdSxZIeYwAE2IIRN_iGw')");
 
@@ -212,7 +208,7 @@ public class DbBean {
 					break;
 				}
 				//구체적 DB작성하는 곳
-				if(num==1) {//DB1작성[Contry]		
+				if(num==1) {//DB1작성[Contry]	, 16초 가량 소요	
 					DB = conn.eval("DB1");
 					list = DB.asList();
 					arr = new String[list.size()][];//가변배열로 작성
@@ -232,7 +228,7 @@ public class DbBean {
 					rs=false;
 					msg="DB1에 공항통계 정보가 생성 완료되었습니다.";
 
-				}else if(num==2) {//DB2작성[Lcontry]		
+				}else if(num==2) {//DB2작성[Lcontry], 35초 가량 소요	
 					conn.eval("latlon<-NULL;lat<-NULL;lon<-NULL;");
 					conn.eval("DB2<-DB1");
 					conn.eval("for(i in 1:nrow(DB2)){" + 
@@ -264,7 +260,7 @@ public class DbBean {
 					rs=false;
 					msg="DB2에 공항통계 정보가 생성 완료되었습니다.";
 
-				}else if(num==3) {//DB3작성 [Region]
+				}else if(num==3) {//DB3작성 [Region], 17초 가량 소요
 					conn.eval("DB3<-NULL");
 					conn.eval("DB3<-rbind(DB3,reg1)");
 					conn.eval("DB3<-rbind(DB3,reg2)");
@@ -287,7 +283,7 @@ public class DbBean {
 					rs=false;
 					msg="DB3에 공항통계 정보가 생성 완료되었습니다.";
 
-				}else if(num==4) {//DB4 [Lregion]	
+				}else if(num==4) {//DB4 [Lregion], 55초 가량 소요	
 					conn.eval("latlon<-NULL;lat<-NULL;lon<-NULL");
 					conn.eval("DB4<-DB3");
 					conn.eval("for(i in 1:nrow(DB4)){" + 

@@ -200,10 +200,10 @@ public class MemberBean {
 		return "/Member/boots_calendar";
 	}
 
-	@RequestMapping("mapOnView.mw")
+	@RequestMapping("getCenter.mw")
 	public String mapOnView() {
 
-		return "/Member/mapOnView";
+		return "/Member/getCenter";
 	}
 
 	@RequestMapping("editInfo.mw")

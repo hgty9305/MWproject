@@ -31,21 +31,21 @@ public class CrawlBean {
 
 	/*Crawl_A1 : 기본 정보 (네이버) -----------------------------------------------------------------------------------------------------------------*/
 	//Map1 페이지 실행되면 특정 시간 마다 재실행됨.
-	@RequestMapping("doCrawla1.mw")  
-	public String doCrawla1(HttpServletRequest request) throws Exception{
+	@RequestMapping("doCrawla1.mw")  //평균 4분 30초 가량 소요
+	public String doCrawla1(HttpServletRequest request) throws Exception{ 
 		System.out.println("[doCrawla1-RUNING...!]");
 		sql.delete("crawl.deleCrawlA1");  //리셋
 	
 		List<ContryVO> conList = new ArrayList<ContryVO>();
-		ContryVO vo = new ContryVO();
-		CrawlA1VO cwa1Vo = null;
 		conList = sql.selectList("airport.getContry");
-
+		ContryVO conVo = null;	  //나라정보를 담을 vo
+		CrawlA1VO cwa1Vo = null;  //크롤링 결과를 담을 vo
+		
 		RConnection conn = new RConnection();
-		REXP contry=null, capital=null, rate=null,imageSrc=null;
-		String con="", cap="", rat="",imgSrc="";
+		REXP contry=null, capital=null, rate=null,imageSrc=null;//R결과를 담을 변수
+		String con="", cap="", rat="",imgSrc="";//R결과를 형변환하여 담을 변수
 
-		conn.eval("setwd('D:/R-workspace')");
+		conn.eval("setwd('C:/R-workspace')");
 		conn.eval("library(rvest)");
 		conn.eval("library(httr)");
 		//conn.eval("install.packages(\"RSelenium\")");
@@ -53,22 +53,19 @@ public class CrawlBean {
 		conn.eval("remDr <- remoteDriver(remoteServerAdd=\"localhost\", port=4445, browserName=\"chrome\")");
 		conn.eval("remDr$open()");
 		
-		int caseType=0;
-		int ContNum=0;
+		int caseType=0; //예외변수 타입
 		for(int i=0;i<conList.size();i++) { 
-			vo=conList.get(i);
-
-			int currentNum=vo.getC_num();
-			String currentCont = vo.getC_con();
-
-			//이름에 맞는 지역 정보 크롤링
-			ContNum = sql.selectOne("airport.getContryNum",currentCont); //이미지 이름 (번호)부여
+			conVo = new ContryVO();
+			conVo = conList.get(i);
 			
-			String cNum=Integer.toString(ContNum);//이미지 이름, 단위000 맞춰주기 위함.
-			if(ContNum/100 == 0) {	
-				if(ContNum%100 < 10) {	//ContNum이 1-9 경우
+			int currentNum=conVo.getC_num(); //검색한 나라의 번호
+			String currentCont = conVo.getC_con();//검색한 나라의 국가명
+
+			String cNum=Integer.toString(currentNum);//이미지 이름, 단위000 맞춰주기 위함.
+			if(currentNum/100 == 0) {	
+				if(currentNum%100 < 10) {	//ContNum이 1-9 경우
 					cNum="00"+cNum;
-				}else {					//ContNum이 10-99경우
+				}else {						//ContNum이 10-99경우
 					cNum="0"+cNum;
 				}
 			}
@@ -77,7 +74,7 @@ public class CrawlBean {
 			conn.eval("Sys.sleep(1)");
 			conn.eval("WebEle <- remDr$findElement(using='css',\"[id='query']\")");
 			conn.eval("WebEle$sendKeysToElement(list('"+currentCont+"',key=\"enter\"))");
-
+			conn.eval("Sys.sleep(1)");
 			//경우1) 다른 검색결과1 :괌,하와이,홍콩,마카오
 			//경우2) 다른 검색결과2 : 사이판 
 			//경우3) 일반결과 : 그외 모두
@@ -104,8 +101,7 @@ public class CrawlBean {
 				conn.eval("rate<- gsub(' 환율정보','',rate[[1]])");
 				rate = conn.eval("rate");
 				rat=rate.asString();
-				//국기는 파일에있는것으로 지정.
-				imgSrc="/MeetWhen/img/flag/"+cNum+".png";
+				imgSrc="/MeetWhenGit/img/flag/"+cNum+".png";//국기는 파일에있는것으로 지정.
 			}else if(currentCont.equals("사이판")) {//예외중 예외
 				caseType=2;
 				//국가명
@@ -121,8 +117,7 @@ public class CrawlBean {
 				conn.eval("cash<-sapply(cash,function(x){x$getElementText()})");
 				rate = conn.eval("cash[[1]]");
 				rat=rate.asString();
-				//국기는 파일에있는것으로 지정.
-				imgSrc="/MeetWhen/img/flag/"+cNum+".png";
+				imgSrc="/MeetWhenGit/img/flag/"+cNum+".png";//국기는 파일에있는것으로 지정.
 			}else {	
 				caseType=3;
 				//정식 국가명
@@ -199,7 +194,7 @@ public class CrawlBean {
 	
 	
 	/*Crawl_A2 : 기본 정보 (구글) -----------------------------------------------------------------------------------------------------------------*/
-	@RequestMapping("doCrawla2.mw") 
+	@RequestMapping("doCrawla2.mw") //평균 5분 정도 소요
 	public String doCrawla2(HttpServletRequest request) throws Exception{
 		System.out.println("[doCrawla2-RUNING...!]");
 		
@@ -213,7 +208,7 @@ public class CrawlBean {
 		REXP explain1=null, explain2=null;
 		String ex1="",ex2="";
 
-		conn.eval("setwd('D:/R-workspace')");
+		conn.eval("setwd('C:/R-workspace')");
 		conn.eval("library(rvest)");
 		conn.eval("library(httr)");
 		//conn.eval("install.packages(\"RSelenium\")");
@@ -234,34 +229,32 @@ public class CrawlBean {
 				conn.eval("WebElem$sendKeysToElement(list('"+currentCont+"',key=\"enter\"))");
 			}catch(RserveException ex) {
 				System.out.print("[A2] "+currentCont+"의 정보없음");
-			}
-			
+			}			
 			//검색 셋팅
 			if(currentCont.equals("씨엠립")|currentCont.equals("클락국제공항")) {//예외
 				System.out.println(currentCont+"->예외 정보");
-				//이름
+				
 				conn.eval("c<-remDr$findElements(using='css',\"div.kno-ecr-pt.kno-fb-ctx.PZPZlf.gsmt > span\")");
 				conn.eval("c<-sapply(c,function(x){x$getElementText()})");
 				explain1 = conn.eval("c[[1]]");
-				ex1 = explain1.asString();
-				//설명
+				ex1 = explain1.asString();//이름
+				
 				conn.eval("d<-remDr$findElements(using='css',\"div.SALvLe.farUxc.mJ2Mod > div > div:nth-child(1) > div > div > div > div > span:nth-child(2)\")");
 				conn.eval("d<-sapply(d,function(x){x$getElementText()})");
 				explain2 = conn.eval("d[[1]]");
-				ex2 = explain2.asString();
+				ex2 = explain2.asString();//설명
 			}
 			else {
-				//위치설명
 				conn.eval("a<-remDr$findElements(using='css',\"div.wwUB2c.kno-fb-ctx.PZPZlf.E75vKf > span\")");
 				conn.eval("a<-sapply(a,function(x){x$getElementText()})");
 				explain1 = conn.eval("a[[1]]");
-				ex1 = explain1.asString();
-				//설명
+				ex1 = explain1.asString();//위치설명
+				
 				conn.eval("b<-remDr$findElements(using='css',\"div.ifM9O > div:nth-child(2) > div.SALvLe.farUxc.mJ2Mod > div > div:nth-child(1) > div > div > div > div > span:nth-child(2)\")");
 				conn.eval("b<-sapply(b,function(x){x$getElementText()})");
 				conn.eval("b<-gsub('\\\"','',b[[1]])");
 				explain2 = conn.eval("b");
-				ex2 = explain2.asString();
+				ex2 = explain2.asString();//설명
 			}
 			cwa2Vo = new CrawlA2VO();
 			cwa2Vo.setCwa2_num(currentNum);
@@ -291,10 +284,9 @@ public class CrawlBean {
 	@RequestMapping("doCrawlb.mw")
 	public String doCrawlb(HttpServletRequest request,int dbNum) throws Exception{
 		String topURL="";
-
 		//기본 셋팅
 		RConnection conn = new RConnection();
-		conn.eval("setwd('D:/R-workspace')");
+		conn.eval("setwd('C:/R-workspace')");
 		conn.eval("library(rvest)");
 		conn.eval("library(httr)");
 		//conn.eval("install.packages(\"RSelenium\")");
