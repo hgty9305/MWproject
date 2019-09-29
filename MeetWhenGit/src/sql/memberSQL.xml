@@ -70,4 +70,13 @@
 		<select id ="memberSearchCnt" parameterType="map" resultType="int" >
 			select count(*) from mwmember where m_id like #{searchFromAll}||'%' and m_id!=#{m_id}
 		</select>
+		
+		
+		<!-- 정보 수정 -->
+		<!--
+		<update id="modifyInfo" parameterType="">
+			update mwmember set m_pw=#{},m_email=#{},m_profile_img=#{}  where m_id=#{}
+		</update>
+		-->
+		
 	</mapper>

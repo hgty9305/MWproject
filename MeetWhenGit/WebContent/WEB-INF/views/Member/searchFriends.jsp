@@ -24,7 +24,7 @@
     <c:forEach var="i" items="${flist}" begin="0" end="${flist.size() }" >
      <div id="smtest">ksm</div>
     </c:forEach>
- --%>
+	 --%>
      		<div id="searchResult">${i.m_id}</div><br><br>
      		
      		<button onclick="openPop();">그룹방 만들기</button>
@@ -37,7 +37,7 @@
 var content ="";
 var id = [];
 	function searchajax(){
-		var words= $("#searchFromAll").val();	
+		var words= $("#searchFromAll").val();
 			if(words==""){
 				alert("키워드를입력해주세요");
 			}else{
@@ -49,14 +49,12 @@ var id = [];
 							$("#searchResult").html(data);
 						}
 					})
-				} 
+				}
 			};
-			
 		function openPop(){
 			var url = "searchFriendsPop.mw?id=${i.m_id}"
 			var name = "친구 추가 확인"
 			var option = "width = 300, height = 250, top = 100, left = 200, location = no"
-		
 			window.open(url,name,option);
 		}
 </script>
