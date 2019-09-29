@@ -43,17 +43,26 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav text-uppercase ml-auto">
-					<c:if test="${empty sessionScope.loginUser}">
-				        <li class="nav-item">
-				          <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/login.mw">로그인</a>
-				        </li>
-				    </c:if>
 					<c:if test="${not empty sessionScope.loginUser}">
 						<li class="nav-item"><label
 							class="nav-link js-scroll-trigger">${sessionScope.loginUser}님 환영합니다</label>
 						</li>
+						<c:if test="${sessionScope.loginUser eq 'admin'}">
 						<li class="nav-item"><a class="nav-link js-scroll-trigger"
+							href="/MeetWhenGit/Member/myPage.mw">관리자페이지</a></li>
+						</c:if>
+						<c:if test="${sessionScope.loginUser ne 'admin'}">
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" 
 							href="/MeetWhenGit/Member/myPage.mw">마이페이지</a></li>
+						<li class="nav-item cBlack"> <a class="nav-link js-scroll-trigger"
+							href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a></li>
+						<li class="nav-item cBlack"><a class="nav-link "
+							href="/MeetWhenGit/Member/selectPlace.mw">장소등록</a></li>
+						<li class="nav-item cBlack"><a class="nav-link "
+							href="/MeetWhenGit/Map/map1.mw">해외정보</a></li>
+						</c:if>
+						
 						<li class="nav-item"><a class="nav-link "
 							href="/MeetWhenGit/Member/logOut.mw">로그아웃</a></li>
 					</c:if>
@@ -75,7 +84,7 @@
 				</c:if>
 				<c:if test="${not empty sessionScope.loginUser}">
 					<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-					href="/MeetWhenGit/Main/boots_calendar.mw">Enjoy it</a>
+					href="#">Enjoy it</a>
 				</c:if>
 					
 			</div>
@@ -211,6 +220,7 @@
 						<p class="text-muted">여행을 좋아하는 1인으로써,<br> 
 						공항통계 자료를 한 눈에 볼 수있으면	좋겠다는 생각에 구현해보게 되었습니다.</p>
 					</div>
+				</div>
 				</div>
 			</div>
 		</div>
