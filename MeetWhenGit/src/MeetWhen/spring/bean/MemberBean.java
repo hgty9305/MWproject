@@ -91,23 +91,12 @@ public class MemberBean {
 	public String joinPro(MultipartHttpServletRequest request, String m_name, String m_id, String m_email_1,
 			String m_email_2, String m_pw,Model model) {
 		try {
-			// �쉶�썝怨좎쑀踰덊샇 @@@@@@@@@@@@@@@@@@@@寃뱀튂�뒗 踰덊샇 諛⑹�肄붾뱶 異붽��삁�젙
+			
 			Random rd = new Random();
-			String m_serialnumber = Integer.toString(rd.nextInt(9998));
-			
-			List<String> srlist=sql.selectList("memberSQL.notSameSerial");
-			
-			for(int i =0; i<srlist.size(); i++) {
-				if(m_serialnumber.equals(srlist.get(i))) {
-					
-				}
-				else {continue;}
-			}
-			MultipartFile mf = request.getFile("m_profile_img"); // �씠履쎌씠 �븞�릺�뒗嫄곌컳���뜲�옞留� //湲곕낯媛� default.png�씤�뜲 �씠寃껊룄�븞李롰옒?洹멸굔紐곕옍
+			String m_serialnumber = Integer.toString(rd.nextInt(9998)); //회원고유번호 생성 후 스트링으로 변환
+			MultipartFile mf = request.getFile("m_profile_img"); 
 			String path = request.getRealPath("img");
-			System.out.println(path);
 			String org = mf.getOriginalFilename();
-			System.out.println(mf);
 			String ext="";
 			String img="";
 			String newName ="";
