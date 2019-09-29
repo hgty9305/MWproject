@@ -50,41 +50,40 @@ public class MemberBean {
 			
 			Random rd = new Random();
 			String m_serialnumber = Integer.toString(rd.nextInt(9998)); //회원고유번호 생성 후 스트링으로 변환
-			MultipartFile mf = request.getFile("m_profile_img"); 
-			String path = request.getRealPath("img");
-			String org = mf.getOriginalFilename();
-			String ext="";
-			String img="";
-			String newName ="";
-			File f= null;
+			MultipartFile mf = request.getFile("m_profile_img"); 	//type ="file"의 name값으로 파라미터?받음
+			String path = request.getRealPath("img");				//절대경로  path에 저장
+			String org = mf.getOriginalFilename();					//파일의 원래 이름
+			String ext="";											//원래이름에서 확장자명을 뺸 변수
+			String img="";											//회원아이디로 중복되는 파일이름을 갖지않게함
+			String newName ="";										//디비에 등록되는 파일명
+			File f= null;											
 			
 			MWMemberVO vo = new MWMemberVO();
 			
 			newName = "default.png";
 			vo.setM_profile_img(newName);
-			if(!mf.equals(null)){
-			ext = org.substring(org.lastIndexOf("."));
-			img = m_id + ext;
-			sql.insert("memberSQL.filenumsequence");
 			
-			int num = sql.selectOne("memberSQL.filemaxnum");
-			
-			newName = "image" + num + ext;
-			f = new File(path + "//" + newName);
-			mf.transferTo(f);
-			vo.setM_profile_img(newName);
+			if(!mf.equals(null)){									//업로드할 파일을 선택했을때
+				ext = org.substring(org.lastIndexOf("."));
+				img = m_id + ext;
+				sql.insert("memberSQL.filenumsequence");
+				
+				int num = sql.selectOne("memberSQL.filemaxnum");	//DB테이블에 있는 가장 높은 num을 가져옴
+				
+				newName = "image" + num + ext;						
+				f = new File(path + "//" + newName);
+				mf.transferTo(f);									//업로드
+				vo.setM_profile_img(newName);
 			} 
-			System.out.println(newName);
 			
-			String m_email = m_email_1 + m_email_2;
-			
+			String m_email = m_email_1 + m_email_2;					// 1: 회원 이메일  2: 검색엔진 (google, daum..)
 			vo.setM_name(m_name);
 			vo.setM_id(m_id);
 			vo.setM_pw(m_pw);
 			vo.setM_email(m_email);
 			vo.setM_serialnumber(m_serialnumber);
 			vo.setRegistrationdate(new Timestamp(System.currentTimeMillis()));
-			sql.insert("memberSQL.signup", vo);
+			sql.insert("memberSQL.signup", vo);						//회원정보를 DB에 삽입
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -166,46 +165,37 @@ public class MemberBean {
 	@RequestMapping("regitPlacePro.mw")
 	public String regitPlacePro(HttpSession session, HttpServletRequest request, MWAddressVO avo, int addressTarget,
 			String confmKey, String zipNo, String roadAddrPart1, String addrDetail, String roadAddrPart2, String entX,
-			String entY, Double x, Double y) {
+			String entY, Double x, Double y) {		
+		String m_id = (String) session.getAttribute("loginUser");		//sql문 조건에 들어갈 회원아이디
+		String empty = "empty";											//주소1에 값을 삽일할떄 주소2,3에 String = "empty"를 넣음
 		
-		String m_id = (String) session.getAttribute("loginUser");
+		int postal_code = Integer.parseInt(zipNo);						//파라미터로 받은 우편번호 int로 변환
 		
-		String empty = "empty";
-		
-		int postal_code = Integer.parseInt(zipNo);
-		
-		x = Double.parseDouble(entX); //�룊硫대룄 �뮘 �뙆�씪誘명꽣== 寃쎈룄 �눜洹쇰뒭�뼱�룄�맖?�쓳 �븳 9�떆源뚯� �뿴�뀑�뼱�꽌 �뀑�뀑�뀑 �굹�삤�뒛 怨듬��븯�뒓�씪 諛ㅼ깘�벏 �꼫媛�?�궡�씪硫댁젒�씠�씪 �뿉 諛⑺빐�븯�뒗嫄곗븘�땲�깘 �꽩�꽩�뀑�뀑�뀑�뀑�뀑
-		y = Double.parseDouble(entY); //�룊硫대룄 �븵 �뙆�씪誘명꽣 == �쐞�룄
+		x = Double.parseDouble(entX); 									//평면도 x
+		y = Double.parseDouble(entY); 									//평면도 y
 
 	    GeoPoint pt1 = new GeoPoint(x, y);
-	    GeoPoint tm_pt = GeoTrans.convert(GeoTrans.UTMK, GeoTrans.GEO, pt1);
+	    GeoPoint tm_pt = GeoTrans.convert(GeoTrans.UTMK, GeoTrans.GEO, pt1); //평면도(UTMK)를 위도,경도(GEO) 값으로 변환 
 										
-		String ylat = String.format("%.7f", tm_pt.x);
-		
+		String ylat = String.format("%.7f", tm_pt.x);						//소수점 7자리까지의 위,경도를 문자로 변환
 		String xlat = String.format("%.7f", tm_pt.y);
-		System.out.println(xlat);
-		System.out.println(ylat);
+
 		avo.setLat1(xlat);
 		avo.setLong1(ylat);
-		
-		
-		
 		String address1 = "";
 		String address2 = "";
 		String address3 = "";
 
-		
 		avo.setM_id(m_id);
 		avo.setPostal_code(postal_code);
-
 		avo.setAddress2(empty);
 		avo.setAddress3(empty);
-		
 		avo.setLat2(empty);
 		avo.setLong2(empty);
 		avo.setLat3(empty);
 		avo.setLong3(empty);
 		avo.setStatus(1);
+		
 		if (addressTarget == 1) {
 			address1 = roadAddrPart1 + addrDetail + " " + roadAddrPart2;
 			avo.setAddress1(address1);
@@ -219,14 +209,10 @@ public class MemberBean {
 			avo.setAddress3(address3);
 			avo.setLat3(xlat);
 			avo.setLong3(ylat);
-		}
-		
+		}		
 		int check1 = (int)sql.selectOne("address.searchAdd1",m_id);
-		
-		String check2 = sql.selectOne("address.searchAdd2",m_id);
-	
-		String check3 = sql.selectOne("address.searchAdd3",m_id);
-	
+		String check2 = sql.selectOne("address.searchAdd2",m_id);	
+		String check3 = sql.selectOne("address.searchAdd3",m_id);	
 		if(addressTarget==1&&check1==0) {
 			sql.insert("address.insertadd1", avo);
 		}
@@ -290,16 +276,12 @@ public class MemberBean {
 			String m_id = (String)session.getAttribute("loginUser");
 	    try {
 
-			/* 移쒓뎄由ъ뒪�듃 */
-	    	
-	    	System.out.println("�꽭�뀡 :"+m_id);
 			List<MWFriendVO> flist= sql.selectList("memberSQL.frilist", m_id); 
 			int listCount = (int)sql.selectOne("memberSQL.countfrilist", m_id);
 			
 			model.addAttribute("friendList", flist); 
 			model.addAttribute("CntfriendList", listCount);
 			
-	            
 	    } catch(Exception e) {e.printStackTrace();}
 
 		return "/Member/addFriends";
@@ -350,18 +332,12 @@ public class MemberBean {
 		String m_id = (String)session.getAttribute("loginUser");
 		try {
     	Map<String, String> map = new HashMap<String, String>();
-   	 	
     	map.put("searchFromAll", searchFromAll);
     	map.put("m_id", m_id);
-    	System.out.println("========="+map.get("searchFromAll"));
-    	System.out.println(map.get("m_id"));
     	
-      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
-    	System.out.println("검색결과 갯수 :" + count);
-    	 Slist = sql.selectList("memberSQL.memberSearch", map);
-    	
+      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map); //검색 결과 갯수
+    	Slist = sql.selectList("memberSQL.memberSearch", map);
     	model.addAttribute("slist", Slist);
-    	
     	if(count !=0) {
     	model.addAttribute("cntFrnd", count);
     	}
@@ -377,6 +353,22 @@ public class MemberBean {
 	public String searchFriendsPop() {
 		
 		return"/Member/searchFriendsPop";
+	}
+	@RequestMapping("/position")
+	public String Postion(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("loginUser");
+		
+		String a = "user1";
+		String b = "user2";
+		String c = "user3";
+		MWAddressVO vo1 = sql.selectOne("memberSQL.getAdress", a);
+		MWAddressVO vo2 = sql.selectOne("memberSQL.getAdress", b);
+		MWAddressVO vo3 = sql.selectOne("memberSQL.getAdress", c);
+		
+		model.addAttribute("user1", vo1);
+		model.addAttribute("user2", vo2);
+		model.addAttribute("user3", vo3);
+		return "/Member/position";
 	}
 	//마이페이지 -----------------------------------------------------------------------
 	@RequestMapping("myPage.mw")
@@ -451,7 +443,8 @@ public class MemberBean {
 		}		
 		return"/MyPage/deletePro";
 	}
-	
+
+
 	
 	
 }
