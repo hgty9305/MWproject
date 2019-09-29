@@ -20,7 +20,6 @@
 		<typeAlias alias="cwb"  type="MeetWhen.vo.airport.CrawlBVO" />
 
 		<typeAlias alias="mv"   type="MeetWhen.vo.bri.MWMemberVO" />
-		<typeAlias alias="cvo"  type="MeetWhen.vo.bri.MWCalendarVO" />
 		<typeAlias alias="avo"  type="MeetWhen.vo.bri.MWAddressVO" />
 		<typeAlias alias="fvo"  type="MeetWhen.vo.bri.MWFriendVO" />
 	</typeAliases>
@@ -32,9 +31,7 @@
 		<mapper resource="/sql/latlonSQL.xml" />
 		<mapper resource="/sql/crawlSQL.xml" />
 
-
 		<mapper resource="/sql/memberSQL.xml" />
-		<mapper resource="/sql/calendarSQL.xml" />
 		<mapper resource="/sql/addressSQL.xml" />
 	</mappers>
 </configuration>

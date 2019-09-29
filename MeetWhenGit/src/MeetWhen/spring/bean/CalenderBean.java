@@ -42,10 +42,6 @@ public class CalenderBean {
 		String tablename = "MWMEETGROUP";
 		
 		
-		
-		
-		
-		
 		model.addAttribute("groupList", seeName);
 		model.addAttribute("seeName", seeName);
 		return "/Main/boots_calendar";

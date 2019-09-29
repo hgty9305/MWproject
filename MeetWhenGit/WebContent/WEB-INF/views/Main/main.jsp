@@ -193,7 +193,6 @@
 							alt="">
 						<h4>조성민</h4>
 						<p class="text-muted">일이나 학업에 치여 친구를 만나기힘든 사람들에게 약속을 정할 때 편의성을 제공하는 서비스를 제공하는 것을 목표로 했습니다.</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -202,7 +201,6 @@
 							alt="">
 						<h4>임지환</h4>
 						<p class="text-muted">귀차니즘과 불편함은 <br/>아이디어의 아주 좋은 공급원입니다.</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -210,9 +208,8 @@
 						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/portfolio/ksm.jpg"
 							alt="">
 						<h4>김성민</h4>
-						<p class="text-muted">여행을 좋아하는 1인으로써, 공항통계 자료를 한 눈에 볼 수있으면
-							좋겠다는 생각에 구현해보게 되었습니다.</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
+						<p class="text-muted">여행을 좋아하는 1인으로써,<br> 
+						공항통계 자료를 한 눈에 볼 수있으면	좋겠다는 생각에 구현해보게 되었습니다.</p>
 					</div>
 				</div>
 			</div>
