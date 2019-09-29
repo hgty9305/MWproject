@@ -76,8 +76,7 @@
 	</select>
 	<select id="countfrilist" parameterType="String"
 		resultType="int">
-		select count(a.link_m_id) from mwlinkinfo a join mwmember b on b.m_id
-		=a.m_id where a.m_id = #{value}
+		select count(a.link_m_id) from mwlinkinfo a join mwmember b on b.m_id =a.m_id where a.m_id = #{value}
 	</select>
 
 	<select id="test" parameterType="String" resultType="fvo">
@@ -150,8 +149,12 @@
 			update mwmember set m_pw=#{},m_email=#{},m_profile_img=#{}  where m_id=#{}
 		</update>
 		-->
+<<<<<<< HEAD
 		<!-- 로그인 체크 & id중복 확인 -->
 
+=======
+		<!-- 로그인 체크 & id중복 확인 -->
+>>>>>>> branch 'master' of https://github.com/hgty9305/MWproject.git
 	<select id="confirmUser" parameterType="mv" resultType="int">
 		select count(*) from MWMEMBER
 		<trim prefix="where" prefixOverrides="and|or">
