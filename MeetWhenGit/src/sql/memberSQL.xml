@@ -29,6 +29,13 @@
 		select * from MWMember where m_id = #{m_id} and m_pw=#{m_pw}
 	</select>
 
+	<!-- 해결못했다 -->
+	<select id="getMyinfo" parameterType="mv" resultType="mv">
+		select * from MWMember where m_id=#{value}
+	</select>
+
+
+
 	<!-- 친구관련 sql 문 -->
 	<insert id="addfriends">
 		insert M_ID,LINK_M_ID,LINK_TYPE,LINK_ACCEPT,REQUEST_DATE,CREATEDATE from
@@ -38,7 +45,6 @@
 	<resultMap type="mv" id="mv">
 		<result column="m_id" property="m_id" />
 	</resultMap>
-	
 	<resultMap type="fvo" id="fvo">
 		<result column="m_id" property="m_id" />
 		<result column="link_m_id" property="link_m_id" />
@@ -48,7 +54,6 @@
 		<result column="createdate" property="createdate" />
 		<collection property="m_id" resultMap="mv"></collection>
 	</resultMap>
-	
 	<select id="frilist" parameterType="String" resultMap="fvo">
 		select a.link_m_id from mwlinkinfo a join mwmember b on b.m_id=a.m_id where
 		a.m_id = #{value}
@@ -74,18 +79,10 @@
 		m_id!=#{m_id}
 	</select>
 
+
 	<!-- 정보 수정 -->
 	<!-- <update id="modifyInfo" parameterType=""> update mwmember set m_pw=#{},m_email=#{},m_profile_img=#{} 
 		where m_id=#{} </update> -->
-	
-	
-	<!-- 해결못했다 -->
-	<select id="getMyinfo" parameterType="mv" resultType="mv">
-		select * from MWMember where m_id=#{value}
-	</select>
-
-
-
 	<!-- 로그인 체크 & id중복 확인 -->
 	<select id="confirmUser" parameterType="mv" resultType="int">
 		select count(*) from MWMEMBER
@@ -104,56 +101,32 @@
 		delete from MWMEMBER
 		where m_id=#{m_id}
 	</delete>
+	
 	<!-- 모두검색 -->
 	<select id="getMemberAll" resultType="mv">
-		select * from MWMEMBER
-		order by registrationdate
+		select * from MWMEMBER order by registrationdate
 	</select>
 	<select id="getAdressAll" resultType="avo">
-		select * from MWADDRESS
-		order by m_id
+		select * from MWADDRESS order by m_id
 	</select>
 	<select id="getFriendAll" resultType="fvo">
-		select * from MWLINKINFO
-		order by m_id
+		select * from MWLINKINFO order by m_id
 	</select>
-
-	<!-- 검색창에서 html로 입력할 값쓰기 뽑기 -->
-	<resultMap type="avo" id="avo">
-		<result column="m_id" property="m_id" />
-		<result column="lat1" property="lat1" />
-		<result column="long1" property="long1" />
-		<result column="address1" property="address1" />
-		<collection property="m_id" resultMap="mv"></collection>
-	</resultMap>
-	<select id="extractAddr1" resultMap="avo" parameterType="String">
-		select
-		b.m_id,address1,b.lat1,b.long1 from mwaddress
-		join mwmember a on a.m_id = b.m_id where a.m_id=#{value}
-	</select>
-
-	<select id="getAddrUser" parameterType="String" resultType="avo">
-		select m_id,address1, lat1, long1 from mwaddress where m_id = #{value}
-	</select>
-	<!-- 해당아이디의 존재유무, 1이면 존재, 0이면 없음 -->
+	
+	<!-- 해당아이디의 존재유무, 1이면 존재, 0이면 없음  -->
 	<select id="existOrNot" parameterType="String" resultType="int">
-		select count(*) from mwmember where m_id=#{m_id}
+		select count(*) from mwmember where m_id=#{m_id} 
 	</select>
-	<!-- 한사람의 정보 검색 -->
-	<select id="getOneMemInfo" parameterType="String"
-		resultType="mv">
+	<!-- 한사람의 정보 검색  -->
+	<select id="getOneMemInfo" parameterType="String" resultType="mv">
 		select * from MWMember where m_id=#{m_id}
 	</select>
-	<select id="getOneAddInfo" parameterType="String"
-		resultType="avo">
+	<select id="getOneAddInfo" parameterType="String" resultType="avo">
 		select * from MWADDRESS where m_id=#{m_id}
 	</select>
-	<select id="getOneLinkInfo" parameterType="String"
-		resultType="fvo">
+	<select id="getOneLinkInfo" parameterType="String" resultType="fvo">
 		select * from MWLINKINFO where m_id=#{m_id}
 	</select>
+		
 </mapper>
 	
-	
-
-

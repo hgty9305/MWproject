@@ -29,7 +29,6 @@
 </head>
 <body>
 	<!-- Navigation -->
-<<<<<<< HEAD
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger"
@@ -80,51 +79,5 @@
 		</div>
 	</header>
 
-=======
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/MeetWhenGit/Main/main.mw">Meet When</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-        <c:if test="${empty sessionScope.loginUser}">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/login.mw">로그인</a>
-          </li>
-          </c:if>
-          <c:if test="${not empty sessionScope.loginUser}">
-                    
-          <li class="nav-item">
-            <label class="nav-link js-scroll-trigger">${sessionScope.loginUser}님 환영합니다.</label>
-          </li>
-          <li class="nav-item cBlack">
-            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/myPage.mw">마이페이지</a>
-          </li>
-          <li class="nav-item cBlack">
-            <a class="nav-link js-scroll-trigger" href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a>
-          </li>
-          <li class="nav-item cBlack">
-            <a class="nav-link " href="/MeetWhenGit/Member/selectPlace.mw">장소등록</a>
-          </li>
-          <li class="nav-item cBlack">
-            <a class="nav-link " href="/MeetWhenGit/Member/logOut.mw">로그아웃</a>
-          </li>
-          </c:if>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-  <!-- Header -->
-  <header class="masthead">
-    <div class="container">
-      <div class="intro-text"></div>
-    </div>
-  </header>
-  
->>>>>>> refs/remotes/origin/master
 </body>
 </html>

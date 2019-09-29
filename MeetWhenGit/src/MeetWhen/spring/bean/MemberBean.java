@@ -39,50 +39,6 @@ public class MemberBean {
 
 	@Autowired
 	HttpSession session;
-
-//	@RequestMapping("main.mw")
-//	public String MemberMain(HttpServletRequest request) throws UnsupportedEncodingException {
-//		   String clientId = "IFQYtQGmVdD6mqkfDGew";//�븷�뵆由ъ��씠�뀡 �겢�씪�씠�뼵�듃 �븘�씠�뵒媛�";
-//		    String clientSecret = "co1qBbOgUD";//�븷�뵆由ъ��씠�뀡 �겢�씪�씠�뼵�듃 �떆�겕由욧컪";
-//		    String code = request.getParameter("code");
-//		    String state = request.getParameter("state");
-//		    String redirectURI = URLEncoder.encode("http://localhost:8080/MeetWhen/member/main.mw", "UTF-8");
-//		    String apiURL;
-//		    apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
-//		    apiURL += "client_id=" + clientId;
-//		    apiURL += "&client_secret=" + clientSecret;
-//		    apiURL += "&redirect_uri=" + redirectURI;
-//		    apiURL += "&code=" + code;
-//		    apiURL += "&state=" + state;
-//		    String access_token = "";
-//		    String refresh_token = "";
-//		    System.out.println("apiURL="+apiURL);
-//		    try {
-//		      URL url = new URL(apiURL);
-//		      HttpURLConnection con = (HttpURLConnection)url.openConnection();
-//		      con.setRequestMethod("GET");
-//		      int responseCode = con.getResponseCode();
-//		      BufferedReader br;
-//		      System.out.print("responseCode="+responseCode);
-//		      if(responseCode==200) { // �젙�긽 �샇異�
-//		        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//		      } else {  // �뿉�윭 諛쒖깮
-//		        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-//		      }
-//		      String inputLine;
-//		      StringBuffer res = new StringBuffer();
-//		      while ((inputLine = br.readLine()) != null) {
-//		        res.append(inputLine);
-//		      }
-//		      br.close();
-//		      if(responseCode==200) {
-//		        System.out.println(res.toString());
-//		      }
-//		    } catch (Exception e) {
-//		      System.out.println(e);
-//		    }
-//		return "/Member/main";	
-//	}
 	@RequestMapping("join.mw")
 	public String join() {
 		return "Member/join";
@@ -167,7 +123,6 @@ public class MemberBean {
 			} else {
 				loginState = true;
 				session.setAttribute("loginUser", User.getM_id());
-				session.setAttribute("loginName", User.getM_name());
 				returnPage = "Main/main"; // 로그인 성공시 메인페이지로 이동
 			}
 			model.addAttribute("loginState", loginState);
@@ -190,15 +145,15 @@ public class MemberBean {
 		return "/Member/boots_calendar";
 	}
 
-	@RequestMapping("getCenter.mw")
+	@RequestMapping("mapOnView.mw")
 	public String mapOnView() {
-		
-		return "/Member/getCenter";
+
+		return "/Member/mapOnView";
 	}
 
 	@RequestMapping("editInfo.mw")
 	public String editInfo(HttpServletRequest request) throws UnsupportedEncodingException {
-		
+
 		return "/Member/editInfo";
 	}
 
@@ -335,6 +290,9 @@ public class MemberBean {
 			String m_id = (String)session.getAttribute("loginUser");
 	    try {
 
+			/* 移쒓뎄由ъ뒪�듃 */
+	    	
+	    	System.out.println("�꽭�뀡 :"+m_id);
 			List<MWFriendVO> flist= sql.selectList("memberSQL.frilist", m_id); 
 			int listCount = (int)sql.selectOne("memberSQL.countfrilist", m_id);
 			
@@ -347,15 +305,44 @@ public class MemberBean {
 		return "/Member/addFriends";
 	}
 	@RequestMapping("searchFriends.mw")
-	public String searchFriends(HttpSession session,Model model){
-		String m_id = (String)session.getAttribute("loginUser");
-		List<MWAddressVO> list = sql.selectList("memberSQL.extractAddr1", m_id);
+	public String searchFriends(){
 		
-		model.addAttribute("addresslist", list);
 		return "/Member/searchFriends";
 	}
 	
-
+	@RequestMapping("Sfri.mw")
+	@ResponseBody
+	public List Sfri(Model model, String searchFromAll){
+		List<MWMemberVO> Slist = null;
+		System.out.print(searchFromAll);
+		String m_id = (String)session.getAttribute("loginUser");
+		try {
+    	Map<String, String> map = new HashMap<String, String>();
+   	 
+    	map.put("searchFromAll", searchFromAll);
+    	map.put("m_id", m_id);
+    	System.out.println(map.get("searchFromAll"));
+    	System.out.println(map.get("m_id"));
+    	
+      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
+    	System.out.println("寃��깋寃곌낵 媛��닔 :" + count);
+    	 Slist = sql.selectList("memberSQL.memberSearch", map);
+    	
+    	System.out.println("寃��깋 寃곗쥖 泥ル쾲吏�  �냸 : " + Slist.get(0).getM_id());
+    	System.out.println("寃��깋 寃곗쥖 2踰덉㎏  �냸 : " + Slist.get(1).getM_id());
+    	model.addAttribute("slist", Slist);
+    	
+    	if(count !=0) {
+    	model.addAttribute("cntFrnd", count);
+    	}
+    	else if(count==0) {
+    		String NResult = "寃��깋寃곌낵 �뾾�쓬";
+    		model.addAttribute("NR", NResult);
+    	}
+		}catch(Exception e){e.printStackTrace();}
+		return Slist;
+	}
+	
 	@RequestMapping("searchResult.mw")
 	public String searchResult(Model model, String searchFromAll){
 
@@ -391,13 +378,6 @@ public class MemberBean {
 		
 		return"/Member/searchFriendsPop";
 	}
-	@RequestMapping(value="addresult.mw",method=RequestMethod.POST)
-	@ResponseBody
-	public void AddedResult(@RequestParam(value="valueArrFriend[]")List<String> resultArr,String friendId,Model model) {
-			
-			model.addAttribute("added", friendId);
-	}
-		
 	//마이페이지 -----------------------------------------------------------------------
 	@RequestMapping("myPage.mw")
 	public String myPage(HttpSession session, HttpServletRequest request) {
@@ -450,7 +430,6 @@ public class MemberBean {
 		//sql.update("member.modifyInfo",vo);
 		return"/MyPage/modifyPro";
 	}
-	
 	
 	@RequestMapping("delete.mw")
 	public String delete() {

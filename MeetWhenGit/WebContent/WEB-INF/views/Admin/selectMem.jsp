@@ -75,9 +75,3 @@ function getAllById(){
 	<div id="findResult"></div> 
 </body>
 </html>
-
-
-
-
-
-
