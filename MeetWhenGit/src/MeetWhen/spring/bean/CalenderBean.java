@@ -165,7 +165,6 @@ public class CalenderBean {
 			uvo.setC_end(end);
 			uvo.setNum(num);
 			
-			
 			sql.update("calendar.dataUpdate", uvo);
 			
 		}

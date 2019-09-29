@@ -451,13 +451,24 @@ public class MemberBean {
 		return"/MyPage/modifyPro";
 	}
 	
-	
 	@RequestMapping("delete.mw")
 	public String delete() {
 		return"/MyPage/delete";
 	}
 	@RequestMapping("deletePro.mw")
-	public String deletePro() {
+	public String deletePro(HttpSession session, String passwd, Model model) {
+		String id = (String)session.getAttribute("loginUser");
+		MWMemberVO vo = new MWMemberVO();
+		vo.setM_id(id);
+		vo.setM_pw(passwd);
+		
+		int check = (Integer)sql.selectOne("memberSQL.confirmUser",vo);
+		if(check==1) {
+			System.out.println("탈퇴성공");
+			sql.delete("memberSQL.deleteMember",id);
+			session.invalidate();
+			model.addAttribute("check",check);
+		}		
 		return"/MyPage/deletePro";
 	}
 	

@@ -4,41 +4,35 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="sv" type="MeetWhen.vo.transport.SubwayVO"/>
-		<typeAlias alias="siv" type="MeetWhen.vo.transport.SubwayinfoVO"/>
-		<typeAlias alias="av" type="MeetWhen.vo.transport.AdressVO"/>
-		
-		<typeAlias alias="cal" type="MeetWhen.vo.calendar.CalendarVO"/>
-		<typeAlias alias="uvo" type="MeetWhen.vo.calendar.UpdataVO"/>
-		
-		<typeAlias alias="cv" type="MeetWhen.vo.airport.ContryVO"/>
-		<typeAlias alias="rv" type="MeetWhen.vo.airport.RegionVO"/>
-		<typeAlias alias="lcv" type="MeetWhen.vo.airport.LContryVO"/>
-		<typeAlias alias="lrv" type="MeetWhen.vo.airport.LRegionVO"/>
-		<typeAlias alias="cwa1" type="MeetWhen.vo.airport.CrawlA1VO"/>
-		<typeAlias alias="cwa2" type="MeetWhen.vo.airport.CrawlA2VO"/>
-		<typeAlias alias="cwb" type="MeetWhen.vo.airport.CrawlBVO"/>
-		
-		
-			<typeAlias alias="mv" type="MeetWhen.vo.bri.MWMemberVO"/>
-			<typeAlias alias="cvo" type="MeetWhen.vo.bri.MWCalendarVO"/>
-			<typeAlias alias="avo" type="MeetWhen.vo.bri.MWAddressVO"/>
-			<typeAlias alias="fvo" type="MeetWhen.vo.bri.MWFriendVO"/>
+		<typeAlias alias="sv"   type="MeetWhen.vo.transport.SubwayVO" />
+		<typeAlias alias="siv"	type="MeetWhen.vo.transport.SubwayinfoVO" />
+		<typeAlias alias="av"   type="MeetWhen.vo.transport.AdressVO" />
+
+		<typeAlias alias="cal"	type="MeetWhen.vo.calendar.CalendarVO" />
+		<typeAlias alias="uvo"  type="MeetWhen.vo.calendar.UpdataVO" />
+
+		<typeAlias alias="cv"   type="MeetWhen.vo.airport.ContryVO" />
+		<typeAlias alias="rv"   type="MeetWhen.vo.airport.RegionVO" />
+		<typeAlias alias="lcv"  type="MeetWhen.vo.airport.LContryVO" />
+		<typeAlias alias="lrv"  type="MeetWhen.vo.airport.LRegionVO" />
+		<typeAlias alias="cwa1" type="MeetWhen.vo.airport.CrawlA1VO" />
+		<typeAlias alias="cwa2" type="MeetWhen.vo.airport.CrawlA2VO" />
+		<typeAlias alias="cwb"  type="MeetWhen.vo.airport.CrawlBVO" />
+
+		<typeAlias alias="mv"   type="MeetWhen.vo.bri.MWMemberVO" />
+		<typeAlias alias="avo"  type="MeetWhen.vo.bri.MWAddressVO" />
+		<typeAlias alias="fvo"  type="MeetWhen.vo.bri.MWFriendVO" />
 	</typeAliases>
-	
-	
-	
 	<mappers>
 		<mapper resource="/hwanSQL/subwaySQL.xml" />
 		<mapper resource="/hwanSQL/calendarSQL.xml" />
-		
+
 		<mapper resource="/sql/airportSQL.xml" />
 		<mapper resource="/sql/latlonSQL.xml" />
 		<mapper resource="/sql/crawlSQL.xml" />
-		
-		
-		<mapper resource ="/sql/memberSQL.xml"/>
-		<mapper resource ="/sql/calendarSQL.xml"/>
-		<mapper resource ="/sql/addressSQL.xml"/>
+
+
+		<mapper resource="/sql/memberSQL.xml" />
+		<mapper resource="/sql/addressSQL.xml" />
 	</mappers>
 </configuration>

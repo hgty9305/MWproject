@@ -2,81 +2,119 @@
 <!DOCTYPE mapper 
 	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	<mapper namespace="memberSQL">
-		<select id = "confirmId" resultType="int" parameterType="String">
-			select count(m_id) from MWmember where m_id = #{value}
-		</select>
-		
-		<insert id = "signup" parameterType="mv" >
-			insert into MWmember values(#{m_id},#{m_pw},
-			#{m_name},#{m_serialnumber},#{m_profile_img},
-			#{registrationdate},#{m_email})
-		</insert>
-		<select id = "notSameSerial" resultType="String">
-			select M_SERIALNUMBER from mwmember
-		</select>
-		<insert id="filenumsequence">
-			insert into filenum values(filenum_sequence.nextval)
-		</insert>
-		<select id ="filemaxnum" resultType="int">
-			select max(filenum) from filenum
-		</select>
-		<select id = "myprofile" parameterType="String" resultType="mv"> 
-			select m_id, m_email, m_serialnumber,m_profile_img from MWMember where id=#{value}
-		</select>
-		<select id= "loginPro" parameterType="mv" resultType="mv">
-			select * from MWMember where m_id = #{m_id} and m_pw=#{m_pw}
-		</select>
+<mapper namespace="memberSQL">
+	<select id="confirmId" resultType="int" parameterType="String">
+		select count(m_id) from MWmember where m_id = #{value}
+	</select>
 
-		<!-- 해결못했다 -->
-		<select id = "getMyinfo" parameterType="mv" resultType ="mv">
-			select * from MWMember where m_id=#{value}
-		</select>
-		
-		
-		
-		<!-- 친구관련 sql 문 -->
-		<insert id = "addfriends">
-			insert M_ID,LINK_M_ID,LINK_TYPE,LINK_ACCEPT,REQUEST_DATE,CREATEDATE from MWLINKINFO
-		</insert>
-		
-		<resultMap type="mv" id="mv">
-			<result column="m_id" property="m_id"/>
-		</resultMap>
-		<resultMap type="fvo" id="fvo">
-			<result column="m_id" property="m_id"/>
-			<result column="link_m_id" property="link_m_id"/>
-			<result column="link_type" property="link_type"/>
-			<result column="accept" property="accept"/>
-			<result column="request_date" property="request_date"/>
-			<result column="createdate" property="createdate"/>
-			<collection property="m_id" resultMap="mv"></collection>
-		</resultMap>
-		<select id="frilist" parameterType="String"  resultMap="fvo">
-  			select a.link_m_id from mwlinkinfo a join mwmember b on b.m_id=a.m_id where a.m_id = #{value}
-		</select>
-		<select id="countfrilist" parameterType="String"  resultType="int">
-  			select count(a.link_m_id) from mwlinkinfo a join mwmember b on b.m_id =a.m_id where a.m_id = #{value}
-		</select>
-		
-		<select id = "test" parameterType="String" resultType="fvo">
-			select link_m_id from mwlinkinfo where m_id =#{value}
-		</select>
-		
-		<select id ="memberSearch" parameterType="map" resultType="mv">
-			select * from mwmember where m_id like #{searchFromAll}||'%' and m_id!=#{m_id}
-		</select>
-		
-		<select id ="memberSearchCnt" parameterType="map" resultType="int" >
-			select count(*) from mwmember where m_id like #{searchFromAll}||'%' and m_id!=#{m_id}
-		</select>
-		
-		
-		<!-- 정보 수정 -->
-		<!--
-		<update id="modifyInfo" parameterType="">
-			update mwmember set m_pw=#{},m_email=#{},m_profile_img=#{}  where m_id=#{}
-		</update>
-		-->
-		
-	</mapper>
+	<insert id="signup" parameterType="mv">
+		insert into MWmember values(#{m_id},#{m_pw},
+		#{m_name},#{m_serialnumber},#{m_profile_img},
+		#{registrationdate},#{m_email})
+	</insert>
+	<select id="notSameSerial" resultType="String">
+		select M_SERIALNUMBER from mwmember
+	</select>
+	<insert id="filenumsequence">
+		insert into filenum values(filenum_sequence.nextval)
+	</insert>
+	<select id="filemaxnum" resultType="int">
+		select max(filenum) from filenum
+	</select>
+	<select id="myprofile" parameterType="String" resultType="mv">
+		select m_id, m_email, m_serialnumber,m_profile_img from MWMember where
+		id=#{value}
+	</select>
+	<select id="loginPro" parameterType="mv" resultType="mv">
+		select * from MWMember where m_id = #{m_id} and m_pw=#{m_pw}
+	</select>
+
+	<!-- 해결못했다 -->
+	<select id="getMyinfo" parameterType="mv" resultType="mv">
+		select * from MWMember where m_id=#{value}
+	</select>
+
+
+
+	<!-- 친구관련 sql 문 -->
+	<insert id="addfriends">
+		insert M_ID,LINK_M_ID,LINK_TYPE,LINK_ACCEPT,REQUEST_DATE,CREATEDATE from
+		MWLINKINFO
+	</insert>
+
+	<resultMap type="mv" id="mv">
+		<result column="m_id" property="m_id" />
+	</resultMap>
+	<resultMap type="fvo" id="fvo">
+		<result column="m_id" property="m_id" />
+		<result column="link_m_id" property="link_m_id" />
+		<result column="link_type" property="link_type" />
+		<result column="accept" property="accept" />
+		<result column="request_date" property="request_date" />
+		<result column="createdate" property="createdate" />
+		<collection property="m_id" resultMap="mv"></collection>
+	</resultMap>
+	<select id="frilist" parameterType="String" resultMap="fvo">
+		select a.link_m_id from mwlinkinfo a join mwmember b on b.m_id=a.m_id where
+		a.m_id = #{value}
+	</select>
+	<select id="countfrilist" parameterType="String"
+		resultType="int">
+		select count(a.link_m_id) from mwlinkinfo a join mwmember b on b.m_id
+		=a.m_id where a.m_id = #{value}
+	</select>
+
+	<select id="test" parameterType="String" resultType="fvo">
+		select link_m_id from mwlinkinfo where m_id =#{value}
+	</select>
+
+	<select id="memberSearch" parameterType="map" resultType="mv">
+		select * from mwmember where m_id like #{searchFromAll}||'%' and
+		m_id!=#{m_id}
+	</select>
+
+	<select id="memberSearchCnt" parameterType="map"
+		resultType="int">
+		select count(*) from mwmember where m_id like #{searchFromAll}||'%' and
+		m_id!=#{m_id}
+	</select>
+
+
+	<!-- 정보 수정 -->
+	<!-- <update id="modifyInfo" parameterType=""> update mwmember set m_pw=#{},m_email=#{},m_profile_img=#{} 
+		where m_id=#{} </update> -->
+	<!-- 로그인 체크 & id중복 확인 -->
+	<select id="confirmUser" parameterType="mv" resultType="int">
+		select count(*) from MWMEMBER
+		<trim prefix="where" prefixOverrides="and|or">
+			<if test="m_id!=null">
+				m_id=#{m_id}
+			</if>
+			<if test="m_pw!=null">
+				and m_pw=#{m_pw}
+			</if>
+		</trim>
+	</select>
+
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMember" parameterType="String">
+		delete from MWMEMBER
+		where m_id=#{m_id}
+	</delete>
+	
+	<!-- 모두검색 -->
+	<select id="getMemberAll" resultType="mv">
+		select * from MWMEMBER order by registrationdate
+	</select>
+	<select id="getAdressAll" resultType="avo">
+		select * from MWADDRESS order by m_id
+	</select>
+	<select id="getFriendAll" resultType="fvo">
+		select * from MWLINKINFO order by m_id
+	</select>
+	
+	
+</mapper>
+	
+	
+	
