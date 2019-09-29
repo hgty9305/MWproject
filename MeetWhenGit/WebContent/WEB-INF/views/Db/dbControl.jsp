@@ -88,7 +88,9 @@
 	
 	<h3>GoogleMap에 사용되는 DB [Contry/LContry/Region/LRegion]</h3>
 	※ 아래 DB 정보 생성은 순차적으로 진행하셔야합니다.<br>
-	※ LContry,LRegion Tabled은 경도위도 정보를 geocode로 추출해내기때문에, 다소 시간이 걸릴 수 있습니다.
+	※ LContry,LRegion Tabled은 경도위도 정보를 geocode로 추출해내기때문에, 다소 시간이 걸릴 수 있습니다.<br>
+	※ Contry, Region: 5초 ~ 최대 20초 소요.<br>
+	※ Lcontry:15초 ~ 최대 40초  / LRegion:최대 1분 소요.<br>
 	<form id="createfrm" action="dbCreate.mw">
 		<table>
 			<tr>
