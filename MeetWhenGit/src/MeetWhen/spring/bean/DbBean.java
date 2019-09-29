@@ -1,5 +1,7 @@
 package MeetWhen.spring.bean;
 
+import java.awt.event.MouseWheelListener;
+
 /* DB1~DB4 정보저장, 포멧, 정보 보여주기 기능 
  * 	파일 경로 >>> 학원은 D:  집은 C:
  * */
@@ -22,6 +24,8 @@ import MeetWhen.vo.airport.ContryVO;
 import MeetWhen.vo.airport.LContryVO;
 import MeetWhen.vo.airport.LRegionVO;
 import MeetWhen.vo.airport.RegionVO;
+import MeetWhen.vo.bri.MWAddressVO;
+import MeetWhen.vo.bri.MWFriendVO;
 import MeetWhen.vo.bri.MWMemberVO;
 
 @Controller
@@ -395,10 +399,12 @@ public class DbBean {
 		return "/Db/dbInfoCheck";
 	}
 	
-	@RequestMapping("deleteMem.mw")//-------------------------------------------DB정보 확인 및 삭제
+	//-----------------------------------------------------------Admin폴더 내용임
+	
+	@RequestMapping("deleteMem.mw")//회원탈퇴
 	public String deleteMem(HttpServletRequest request) throws Exception{
 		System.out.print("[deleteMem PAGE]");	
-		List<MWMemberVO> rsList = new ArrayList<MWMemberVO>(); //모든 vo를 담기위해 제네릭사용x
+		List<MWMemberVO> rsList = new ArrayList<MWMemberVO>(); 
 		rsList = sql.selectList("memberSQL.getMemberAll");
 		
 		int siz = rsList.size();
@@ -408,7 +414,7 @@ public class DbBean {
 		request.setAttribute("dataList", rsList);
 		return "/Admin/deleteMem";
 	}
-	@RequestMapping("deleteMemPro.mw")//-------------------------------------------DB정보 확인 및 삭제
+	@RequestMapping("deleteMemPro.mw")//회원탈퇴
 	public String deleteMemPro(HttpServletRequest request) throws Exception{
 		System.out.println("[deleteMemPro PAGE]");	
 		String user = request.getParameter("m_id");
@@ -417,18 +423,47 @@ public class DbBean {
 		
 		return "/Admin/deleteMemPro";
 	}
-	@RequestMapping("selectMem.mw")//-------------------------------------------DB정보 확인 및 삭제
+	@RequestMapping("selectMem.mw")//회원 조회
 	public String selectMem(HttpServletRequest request) throws Exception{
-		System.out.print("[DB InfoCheck PAGE]");	
+		System.out.print("[selectMem PAGE]");	
 		List<MWMemberVO> rsList = new ArrayList<MWMemberVO>(); //모든 vo를 담기위해 제네릭사용x
 		rsList = sql.selectList("memberSQL.getMemberAll");
 		
 		int siz = rsList.size();
-		System.out.println(siz);
+		System.out.println("회원 수="+siz);
 
 		
 		request.setAttribute("listSize", siz);
 		request.setAttribute("dataList", rsList);
 		return "/Admin/selectMem";
+	}
+	
+	@RequestMapping("selectMemResult.mw")//회원 조회
+	public String selectMemResult(HttpServletRequest request) throws Exception{
+		System.out.println("[selectMemResult PAGE]");
+		String result="";
+		String findId =request.getParameter("userId");
+		int check = sql.selectOne("memberSQL.existOrNot",findId);
+		
+		System.out.println(check+"/1이면 존재, 0이면 없는 아이디");
+		MWMemberVO memVO =null;
+		MWAddressVO addVO =null;
+		List<MWFriendVO> linkList=null;
+		int linkListSize=0;
+		if(check!=0) {
+			memVO = sql.selectOne("memberSQL.getOneMemInfo",findId);			
+			
+			addVO = sql.selectOne("memberSQL.getOneAddInfo",findId);	
+			linkList = new ArrayList<MWFriendVO>();
+			linkList = sql.selectList("memberSQL.getOneLinkInfo",findId);
+			linkListSize = linkList.size();
+		}
+		request.setAttribute("check", check);
+		request.setAttribute("memVO", memVO);
+		request.setAttribute("addVO", addVO);
+		request.setAttribute("listSize", linkListSize);
+		request.setAttribute("linkList", linkList);
+		
+		return "/Admin/selectMemResult";
 	}
 }

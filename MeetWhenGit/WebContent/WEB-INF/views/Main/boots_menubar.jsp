@@ -66,14 +66,18 @@
 							<c:if test="${sessionScope.loginUser ne 'admin' }">마이페이지</c:if> 
 							<c:if test="${sessionScope.loginUser eq 'admin' }">관리자페이지</c:if>
 						</a></li>
-						<c:if test="${sessionScope.loginUser ne 'admin' }">
-							<li class="nav-item cBlack"><a
-								class="nav-link js-scroll-trigger"
-								href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a></li>
-							<li class="nav-item cBlack"><a class="nav-link "
-								href="/MeetWhenGit/Member/selectPlace.mw">장소등록</a></li>
-						</c:if>
+						<c:if test="${sessionScope.loginUser ne 'admin'}">
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" 
+							href="/MeetWhenGit/Member/myPage.mw">마이페이지</a></li>
+						<li class="nav-item cBlack"> <a class="nav-link js-scroll-trigger"
+							href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a></li>
 						<li class="nav-item cBlack"><a class="nav-link "
+							href="/MeetWhenGit/Member/selectPlace.mw">장소등록</a></li>
+						<li class="nav-item cBlack"><a class="nav-link "
+							href="/MeetWhenGit/Map/map1.mw">해외정보</a></li>
+						</c:if>
+						<li class="nav-item"><a class="nav-link "
 							href="/MeetWhenGit/Member/logOut.mw">로그아웃</a></li>
 					</c:if>
 				</ul>

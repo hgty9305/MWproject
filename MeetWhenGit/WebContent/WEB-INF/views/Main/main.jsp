@@ -52,9 +52,17 @@
 							href="/MeetWhenGit/Member/myPage.mw">관리자페이지</a></li>
 						</c:if>
 						<c:if test="${sessionScope.loginUser ne 'admin'}">
-						<li class="nav-item"><a class="nav-link js-scroll-trigger"
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" 
 							href="/MeetWhenGit/Member/myPage.mw">마이페이지</a></li>
+						<li class="nav-item cBlack"> <a class="nav-link js-scroll-trigger"
+							href="/MeetWhenGit/Member/searchFriends.mw">그룹원 구성</a></li>
+						<li class="nav-item cBlack"><a class="nav-link "
+							href="/MeetWhenGit/Member/selectPlace.mw">장소등록</a></li>
+						<li class="nav-item cBlack"><a class="nav-link "
+							href="/MeetWhenGit/Map/map1.mw">해외정보</a></li>
 						</c:if>
+						
 						<li class="nav-item"><a class="nav-link "
 							href="/MeetWhenGit/Member/logOut.mw">로그아웃</a></li>
 					</c:if>
@@ -194,7 +202,6 @@
 							alt="">
 						<h4>조성민</h4>
 						<p class="text-muted">Lead Marketer</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -203,7 +210,6 @@
 							alt="">
 						<h4>임지환</h4>
 						<p class="text-muted">Lead Developer</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
@@ -213,7 +219,6 @@
 						<h4>김성민</h4>
 						<p class="text-muted">여행을 좋아하는 1인으로써, 공항통계 자료를 한 눈에 볼 수있으면
 							좋겠다는 생각에 구현해보게 되었습니다.</p>
-						<p class="text-muted">해당 페이지 먼저보기</p>
 					</div>
 				</div>
 			</div>
