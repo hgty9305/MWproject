@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,11 @@ a{
 	color:black;
 }
 </style>
+<script>
+function noAccess(){
+	alert("관리자만 접근 가능합니다.");
+}
+</script>
 </head>
 <body>
  <!-- Footer -->
@@ -47,6 +53,14 @@ a{
             </li>
             <li class="list-inline-item">
               <a href="/MeetWhenGit/Main/allServices.mw">서비스 전체 보기</a>
+            </li>
+            <li class="list-inline-item">
+            	<c:if test="${sessionScope.loginUser eq 'admin'}">
+              		<a href="/MeetWhenGit/Member/myPage.mw">ADMIN</a>
+              </c:if>
+              <c:if test="${sessionScope.loginUser ne 'admin'}">
+              		<a onclick="noAccess()">ADMIN</a>
+              </c:if>
             </li>
           </ul>
         </div>
