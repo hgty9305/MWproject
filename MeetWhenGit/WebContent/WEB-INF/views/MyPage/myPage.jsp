@@ -84,6 +84,7 @@ table.type03 td {
 					<a href="myInfo.mw">개인정보 확인</a>
 					<a href="modify.mw">개인정보 수정</a>
 					<c:if test="${sessionScope.loginUser ne 'admin' }">
+						<a href="/MeetWhenGit/Member/selectPlace.mw">장소 등록/수정</a> 
 						<a href="delete.mw">회원 탈퇴</a> 
 					</c:if>
 					<c:if test="${sessionScope.loginUser eq 'admin' }">
