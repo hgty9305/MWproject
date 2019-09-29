@@ -26,11 +26,6 @@
             		<button type="submit">검색</button>
         		</form>    
     		</div><br>
-    <%--
-    <c:forEach var="i" items="${flist}" begin="0" end="${flist.size() }" >
-     <div id="smtest">ksm</div>
-    </c:forEach>
-	 --%>
      		<div id="searchResult">${i.m_id}</div><br><br>
      		
      		<div id = "addresult"></div>
@@ -82,12 +77,12 @@ function searchajax(){
 		})
 	}
 };
-function openPop(){
+/* function openPop(){
 	
 	var url = "searchFriendsPop.mw";
 	var name = "친구 추가 확인";
 	var option = "width = 300, height = 250, top = 100, left = 200, location = no";
 	window.open(url,name,option);
-};
+}; */
 
 </script>

@@ -109,6 +109,9 @@
 	<select id="getAdressAll" resultType="avo">
 		select * from MWADDRESS order by m_id
 	</select>
+	<select id="getAdress" resultType="avo" parameterType="String">
+		select * from MWADDRESS where m_id = #{value}
+	</select>
 	<select id="getFriendAll" resultType="fvo">
 		select * from MWLINKINFO order by m_id
 	</select>
