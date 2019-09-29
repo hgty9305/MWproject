@@ -53,8 +53,11 @@
 </script>
 </head>
 <body>
-	<h1>DB-Control PAGE</h1><br><br>
 	
+	<button class="btn btn-secondary btn-lg" style="background-color:black;"
+		onclick="window.location.href='/MeetWhenGit/Member/myPage.mw'">관리자페이지 HOME</button>
+	<br><br>
+	<h1>DB-Control PAGE</h1><br>
 	<h3>지하철 교통 정보 DB [SubwayInfo]</h3>
 	<table>
 			<tr>

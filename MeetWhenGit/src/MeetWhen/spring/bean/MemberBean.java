@@ -486,7 +486,6 @@ public class MemberBean {
 		return"/MyPage/modifyPro";
 	}
 	
-	
 	@RequestMapping("delete.mw")
 	public String delete() {
 		return"/MyPage/delete";

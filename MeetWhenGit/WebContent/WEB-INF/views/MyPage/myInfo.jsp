@@ -75,13 +75,20 @@ table.type03 td {
 		<div class="row">
 			<div class="column1">
 				<div class="vertical-menu">
-					<a href="myPage.mw" class="active" style="text-align:center">회원 정보 관리</a> 
+					<a href="myPage.mw" class="active" style="text-align:center">회원 정보 관리</a>
 					<a href="myInfo.mw">개인정보 확인</a>
 					<a href="modify.mw">개인정보 수정</a>
+					<c:if test="${sessionScope.loginUser ne 'admin' }">
+						<a href="delete.mw">회원 탈퇴</a> 
+					</c:if>
+					<c:if test="${sessionScope.loginUser eq 'admin' }">
+						<a href="/MeetWhenGit/Db/dbControl.mw">DB 정보 관리</a>
+						<a href="/Admin/#">회원 관리</a> 
+						<a href="/Admin/#">회원 탈퇴 관리</a> 
+					</c:if>
 					<%-- 
 						<a href="#">주소 등록/수정</a> 
 						<a href="#">여행 스타일 등록/수정</a> --%> 
-					<a href="delete.mw">회원 탈퇴</a>
 				</div>
 			</div>
 			<div class="column2">

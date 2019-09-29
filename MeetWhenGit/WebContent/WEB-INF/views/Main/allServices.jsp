@@ -15,9 +15,9 @@
 	<jsp:include page="boots_menubar.jsp" />
 	
 	<div class="top-container">
-		<span><button type="button" class="btn btn btn-dark"
+		<span><button type="button" class="btn btn-dark"
 		onclick="fetchPage('allServicesA.mw')">주제별</button></span>
-		<span><button type="button" class="btn btn btn-dark"
+		<span><button type="button" class="btn btn-dark"
 		onclick="fetchPage('allServicesB.mw')">가나다순</button></span>
 	</div>
 	<div id="AllContents"></div>

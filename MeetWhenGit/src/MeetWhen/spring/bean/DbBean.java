@@ -22,6 +22,7 @@ import MeetWhen.vo.airport.ContryVO;
 import MeetWhen.vo.airport.LContryVO;
 import MeetWhen.vo.airport.LRegionVO;
 import MeetWhen.vo.airport.RegionVO;
+import MeetWhen.vo.bri.MWMemberVO;
 
 @Controller
 @RequestMapping("/Db/")
@@ -392,5 +393,42 @@ public class DbBean {
 		request.setAttribute("listSize", siz);
 		request.setAttribute("dataList", rsList);
 		return "/Db/dbInfoCheck";
+	}
+	
+	@RequestMapping("deleteMem.mw")//-------------------------------------------DB정보 확인 및 삭제
+	public String deleteMem(HttpServletRequest request) throws Exception{
+		System.out.print("[deleteMem PAGE]");	
+		List<MWMemberVO> rsList = new ArrayList<MWMemberVO>(); //모든 vo를 담기위해 제네릭사용x
+		rsList = sql.selectList("memberSQL.getMemberAll");
+		
+		int siz = rsList.size();
+		System.out.println("회원 수="+siz);
+		
+		request.setAttribute("listSize", siz);
+		request.setAttribute("dataList", rsList);
+		return "/Admin/deleteMem";
+	}
+	@RequestMapping("deleteMemPro.mw")//-------------------------------------------DB정보 확인 및 삭제
+	public String deleteMemPro(HttpServletRequest request) throws Exception{
+		System.out.println("[deleteMemPro PAGE]");	
+		String user = request.getParameter("m_id");
+		
+		sql.delete("memberSQL.deleteMember",user);	
+		
+		return "/Admin/deleteMemPro";
+	}
+	@RequestMapping("selectMem.mw")//-------------------------------------------DB정보 확인 및 삭제
+	public String selectMem(HttpServletRequest request) throws Exception{
+		System.out.print("[DB InfoCheck PAGE]");	
+		List<MWMemberVO> rsList = new ArrayList<MWMemberVO>(); //모든 vo를 담기위해 제네릭사용x
+		rsList = sql.selectList("memberSQL.getMemberAll");
+		
+		int siz = rsList.size();
+		System.out.println(siz);
+
+		
+		request.setAttribute("listSize", siz);
+		request.setAttribute("dataList", rsList);
+		return "/Admin/selectMem";
 	}
 }
