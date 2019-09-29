@@ -357,8 +357,11 @@ public class MemberBean {
 		return "/Member/addFriends";
 	}
 	@RequestMapping("searchFriends.mw")
-	public String searchFriends(){
+	public String searchFriends(HttpSession session,Model model){
+		String m_id = (String)session.getAttribute("loginUser");
+		List<MWAddressVO> list = sql.selectList("memberSQL.extractAddr1", m_id);
 		
+		model.addAttribute("addresslist", list);
 		return "/Member/searchFriends";
 	}
 	
@@ -398,6 +401,13 @@ public class MemberBean {
 		
 		return"/Member/searchFriendsPop";
 	}
+	@RequestMapping(value="addresult.mw",method=RequestMethod.POST)
+	@ResponseBody
+	public void AddedResult(@RequestParam(value="valueArrFriend[]")List<String> resultArr,String friendId,Model model) {
+			
+			model.addAttribute("added", friendId);
+	}
+		
 	//마이페이지 -----------------------------------------------------------------------
 	@RequestMapping("myPage.mw")
 	public String myPage(HttpSession session, HttpServletRequest request) {

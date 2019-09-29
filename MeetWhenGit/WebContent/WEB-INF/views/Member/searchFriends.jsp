@@ -2,7 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
+<style>
+	.right{
+	float:right
+	}
+</style>
+</head>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <body id="page-top">
@@ -27,7 +33,31 @@
 	 --%>
      		<div id="searchResult">${i.m_id}</div><br><br>
      		
-     		<button onclick="openPop();">그룹방 만들기</button>
+     		<div id = "addresult"></div>
+     		<button type="button" onclick="openPop();">그룹방 만들기</button>
+     		
+     		<div class="right">
+     		<c:set value="${addresslist}" var="adlist"/>
+     		
+     		<table border="1">
+     		
+     			<tr>
+     			<th>아이디</th>
+     			<th>주소</th>
+     			<th>위도</th>
+     			<th>경도</th>
+     			</tr>
+     			<c:forEach items="${addresslist}" var="i" begin="0" end="${addresslist.size()}">
+     			<tr> 
+     			<th>${i.m_id}</th>
+     			<th>${i.address1}</th>
+     			<th>${i.lat1}</th>
+     			<th>${i.long1}</th>
+     			</tr>
+     			</c:forEach>
+     		</table>
+			
+			</div>
 		</div>
 	</section>
 
@@ -36,25 +66,28 @@
 <script>
 var content ="";
 var id = [];
-	function searchajax(){
-		var words= $("#searchFromAll").val();
-			if(words==""){
-				alert("키워드를입력해주세요");
-			}else{
-					$.ajax({
-						type : 'POST',
-						url : 'searchResult.mw',
-						data : {searchFromAll : words},
-						success : function(data){
-							$("#searchResult").html(data);
-						}
-					})
-				}
-			};
-		function openPop(){
-			var url = "searchFriendsPop.mw?id=${i.m_id}"
-			var name = "친구 추가 확인"
-			var option = "width = 300, height = 250, top = 100, left = 200, location = no"
-			window.open(url,name,option);
-		}
+function searchajax(){
+	var words= $("#searchFromAll").val();
+	if(words==""){
+		alert("키워드를입력해주세요");
+	}else{
+		$.ajax({
+			type : 'POST',
+			url : 'searchResult.mw',
+			data : {searchFromAll : words},
+			success : function(data){
+				$("#searchResult").html(data);
+				
+			}
+		})
+	}
+};
+function openPop(){
+	
+	var url = "searchFriendsPop.mw";
+	var name = "친구 추가 확인";
+	var option = "width = 300, height = 250, top = 100, left = 200, location = no";
+	window.open(url,name,option);
+};
+
 </script>
