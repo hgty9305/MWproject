@@ -76,8 +76,7 @@
 	</select>
 	<select id="countfrilist" parameterType="String"
 		resultType="int">
-		select count(a.link_m_id) from mwlinkinfo a join mwmember b on b.m_id
-		=a.m_id where a.m_id = #{value}
+		select count(a.link_m_id) from mwlinkinfo a join mwmember b on b.m_id =a.m_id where a.m_id = #{value}
 	</select>
 
 	<select id="test" parameterType="String" resultType="fvo">
@@ -151,7 +150,6 @@
 		</update>
 		-->
 		<!-- 로그인 체크 & id중복 확인 -->
->>>>>>> refs/remotes/origin/master
 	<select id="confirmUser" parameterType="mv" resultType="int">
 		select count(*) from MWMEMBER
 		<trim prefix="where" prefixOverrides="and|or">
