@@ -201,7 +201,7 @@
 						<img class="mx-auto rounded-circle" src="/MeetWhenGit/img/portfolio/csm.jpg"
 							alt="">
 						<h4>조성민</h4>
-						<p class="text-muted">Lead Marketer</p>
+						<p class="text-muted">일이나 학업에 치여 친구를 만나기힘든 사람들에게 약속을 정할 때 편의성을 제공하는 서비스를 제공하는 것을 목표로 했습니다.</p>
 					</div>
 				</div>
 				<div class="col-sm-4">
