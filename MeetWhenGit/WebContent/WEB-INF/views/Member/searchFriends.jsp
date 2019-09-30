@@ -35,12 +35,14 @@
         		</form>    
     		</div><br>
      		<div id="searchResult">${i.m_id}</div><br><br>
-     		
+     		<img src="/MeetWhenGit/img/fri1.PNG"  width ="400" height ="400">
      		<div id = "addresult"></div>
      		
      		<div class="right">
      		<c:set value="${addresslist}" var="adlist"/>
 			</div>
+			
+		
 		</div>
 	</section>
 
