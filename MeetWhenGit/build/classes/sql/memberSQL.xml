@@ -127,6 +127,10 @@
 	<select id="getOneLinkInfo" parameterType="String" resultType="fvo">
 		select * from MWLINKINFO where m_id=#{m_id}
 	</select>
-		
+	
+	<select id="getAdress" resultType="avo" parameterType="String">
+      select * from MWADDRESS where m_id = #{value}
+   </select>
+	
 </mapper>
 	

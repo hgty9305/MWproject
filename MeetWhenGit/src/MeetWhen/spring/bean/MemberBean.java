@@ -508,6 +508,23 @@ public class MemberBean {
 		return"/MyPage/deletePro";
 	}
 	
-	
+	   @RequestMapping("/position")
+	   public String Postion(HttpSession session, Model model) {
+	      String id = (String)session.getAttribute("loginUser");
+	      
+	      String a = "user1";
+	      String b = "user2";
+	      String c = "user3";
+	      MWAddressVO vo1 = sql.selectOne("memberSQL.getAdress", a);
+	      MWAddressVO vo2 = sql.selectOne("memberSQL.getAdress", b);
+	      MWAddressVO vo3 = sql.selectOne("memberSQL.getAdress", c);
+	      
+	      model.addAttribute("user1", vo1);
+	      model.addAttribute("user2", vo2);
+	      model.addAttribute("user3", vo3);
+	      return "/Member/position";
+	   }
+	   
+	   
 	
 }

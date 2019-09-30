@@ -12,7 +12,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <body id="page-top">
-	<p>${groupId}</p>
+	
 	<section class="page-section">
 		<div class="container">
 			<div class="col-lg-12 text-center">
@@ -41,26 +41,26 @@
 			</div>
 		</div>
 	</section>
-	
-<script type="text/javascript">
-		var content ="";
-		var id = [];
-		function searchajax(){
-			var words= $("#searchFromAll").val();
-			if(words==""){
-				alert("키워드를입력해주세요");
-			}else{
-				$.ajax({
-					type : 'POST',
-					url : 'searchResult.mw?',
-					data : {searchFromAll : words},
-					success : function(data){
-						$("#searchResult").html(data);
-						
-					}
-				})
+
+</body>
+<script>
+var content ="";
+var id = [];
+function searchajax(){
+	var words= $("#searchFromAll").val();
+	if(words==""){
+		alert("키워드를입력해주세요");
+	}else{
+		$.ajax({
+			type : 'POST',
+			url : 'searchResult.mw?',
+			data : {searchFromAll : words},
+			success : function(data){
+				$("#searchResult").html(data);
+				
 			}
-		};
+		})
+	}
+};
 
 </script>
-</body>

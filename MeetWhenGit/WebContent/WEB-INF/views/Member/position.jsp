@@ -10,35 +10,35 @@
 <title>위치 출력</title>
 </head>
 <body id="page-top">
-	<jsp:include page="/Main/boots_menubar.mw" />
+   <jsp:include page="/Main/boots_menubar.mw" />
 <c:set value="${user1}" var="user1"/>
 <c:set value="${user2}" var="user2"/>
 <c:set value="${user3}" var="user3"/>
-	
- 	 	<input type="button" value="현재위치 갱신" onclick="Javascript:fnGetCurrentPosition();" />
- 	 	
- 	 	<div id="map" style="width:760px;height:400px;margin-top:20px;"></div>
+   
+        <input type="button" value="현재위치 갱신" onclick="Javascript:fnGetCurrentPosition();" />
+        
+        <div id="map" style="width:760px;height:400px;margin-top:20px;"></div>
 
 <script>
 var selectedAddress = new Array();
 $("#tbl_addressInfo tr").click(function(){
-	var td = $(this).children();
-	selectedAddress = new Array();
-	td.each(function(i){
-		selectedAddress.push(td.eq(i).text());
-	});
+   var td = $(this).children();
+   selectedAddress = new Array();
+   td.each(function(i){
+      selectedAddress.push(td.eq(i).text());
+   });
 });
 $("#btn_sendAddress").click(function(){
-	alert(selectedAddress);
-	
-	//boots_currentPostion.mw;
+   alert(selectedAddress);
+   
+   //boots_currentPostion.mw;
 })
 
 </script>
 <script type="text/javascript">
 var markers = [];
 $(document).ready(function() {
-	fnGetCurrentPosition();
+   fnGetCurrentPosition();
 });
 
     function fnGetCurrentPosition() {
@@ -47,14 +47,14 @@ $(document).ready(function() {
             $("#userLocation").html("");
             $("#errormsg").html("");
             navigator.geolocation.getCurrentPosition (function (pos){
-				//현재 자신의 위도경도
+            //현재 자신의 위도경도
                 lat = pos.coords.latitude; 
                 lng = pos.coords.longitude;
 
                 //user1 위도경도
                 lat1 =  ${user1.lat1};
                 lng1 =  ${user1.long1};
-				console.log(lat1);
+            console.log(lat1);
                 //user2 
                 lat2 =  ${user2.lat2};
                 lng2 =  ${user2.long2};
@@ -64,7 +64,7 @@ $(document).ready(function() {
                 lng3 =  ${user3.long3}; 
                 
                 var people_location_arr = [
-                	["현재위치", lat, lng, "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"],
+                   ["현재위치", lat, lng, "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"],
                     ["user1", lat1,lng1 , "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"],
                     ["user2",lat2 ,lng2, "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"],
                     ["user3", lat3,lng3, "http://maps.google.com/mapfiles/ms/micons/yellow-dot.png"]
@@ -83,9 +83,9 @@ $(document).ready(function() {
                 var latlngbounds = new google.maps.LatLngBounds();
                 
                 for(i=0; i<people_location_arr.length; i++){
-                	
-                	var photo = new google.maps.MarkerImage(people_location_arr[i][3], null, null, null, new google.maps.Size(30,30));
-                	var Marker = new google.maps.Marker({
+                   
+                   var photo = new google.maps.MarkerImage(people_location_arr[i][3], null, null, null, new google.maps.Size(30,30));
+                   var Marker = new google.maps.Marker({
                         position: new google.maps.LatLng(people_location_arr[i][1], people_location_arr[i][2]),
                         
                         map: map,
@@ -94,7 +94,7 @@ $(document).ready(function() {
                         icon: photo,
                         label:people_location_arr[i][0]
                     });
-                	latlngbounds.extend(new google.maps.LatLng(people_location_arr[i][1], people_location_arr[i][2])); 
+                   latlngbounds.extend(new google.maps.LatLng(people_location_arr[i][1], people_location_arr[i][2])); 
                 }
                
                var centerIcon_Ref = "https://scontent-gmp1-1.xx.fbcdn.net/v/t1.0-9/41021555_289093925222211_8440374429069869056_n.png?_nc_cat=111&_nc_oc=AQklHljtQIycKDtvOyyat4lDnjQ716p7daM5rZM7NHQJIYndXH7--4KcFqd44RgNdOI&_nc_ht=scontent-gmp1-1.xx&oh=8743bd7e56ae7eddfada6ec77c32ba90&oe=5E0E8591";

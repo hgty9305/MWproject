@@ -38,7 +38,11 @@ public class CalenderBean {
 	HttpSession session;
 	
 	@RequestMapping("boots_calendar.mw")
-	public String boots_calendar(String groupId,Model model) {
+	public String boots_calendar(String groupId,Model model,String friends) {
+		
+		if(friends!=null) {
+			sql.update("calendar.add", friends);
+		}
 		String seeName = (String)session.getAttribute("loginUser");
 		
 		
