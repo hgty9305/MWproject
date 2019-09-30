@@ -7,6 +7,14 @@
 	.right{
 	float:right
 	}
+	button,input,.searchResult{
+    height:30px; 
+    width:120px; 
+	
+    position:relative;
+    top:40%; 
+    left:50%;
+}
 </style>
 </head>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -23,7 +31,7 @@
 			<div id="searchForm">
         		<form onsubmit="searchajax(); return false;">
             		<input type="text" size="20" id="searchFromAll" name="searchFromAll"/>&nbsp;
-            		<button type="submit">검색</button>
+            		<button type="submit" class="mx-auto rounded-circle">검색</button>
         		</form>    
     		</div><br>
      		<div id="searchResult">${i.m_id}</div><br><br>
@@ -32,8 +40,6 @@
      		
      		<div class="right">
      		<c:set value="${addresslist}" var="adlist"/>
-     		
- 
 			</div>
 		</div>
 	</section>
