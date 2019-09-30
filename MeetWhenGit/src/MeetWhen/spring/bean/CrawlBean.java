@@ -1,10 +1,7 @@
 package MeetWhen.spring.bean;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,6 +19,7 @@ import MeetWhen.vo.airport.CrawlA1VO;
 import MeetWhen.vo.airport.CrawlA2VO;
 import MeetWhen.vo.airport.CrawlBVO;
 import MeetWhen.vo.airport.RegionVO;
+
 
 @Controller
 @RequestMapping("/Crawl/")

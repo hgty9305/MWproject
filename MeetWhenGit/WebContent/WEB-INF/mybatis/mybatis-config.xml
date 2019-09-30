@@ -10,7 +10,8 @@
 
 		<typeAlias alias="cal"	type="MeetWhen.vo.calendar.CalendarVO" />
 		<typeAlias alias="uvo"  type="MeetWhen.vo.calendar.UpdataVO" />
-
+		<typeAlias alias="gvo"  type="MeetWhen.vo.calendar.GroupVO" />
+		
 		<typeAlias alias="cv"   type="MeetWhen.vo.airport.ContryVO" />
 		<typeAlias alias="rv"   type="MeetWhen.vo.airport.RegionVO" />
 		<typeAlias alias="lcv"  type="MeetWhen.vo.airport.LContryVO" />

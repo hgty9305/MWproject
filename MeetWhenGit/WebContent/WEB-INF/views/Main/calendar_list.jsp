@@ -35,7 +35,7 @@ function checkReg() {
 	    var group = document.group;
 	    if (group.groupTitle.value == "") {
 	        alert("이름을 입력하세요");
-	        return false;
+	        return;
 	     }
 	 }
 	function openCheckTitle(group) {
@@ -59,13 +59,12 @@ function checkReg() {
 
 		<div class="container">
 			<div class="col-lg-12 text-center">
-				<h2 class="section-heading text-uppercase">생성할 일정 이름</h2>
-				<form action="calendar_Pro.mw" method="post" name="group">
-					<input type="text" id="groupTitle" name="groupTitle"/>
-					<input type="button" onclick="openCheckTitle(this.form)" value="체크" /><br/>
-					<p>주의! 한번 생성하면 이름을 바꿀수 없습니다.</p>
-					<input type="submit" onclick="return checkReg()"  value="생성"/><br/>
-				</form>
+				<h2 class="section-heading text-uppercase">생성한 일정 리스트</h2>
+				<c:forTokens var="name" items="${g_list}" delims="#">
+				<img alt="" src="">
+				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+				href="/MeetWhenGit/Main/boots_calendar.mw?groupId=${name}">${name}</a>
+				</c:forTokens>
 			</div>
 		</div>
 

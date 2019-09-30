@@ -34,7 +34,7 @@ function callCrawlA1(){
 					$("#resultA1").text("실행 오류...!!");}
 			});
 	});
-	alert("[CrawlA1 : 재 리셋&생성_1시간 간격]");
+	alert("[CrawlA1 : 재 리셋&생성_15분 간격]");
 }
 function callCrawlA2(){
 	$(document).ready(function(){	
@@ -47,7 +47,7 @@ function callCrawlA2(){
 				$("#resultA2").text("실행 오류...!!");}
 		});	
 	});
-	alert("[CrawlA2 : 재 리셋&생성_1시간 간격]");
+	alert("[CrawlA2 : 재 리셋&생성_15분 간격]");
 }
 function callCrawlB1(){
 	$(document).ready(function(){	
@@ -60,7 +60,7 @@ function callCrawlB1(){
 					$("#resultB1").text("실행 오류...!!");}
 			});
 	});
-	alert("[CrawlB1 : 재 리셋&생성_10분 간격]");
+	alert("[CrawlB1 : 재 리셋&생성_30분 간격]");
 }
 function callCrawlB2(){
 	$(document).ready(function(){	
@@ -73,7 +73,7 @@ function callCrawlB2(){
 					$("#resultB2").text("실행 오류...!!");}
 			});
 	});
-	alert("[CrawlB2 : 재 리셋&생성_10분 간격]");
+	alert("[CrawlB2 : 재 리셋&생성_30m분 간격]");
 }
 function callCrawlB3(){
 	$(document).ready(function(){	
@@ -86,7 +86,7 @@ function callCrawlB3(){
 					$("#resultB3").text("실행 오류...!!");}
 			});
 	});
-	alert("[CrawlB3 : 재 리셋&생성_10분 간격]");
+	alert("[CrawlB3 : 재 리셋&생성_30분 간격]");
 }
 function callCrawlB4(){
 	$(document).ready(function(){	
@@ -99,7 +99,7 @@ function callCrawlB4(){
 					$("#resultB4").text("실행 오류...!!");}
 			});
 	});
-	alert("[CrawlB4 : 재 리셋&생성_10분 간격]");
+	alert("[CrawlB4 : 재 리셋&생성_30분 간격]");
 }
 function callCrawlB5(){
 	$(document).ready(function(){	
@@ -112,7 +112,7 @@ function callCrawlB5(){
 					$("#resultB5").text("실행 오류...!!");}
 			});
 	});
-	alert("[CrawlB5 : 재 리셋&생성_10분 간격]");
+	alert("[CrawlB5 : 재 리셋&생성_30분 간격]");
 }
 function callCrawlB6(){
 	$(document).ready(function(){	
@@ -125,7 +125,7 @@ function callCrawlB6(){
 					$("#resultB6").text("실행 오류...!!");}
 			});
 	});
-	alert("[CrawlB6 : 재 리셋&생성_10분 간격]");
+	alert("[CrawlB6 : 재 리셋&생성_30분 간격]");
 }
 
 	function StartCrowling() {
@@ -135,56 +135,56 @@ function callCrawlB6(){
         msg=" First Format&Create 시작";
         
 	
-		alert("30초 후 자동 크롤링을 시작합니다.");
+		alert("1분 뒤 부터 자동 크롤링을 시작합니다.");
 		
 		setTimeout(function(){
 			alert("[CrawlA1"+msg+"]");
 			callCrawlA1();
-		},sece*30) //30초 뒤에 진행
-		setInterval(callCrawlA1, hour); 
+		},min*1) //1분뒤에 진행
+		setInterval(callCrawlA1, min*15); 
 		
 		setTimeout(function(){
 			alert("[CrawlA2"+msg+"]");
 			callCrawlA2();
-		},min*5) //5분 뒤에 진행
-		setInterval(callCrawlA2, hour);
+		},min*2+sec*30) //2분30초 뒤에 진행
+		setInterval(callCrawlA2, min*15);
 
 		
 		setTimeout(function(){
 			alert("[CrawlB1"+msg+"]");
 			callCrawlB1();
-		},min*11) //11분 뒤에 진행 
-		setInterval(callCrawlB1, min*10); 
+		},min*5) //5분뒤에 진행 
+		setInterval(callCrawlB1, min*30); 
 		
 		setTimeout(function(){
 			alert("[CrawlB2"+msg+"]");
 			callCrawlB2();
-		},min*11+sec*30) //11분30초 뒤에 진행 
-		setInterval(callCrawlB2,  min*10);  
+		},min*5+sec*15) //5분15초 뒤에 진행 
+		setInterval(callCrawlB2,  min*30);  
 		
 		setTimeout(function(){
 			alert("[CrawlB3"+msg+"]");
 			callCrawlB3();
-		},min*12) //12분 뒤에 진행 
+		},min*5+sec*30) //5분30초 뒤에 진행 
 		setInterval(callCrawlB3,  min*30); 
 		
 		setTimeout(function(){
 			alert("[CrawlB4"+msg+"]");
 			callCrawlB4();
-		},min*12+sec*30) //12분30초 뒤에 진행 
-		setInterval(callCrawlB4,  min*10);  
+		},min*5+sec*45) //5분45초 뒤에 진행 
+		setInterval(callCrawlB4,  min*30);  
 		
 		setTimeout(function(){
 			alert("[CrawlB5"+msg+"]");
 			callCrawlB5();
-		},min*13) //13분 뒤에 진행  
-		setInterval(callCrawlB5,  min*10); 
+		},min*6) //6분 뒤에 진행  
+		setInterval(callCrawlB5,  min*30); 
 		
 		setTimeout(function(){
 			alert("[CrawlB6"+msg+"]");
 			callCrawlB6();
-		},min*13+sec*30) //13분30초 뒤에 진행
-		setInterval(callCrawlB6,  min*10); 
+		},min*6+sec*15) //6분15초 뒤에 진행
+		setInterval(callCrawlB6,  min*30); 
 	}
 </script>
 

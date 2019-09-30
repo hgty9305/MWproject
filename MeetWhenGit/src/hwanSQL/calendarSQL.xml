@@ -9,7 +9,10 @@
 	<insert id="insertData">
 		insert into calendar values(calendar_seq.NEXTVAL ,#{title}, #{c_start}, #{c_end}, #{description}, #{type}, #{M_id}, #{backgroundColor}, #{textColor}, #{allDay}, #{groupid}, #{cdata})
 	</insert>
-
+	
+	<insert id="createGroup" parameterType="gvo">
+		insert into MWMEETGROUP (GROUPID, M_ID, FRIENDLIST) values(#{groupid},#{M_id},#{friendlist})
+	</insert>
 
 
 	<update id="updateData">
@@ -30,10 +33,22 @@
 		select num from calendar where groupid=#{groupid} order by cdata asc
 	</select> 
 	
+	<select id="confTitle" resultType="int" parameterType="String">
+		select count(GROUPID) from MWMEETGROUP where GROUPID=#{value}
+	</select>
 	
 	<select id="onecall" parameterType="int" resultType="cal">
 		select * from calendar where num=#{a}
 	</select>
+	
+	<select id="glistSerch" resultType="String" parameterType="String">
+		select GROUPID from MWMEETGROUP where FRIENDLIST like '%'||#{value}||'%'
+	</select>
+	
+	<select id="friendslist" resultType="String" parameterType="String">
+		select FRIENDLIST from MWMEETGROUP where GROUPID=#{value}
+	</select>
+	
 	
 	
 	<delete id="deleteData" parameterType="int">

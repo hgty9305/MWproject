@@ -13,7 +13,6 @@
 
 <body id="page-top">
 	
-	<jsp:include page="/Main/boots_menubar.mw"/>
 	<section class="page-section">
 		<div class="container">
 			<div class="col-lg-12 text-center">
@@ -26,43 +25,25 @@
             		<button type="submit">검색</button>
         		</form>    
     		</div><br>
-    <%--
-    <c:forEach var="i" items="${flist}" begin="0" end="${flist.size() }" >
-     <div id="smtest">ksm</div>
-    </c:forEach>
-	 --%>
+
+			   <c:forEach var="i" items="${flist}" begin="0" end="${flist.size() }" >
+			    <div id="smtest">ksm</div>
+			   </c:forEach>
+
      		<div id="searchResult">${i.m_id}</div><br><br>
      		
      		<div id = "addresult"></div>
-     		<button type="button" onclick="openPop();">그룹방 만들기</button>
      		
      		<div class="right">
      		<c:set value="${addresslist}" var="adlist"/>
-     		
-     		<table border="1">
-     		
-     			<tr>
-     			<th>아이디</th>
-     			<th>주소</th>
-     			<th>위도</th>
-     			<th>경도</th>
-     			</tr>
-     			<c:forEach items="${addresslist}" var="i" begin="0" end="${addresslist.size()}">
-     			<tr> 
-     			<th>${i.m_id}</th>
-     			<th>${i.address1}</th>
-     			<th>${i.lat1}</th>
-     			<th>${i.long1}</th>
-     			</tr>
-     			</c:forEach>
-     		</table>
+     	
 			
 			</div>
 		</div>
 	</section>
 
-	<jsp:include page="/Main/boots_footer.mw"/> 
 </body>
+<script>
 <script>
 var content ="";
 var id = [];
@@ -73,21 +54,14 @@ function searchajax(){
 	}else{
 		$.ajax({
 			type : 'POST',
-			url : 'searchResult.mw',
+			url : 'searchFriend.mw',
 			data : {searchFromAll : words},
 			success : function(data){
-				$("#searchResult").html(data);
+				$("#searchFriend").html(data);
 				
 			}
 		})
 	}
-};
-function openPop(){
-	
-	var url = "searchFriendsPop.mw";
-	var name = "친구 추가 확인";
-	var option = "width = 300, height = 250, top = 100, left = 200, location = no";
-	window.open(url,name,option);
 };
 
 </script>

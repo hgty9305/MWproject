@@ -106,8 +106,14 @@
 					<ul class="timeline">
 						<li>
 							<div class="timeline-image bgblack">
+							<c:if test="${not empty sessionScope.loginUser}">
 								<a href="/MeetWhenGit/Member/searchFriends.mw"><img class="rounded-circle img-fluid"
 									src="/MeetWhenGit/img/main/friend.png" alt=""></a>
+							</c:if>
+							<c:if test="${empty sessionScope.loginUser}">
+								<img class="rounded-circle img-fluid"
+									src="/MeetWhenGit/img/main/friend.png" alt="">
+							</c:if>
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
@@ -123,8 +129,14 @@
 						</li>
 						<li class="timeline-inverted">
 							<div class="timeline-image">
-								<a href="/MeetWhenGit/Main/calendar_Form.mw"><img class="rounded-circle img-fluid"
+							<c:if test="${not empty sessionScope.loginUser}">
+								<a href="/MeetWhenGit/Main/calendar_main.mw"><img class="rounded-circle img-fluid"
 									src="/MeetWhenGit/img/main/calendar.png" alt=""></a>
+							</c:if>
+							<c:if test="${empty sessionScope.loginUser}">
+								<img class="rounded-circle img-fluid"
+									src="/MeetWhenGit/img/main/calendar.png" alt="">
+							</c:if>
 							</div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">

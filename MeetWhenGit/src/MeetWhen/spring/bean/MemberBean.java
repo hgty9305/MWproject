@@ -39,6 +39,50 @@ public class MemberBean {
 
 	@Autowired
 	HttpSession session;
+
+//	@RequestMapping("main.mw")
+//	public String MemberMain(HttpServletRequest request) throws UnsupportedEncodingException {
+//		   String clientId = "IFQYtQGmVdD6mqkfDGew";//占쎈막占쎈탣�뵳�딉옙占쎌뵠占쎈�� 占쎄깻占쎌뵬占쎌뵠占쎈섧占쎈뱜 占쎈툡占쎌뵠占쎈탵揶쏉옙";
+//		    String clientSecret = "co1qBbOgUD";//占쎈막占쎈탣�뵳�딉옙占쎌뵠占쎈�� 占쎄깻占쎌뵬占쎌뵠占쎈섧占쎈뱜 占쎈뻻占쎄쾿�뵳�슙而�";
+//		    String code = request.getParameter("code");
+//		    String state = request.getParameter("state");
+//		    String redirectURI = URLEncoder.encode("http://localhost:8080/MeetWhen/member/main.mw", "UTF-8");
+//		    String apiURL;
+//		    apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
+//		    apiURL += "client_id=" + clientId;
+//		    apiURL += "&client_secret=" + clientSecret;
+//		    apiURL += "&redirect_uri=" + redirectURI;
+//		    apiURL += "&code=" + code;
+//		    apiURL += "&state=" + state;
+//		    String access_token = "";
+//		    String refresh_token = "";
+//		    System.out.println("apiURL="+apiURL);
+//		    try {
+//		      URL url = new URL(apiURL);
+//		      HttpURLConnection con = (HttpURLConnection)url.openConnection();
+//		      con.setRequestMethod("GET");
+//		      int responseCode = con.getResponseCode();
+//		      BufferedReader br;
+//		      System.out.print("responseCode="+responseCode);
+//		      if(responseCode==200) { // 占쎌젟占쎄맒 占쎌깈�빊占�
+//		        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//		      } else {  // 占쎈퓠占쎌쑎 獄쏆뮇源�
+//		        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+//		      }
+//		      String inputLine;
+//		      StringBuffer res = new StringBuffer();
+//		      while ((inputLine = br.readLine()) != null) {
+//		        res.append(inputLine);
+//		      }
+//		      br.close();
+//		      if(responseCode==200) {
+//		        System.out.println(res.toString());
+//		      }
+//		    } catch (Exception e) {
+//		      System.out.println(e);
+//		    }
+//		return "/Member/main";	
+//	}
 	@RequestMapping("join.mw")
 	public String join() {
 		return "Member/join";
@@ -47,43 +91,55 @@ public class MemberBean {
 	public String joinPro(MultipartHttpServletRequest request, String m_name, String m_id, String m_email_1,
 			String m_email_2, String m_pw,Model model) {
 		try {
-			
+			// 占쎌돳占쎌뜚�⑥쥙��甕곕뜇�깈 @@@@@@@@@@@@@@@@@@@@野껊��뒄占쎈뮉 甕곕뜇�깈 獄쎻뫗占썼굜遺얜굡 �빊遺쏙옙占쎌굙占쎌젟
 			Random rd = new Random();
-			String m_serialnumber = Integer.toString(rd.nextInt(9998)); //회원고유번호 생성 후 스트링으로 변환
-			MultipartFile mf = request.getFile("m_profile_img"); 	//type ="file"의 name값으로 파라미터?받음
-			String path = request.getRealPath("img");				//절대경로  path에 저장
-			String org = mf.getOriginalFilename();					//파일의 원래 이름
-			String ext="";											//원래이름에서 확장자명을 뺸 변수
-			String img="";											//회원아이디로 중복되는 파일이름을 갖지않게함
-			String newName ="";										//디비에 등록되는 파일명
-			File f= null;											
+			String m_serialnumber = Integer.toString(rd.nextInt(9998));
+			
+			List<String> srlist=sql.selectList("memberSQL.notSameSerial");
+			
+			for(int i =0; i<srlist.size(); i++) {
+				if(m_serialnumber.equals(srlist.get(i))) {
+					
+				}
+				else {continue;}
+			}
+			MultipartFile mf = request.getFile("m_profile_img"); // 占쎌뵠筌잛럩�뵠 占쎈툧占쎈┷占쎈뮉椰꾧퀗而놂옙占쏙옙�쑓占쎌삛筌랃옙 //疫꿸퀡�궚揶쏉옙 default.png占쎌뵥占쎈쑓 占쎌뵠野껉퍓猷꾬옙釉욑㎕濡곗삋?域밸㈇援뷂쭗怨뺤삆
+			String path = request.getRealPath("img");
+			System.out.println(path);
+			String org = mf.getOriginalFilename();
+			System.out.println(mf);
+			String ext="";
+			String img="";
+			String newName ="";
+			File f= null;
 			
 			MWMemberVO vo = new MWMemberVO();
 			
 			newName = "default.png";
 			vo.setM_profile_img(newName);
+			if(!mf.equals(null)){
+			ext = org.substring(org.lastIndexOf("."));
+			img = m_id + ext;
+			sql.insert("memberSQL.filenumsequence");
 			
-			if(!mf.equals(null)){									//업로드할 파일을 선택했을때
-				ext = org.substring(org.lastIndexOf("."));
-				img = m_id + ext;
-				sql.insert("memberSQL.filenumsequence");
-				
-				int num = sql.selectOne("memberSQL.filemaxnum");	//DB테이블에 있는 가장 높은 num을 가져옴
-				
-				newName = "image" + num + ext;						
-				f = new File(path + "//" + newName);
-				mf.transferTo(f);									//업로드
-				vo.setM_profile_img(newName);
+			int num = sql.selectOne("memberSQL.filemaxnum");
+			
+			newName = "image" + num + ext;
+			f = new File(path + "//" + newName);
+			mf.transferTo(f);
+			vo.setM_profile_img(newName);
 			} 
+			System.out.println(newName);
 			
-			String m_email = m_email_1 + m_email_2;					// 1: 회원 이메일  2: 검색엔진 (google, daum..)
+			String m_email = m_email_1 + m_email_2;
+			
 			vo.setM_name(m_name);
 			vo.setM_id(m_id);
 			vo.setM_pw(m_pw);
 			vo.setM_email(m_email);
 			vo.setM_serialnumber(m_serialnumber);
 			vo.setRegistrationdate(new Timestamp(System.currentTimeMillis()));
-			sql.insert("memberSQL.signup", vo);						//회원정보를 DB에 삽입
+			sql.insert("memberSQL.signup", vo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,11 +174,12 @@ public class MemberBean {
 			MWMemberVO User = (MWMemberVO) sql.selectOne("memberSQL.loginPro", vo);
 			if (User == null) {
 				loginState = false;
-				session.setAttribute("loginUser", null); // 받는값없으면 세션에 null대입
+				session.setAttribute("loginUser", null); // 諛쏅뒗媛믪뾾�쑝硫� �꽭�뀡�뿉 null���엯
 			} else {
 				loginState = true;
 				session.setAttribute("loginUser", User.getM_id());
-				returnPage = "Main/main"; // 로그인 성공시 메인페이지로 이동
+				session.setAttribute("loginName", User.getM_name());
+				returnPage = "Main/main"; // 濡쒓렇�씤 �꽦怨듭떆 硫붿씤�럹�씠吏�濡� �씠�룞
 			}
 			model.addAttribute("loginState", loginState);
 		} catch (Exception ex) {
@@ -139,7 +196,7 @@ public class MemberBean {
 	}
 	
 
-	@RequestMapping("boots_calendar.mw")// 삭제해야하는 건가?_ksm
+	@RequestMapping("boots_calendar.mw")// �궘�젣�빐�빞�븯�뒗 嫄닿�?_ksm
 	public String Calendar() {
 		return "/Member/boots_calendar";
 	}
@@ -165,37 +222,46 @@ public class MemberBean {
 	@RequestMapping("regitPlacePro.mw")
 	public String regitPlacePro(HttpSession session, HttpServletRequest request, MWAddressVO avo, int addressTarget,
 			String confmKey, String zipNo, String roadAddrPart1, String addrDetail, String roadAddrPart2, String entX,
-			String entY, Double x, Double y) {		
-		String m_id = (String) session.getAttribute("loginUser");		//sql문 조건에 들어갈 회원아이디
-		String empty = "empty";											//주소1에 값을 삽일할떄 주소2,3에 String = "empty"를 넣음
+			String entY, Double x, Double y) {
 		
-		int postal_code = Integer.parseInt(zipNo);						//파라미터로 받은 우편번호 int로 변환
+		String m_id = (String) session.getAttribute("loginUser");
 		
-		x = Double.parseDouble(entX); 									//평면도 x
-		y = Double.parseDouble(entY); 									//평면도 y
+		String empty = "empty";
+		
+		int postal_code = Integer.parseInt(zipNo);
+		
+		x = Double.parseDouble(entX); //占쎈즸筌롫�猷� 占쎈츟 占쎈솁占쎌뵬沃섎챸苑�== 野껋럥猷� 占쎈닚域뱀눖�뮡占쎈선占쎈즲占쎈쭡?占쎌벓 占쎈립 9占쎈뻻繹먮슣占� 占쎈였占쎈�묕옙堉깍옙苑� 占쎈�묕옙�묕옙�� 占쎄돌占쎌궎占쎈뮎 �⑤벉占쏙옙釉�占쎈뮄占쎌뵬 獄쎼끉源섓옙踰� 占쎄섐揶쏉옙?占쎄땀占쎌뵬筌롫똻�젔占쎌뵠占쎌뵬 占쎈퓠 獄쎻뫚鍮먲옙釉�占쎈뮉椰꾧퀣釉섓옙�빍占쎄튂 占쎄쉘占쎄쉘占쎈�묕옙�묕옙�묕옙�묕옙��
+		y = Double.parseDouble(entY); //占쎈즸筌롫�猷� 占쎈링 占쎈솁占쎌뵬沃섎챸苑� == 占쎌맄占쎈즲
 
 	    GeoPoint pt1 = new GeoPoint(x, y);
-	    GeoPoint tm_pt = GeoTrans.convert(GeoTrans.UTMK, GeoTrans.GEO, pt1); //평면도(UTMK)를 위도,경도(GEO) 값으로 변환 
+	    GeoPoint tm_pt = GeoTrans.convert(GeoTrans.UTMK, GeoTrans.GEO, pt1);
 										
-		String ylat = String.format("%.7f", tm_pt.x);						//소수점 7자리까지의 위,경도를 문자로 변환
+		String ylat = String.format("%.7f", tm_pt.x);
+		
 		String xlat = String.format("%.7f", tm_pt.y);
-
+		System.out.println(xlat);
+		System.out.println(ylat);
 		avo.setLat1(xlat);
 		avo.setLong1(ylat);
+		
+		
+		
 		String address1 = "";
 		String address2 = "";
 		String address3 = "";
 
+		
 		avo.setM_id(m_id);
 		avo.setPostal_code(postal_code);
+
 		avo.setAddress2(empty);
 		avo.setAddress3(empty);
+		
 		avo.setLat2(empty);
 		avo.setLong2(empty);
 		avo.setLat3(empty);
 		avo.setLong3(empty);
 		avo.setStatus(1);
-		
 		if (addressTarget == 1) {
 			address1 = roadAddrPart1 + addrDetail + " " + roadAddrPart2;
 			avo.setAddress1(address1);
@@ -209,10 +275,14 @@ public class MemberBean {
 			avo.setAddress3(address3);
 			avo.setLat3(xlat);
 			avo.setLong3(ylat);
-		}		
+		}
+		
 		int check1 = (int)sql.selectOne("address.searchAdd1",m_id);
-		String check2 = sql.selectOne("address.searchAdd2",m_id);	
-		String check3 = sql.selectOne("address.searchAdd3",m_id);	
+		
+		String check2 = sql.selectOne("address.searchAdd2",m_id);
+	
+		String check3 = sql.selectOne("address.searchAdd3",m_id);
+	
 		if(addressTarget==1&&check1==0) {
 			sql.insert("address.insertadd1", avo);
 		}
@@ -276,12 +346,16 @@ public class MemberBean {
 			String m_id = (String)session.getAttribute("loginUser");
 	    try {
 
+			/* 燁살뮄�럡�뵳�딅뮞占쎈뱜 */
+	    	
+	    	System.out.println("占쎄쉭占쎈�� :"+m_id);
 			List<MWFriendVO> flist= sql.selectList("memberSQL.frilist", m_id); 
 			int listCount = (int)sql.selectOne("memberSQL.countfrilist", m_id);
 			
 			model.addAttribute("friendList", flist); 
 			model.addAttribute("CntfriendList", listCount);
 			
+	            
 	    } catch(Exception e) {e.printStackTrace();}
 
 		return "/Member/addFriends";
@@ -307,18 +381,18 @@ public class MemberBean {
     	System.out.println(map.get("m_id"));
     	
       	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
-    	System.out.println("寃��깋寃곌낵 媛��닔 :" + count);
+    	System.out.println("野껓옙占쎄퉳野껉퀗�궢 揶쏉옙占쎈땾 :" + count);
     	 Slist = sql.selectList("memberSQL.memberSearch", map);
     	
-    	System.out.println("寃��깋 寃곗쥖 泥ル쾲吏�  �냸 : " + Slist.get(0).getM_id());
-    	System.out.println("寃��깋 寃곗쥖 2踰덉㎏  �냸 : " + Slist.get(1).getM_id());
+    	System.out.println("野껓옙占쎄퉳 野껉퀣伊� 筌ｃ꺂苡뀐쭪占�  占쎈꺒 : " + Slist.get(0).getM_id());
+    	System.out.println("野껓옙占쎄퉳 野껉퀣伊� 2甕곕뜆�럮  占쎈꺒 : " + Slist.get(1).getM_id());
     	model.addAttribute("slist", Slist);
     	
     	if(count !=0) {
     	model.addAttribute("cntFrnd", count);
     	}
     	else if(count==0) {
-    		String NResult = "寃��깋寃곌낵 �뾾�쓬";
+    		String NResult = "野껓옙占쎄퉳野껉퀗�궢 占쎈씨占쎌벉";
     		model.addAttribute("NR", NResult);
     	}
 		}catch(Exception e){e.printStackTrace();}
@@ -332,17 +406,23 @@ public class MemberBean {
 		String m_id = (String)session.getAttribute("loginUser");
 		try {
     	Map<String, String> map = new HashMap<String, String>();
+   	 	
     	map.put("searchFromAll", searchFromAll);
     	map.put("m_id", m_id);
+    	System.out.println("========="+map.get("searchFromAll"));
+    	System.out.println(map.get("m_id"));
     	
-      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map); //검색 결과 갯수
-    	Slist = sql.selectList("memberSQL.memberSearch", map);
+      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
+    	System.out.println("寃��깋寃곌낵 媛��닔 :" + count);
+    	 Slist = sql.selectList("memberSQL.memberSearch", map);
+    	
     	model.addAttribute("slist", Slist);
+    	
     	if(count !=0) {
     	model.addAttribute("cntFrnd", count);
     	}
     	else if(count==0) {
-    		String NResult = "결과값이 없습니다.";
+    		String NResult = "寃곌낵媛믪씠 �뾾�뒿�땲�떎.";
     		model.addAttribute("NR", NResult);
     	}
 		}catch(Exception e){e.printStackTrace();}
@@ -354,23 +434,7 @@ public class MemberBean {
 		
 		return"/Member/searchFriendsPop";
 	}
-	@RequestMapping("/position")
-	public String Postion(HttpSession session, Model model) {
-		String id = (String)session.getAttribute("loginUser");
-		
-		String a = "user1";
-		String b = "user2";
-		String c = "user3";
-		MWAddressVO vo1 = sql.selectOne("memberSQL.getAdress", a);
-		MWAddressVO vo2 = sql.selectOne("memberSQL.getAdress", b);
-		MWAddressVO vo3 = sql.selectOne("memberSQL.getAdress", c);
-		
-		model.addAttribute("user1", vo1);
-		model.addAttribute("user2", vo2);
-		model.addAttribute("user3", vo3);
-		return "/Member/position";
-	}
-	//마이페이지 -----------------------------------------------------------------------
+	//留덉씠�럹�씠吏� -----------------------------------------------------------------------
 	@RequestMapping("myPage.mw")
 	public String myPage(HttpSession session, HttpServletRequest request) {
 		String id = (String) session.getAttribute("loginUser");
@@ -406,19 +470,19 @@ public class MemberBean {
 	@RequestMapping("modifyPro.mw")
 	public String modifyPro(MultipartHttpServletRequest request,
 					HttpSession session, String email, String passwd) {
-		//이미지 처리
+		//�씠誘몄� 泥섎━
 		String id = (String) session.getAttribute("loginUser");
 		MWMemberVO orgVo = sql.selectOne("memberSQL.getMyinfo", id);
 		
 		MWMemberVO vo = new MWMemberVO();
-		//이미지 
+		//�씠誘몄� 
 		vo.setM_name(orgVo.getM_name());
 		vo.setM_id(orgVo.getM_id());
 		vo.setM_pw(passwd);
 		vo.setM_email(email);
 		vo.setM_serialnumber(orgVo.getM_serialnumber());
 		vo.setRegistrationdate(orgVo.getRegistrationdate());
-		//vo로 가능한지 모르겟움..
+		//vo濡� 媛��뒫�븳吏� 紐⑤Ⅴ寃잛�..
 		//sql.update("member.modifyInfo",vo);
 		return"/MyPage/modifyPro";
 	}
@@ -436,15 +500,14 @@ public class MemberBean {
 		
 		int check = (Integer)sql.selectOne("memberSQL.confirmUser",vo);
 		if(check==1) {
-			System.out.println("탈퇴성공");
+			System.out.println("�깉�눜�꽦怨�");
 			sql.delete("memberSQL.deleteMember",id);
 			session.invalidate();
 			model.addAttribute("check",check);
 		}		
 		return"/MyPage/deletePro";
 	}
-
-
+	
 	
 	
 }

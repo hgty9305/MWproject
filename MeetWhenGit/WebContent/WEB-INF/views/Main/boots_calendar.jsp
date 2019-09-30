@@ -31,10 +31,31 @@ html, body {
 
 </head>
 
+<script type="text/javascript">
+	function InviteFriend() {
+	    url = "InviteFriend.mw?groupId=${groupId}";
+	    open(
+	          url,
+	          "confirm",
+	          "toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=500, height=300");
+	 }
+</script>
 
 <body>
 
     <div class="containers">
+    		<div class="col-lg-12 text-center">
+				<h2>${groupId}</h2>
+			</div>
+    		<div class="col-lg-12 text-right">
+				<img alt="" src="">
+				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+				href="/MeetWhenGit/Main/main.mw">메인으로</a>
+				<img alt="" src="">
+				<a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+				onclick="InviteFriend()">친구초대</a>
+			</div>
+    
         <!-- 일자 클릭시 메뉴오픈 -->
         <div id="contextMenu" class="dropdown clearfix">
             <ul class="dropdown-menu dropNewEvent" role="menu" aria-labelledby="dropdownMenu"
@@ -162,10 +183,11 @@ html, body {
                 <div class="col-lg-6">
                     <label for="calendar_view">등록자별</label>
                     <div class="input-group">
-                    	<c:forEach var="item" items="${groupList}">
-                    		<label class="checkbox-inline"><input class='filter' type="checkbox" value="${item.g_member}"
-                                checked></label>
-                    	</c:forEach>
+                    <label class="checkbox-inline">
+                    	<c:forTokens var="item" items="${friendsList}" delims="#">
+                    		<input class='filter' type="checkbox" value="${item}" checked/>${item}
+                    	</c:forTokens>
+                    </label>
                     </div>
                 </div>
 
@@ -186,7 +208,7 @@ html, body {
 /* ****************
  *  일정 편집
  * ************** */
- 	if(event._id==${seeName}){
+
 	var editEvent = function (event, element, view) {
 	    $('.popover.fade.top').remove();
 	    $(element).popover("hide");
@@ -279,7 +301,7 @@ html, body {
 	        console.log(event.backgroundColor);
 	        $.ajax({
 	            type: "post",
-	            url: "UpdateCalendar.mw",
+	            url: "UpdateCalendar.mw?groupId="+"${groupId}",
 	            dataType: 'json',
 	            data: stjson,
 	            contentType:'application/json;',
@@ -309,7 +331,7 @@ html, body {
 	        });
 	    });
 	};
- 	}
+
 	
 	//SELECT 색 변경
 	$('#edit-color').change(function () {
@@ -372,7 +394,7 @@ html, body {
 	            end: editEnd.val(),
 	            description: editDesc.val(),
 	            type: editType.val(),
-	            username: seeName,//세션 아이디 
+	            username: seeName,//이름
 	            backgroundColor: editColor.val(),
 	            textColor: '#ffffff',
 	            allDay: false
@@ -409,7 +431,7 @@ html, body {
 	        var stjson = JSON.stringify(eventData);
 	        $.ajax({
 	            type: "post",
-	            url: "CreateCalendar.mw",
+	            url: "CreateCalendar.mw?groupId="+"${groupId}",
 	            dataType: 'json',
 	            data: stjson,
 	            contentType:'application/json; charset=utf-8',
@@ -601,8 +623,8 @@ html, body {
 	    events: function (start, end, timezone, callback) {
 	    $.ajax({
 	      type: "post",
-	      url: "SelectCalendar.mw",
-	      data: {groupid: "hgty9305"},//${grouid} 나중에 회원관련해서 jstil로 값을보내주어 처리하자
+	      url: "SelectCalendar.mw?groupId="+"${groupId}",
+	      data: {groupid: "${groupId}"},//${grouid} 나중에 회원관련해서 jstil로 값을보내주어 처리하자
 	      datatype: "String",
 	      success: function (data) {
 	    	var response = JSON.parse(data);
@@ -655,7 +677,7 @@ html, body {
 	  },
 	
 	  //일정 드래그앤드롭
-	  if(event._id==${seeName}){
+	
 	  eventDrop: function (event, delta, revertFunc, jsEvent, ui, view) {
 	    $('.popover.fade.top').remove();
 	    //주,일 view일때 종일 <-> 시간 변경불가
@@ -681,7 +703,7 @@ html, body {
 	        reloadPage();
 	      }
 	    });
-	  }},
+	  },
 	
 	  select: function (startDate, endDate, jsEvent, view) {
 	

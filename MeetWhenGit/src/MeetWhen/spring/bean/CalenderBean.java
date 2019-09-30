@@ -3,6 +3,7 @@ package MeetWhen.spring.bean;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import MeetWhen.vo.bri.MWMemberVO;
 import MeetWhen.vo.calendar.CalendarVO;
+import MeetWhen.vo.calendar.GroupVO;
 import MeetWhen.vo.calendar.UpdataVO;
+
 
 @Controller
 @RequestMapping("/Main/")
@@ -34,34 +38,83 @@ public class CalenderBean {
 	HttpSession session;
 	
 	@RequestMapping("boots_calendar.mw")
-	public String boots_calendar(Model model) {
-		
-		String seeName = (String)session.getAttribute("loginName");
-		
-		
-		String tablename = "MWMEETGROUP";
+	public String boots_calendar(String groupId,Model model) {
+		String seeName = (String)session.getAttribute("loginUser");
 		
 		
-		model.addAttribute("groupList", seeName);
+		String friendsList = sql.selectOne("calendar.friendslist", groupId);
+		
+		model.addAttribute("friendsList", friendsList);
 		model.addAttribute("seeName", seeName);
+		model.addAttribute("groupId", groupId);
 		return "/Main/boots_calendar";
 	}
 
 	
 	@RequestMapping("calendar_Form.mw")
-	public String calendar_Form() {
+	public String calendar_Form() {		
+		
 		return "/Main/calendar_Form";
 	}
 	
+	@RequestMapping("calendar_Pro.mw")
+	public String calendar_Pro(Model model, String groupTitle) {
+		String id = (String)session.getAttribute("loginUser");
+		
+		GroupVO gvo = new GroupVO();
+		
+		gvo.setM_id(id);
+		gvo.setGroupid(groupTitle);
+		gvo.setFriendlist(id+"#");
+		
+		sql.insert("calendar.createGroup", gvo);
+		
+		return "/Main/calendar_Pro";
+	}
 	
 	
+	@RequestMapping("calendar_main.mw")
+	public String calendar_main() {
+		return "/Main/calendar_main";
+	}
 	
+	@RequestMapping("calendar_list.mw")
+	public String calendar_list(String groupId,Model model) {
+		String id = (String)session.getAttribute("loginUser")+"#";
+		List list = sql.selectList("calendar.glistSerch", id);
+		
+		String g_list="";
+		
+		for(int i=0;i<list.size();i++) {
+			g_list+=list.get(i)+"#";
+		}
+		
+		model.addAttribute("g_list", g_list);
+		
+		
+		return "/Main/calendar_list";
+	}
+	
+	@RequestMapping("confTitle.mw")
+	public String confTitle(String groupTitle, Model model) {
+		int check = (Integer) sql.selectOne("calendar.confTitle", groupTitle);
+		model.addAttribute("confirm", check);
+		model.addAttribute("groupTitle", groupTitle);
+		return "/Main/confTitle";
+	}
+	
+	
+	@RequestMapping("InviteFriend.mw")
+	public String InviteFriend(String groupId) {
+		
+		return "/Main/InviteFriend";
+	}
 	
 	
 	//CreateCalendar.mw
 		@RequestMapping(value="CreateCalendar.mw", method=RequestMethod.POST, produces = "application/text; charset=utf8")
 		@ResponseBody
-		public void CreateCalendar (@RequestBody Map<String, Object> map)throws NoSuchFieldException, NoSuchMethodException, IllegalAccessException, InvocationTargetException{
+		public void CreateCalendar (@RequestBody Map<String, Object> map, String groupId)throws NoSuchFieldException, NoSuchMethodException, IllegalAccessException, InvocationTargetException{
 			CalendarVO cv = new CalendarVO();
 			String jsonSt ="";
 			JSONObject obj = new JSONObject();
@@ -73,7 +126,7 @@ public class CalenderBean {
 	            obj.put(key, value);
 	        }
 			}catch(Exception e) {}
-			cv.setGroupid("hgty9305");
+			cv.setGroupid(groupId);
 			cv.setTitle(obj.get("title").toString());
 			cv.setC_start(obj.get("start").toString());
 			cv.setC_end(obj.get("end").toString());
@@ -169,6 +222,32 @@ public class CalenderBean {
 			sql.update("calendar.dataUpdate", uvo);
 		}
 		
-		
+		@RequestMapping("searchFriend.mw")
+		public String searchFriend(Model model, String searchFromAll){
+
+			List<MWMemberVO> Slist = null;
+			String m_id = (String)session.getAttribute("loginUser");
+			try {
+	    	Map<String, String> map = new HashMap<String, String>();
+	   	 	
+	    	map.put("searchFromAll", searchFromAll);
+	    	map.put("m_id", m_id);
+
+	    	
+	      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
+	    	 Slist = sql.selectList("memberSQL.memberSearch", map);
+	    	
+	    	model.addAttribute("slist", Slist);
+	    	
+	    	if(count !=0) {
+	    	model.addAttribute("cntFrnd", count);
+	    	}
+	    	else if(count==0) {
+	    		String NResult = "없음요.";
+	    		model.addAttribute("NR", NResult);
+	    	}
+			}catch(Exception e){e.printStackTrace();}
+			return "/Member/searchFriend";
+		}
 		
 }

@@ -102,15 +102,14 @@ table.type03 td {
 				<c:set var="img" value="${vo.m_profile_img}" />
 				<table class="type03">
 				<tr>
-					
-					<c:if test="${img ne 'default.png'}">
 					<td>
+					<c:if test="${img ne 'default.png'}">
 						<img src="/MeetWhenGit/img/${vo.m_profile_img}" width="100px" />
 					</c:if>
 					<c:if test="${img eq 'default.png'}">
-						<td><img src="/MeetWhenGit/img/default.png" width="100px" /></td>
+						<td><img src="/MeetWhenGit/img/default.png" width="100px" />
 					</c:if>
-					
+					</td>
 					<td><h3>${vo.m_name}</h3>님 환영합니다.</td>
 				</tr>
 			</table>
