@@ -12,7 +12,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <body id="page-top">
-	
+	<p>${groupId}</p>
 	<section class="page-section">
 		<div class="container">
 			<div class="col-lg-12 text-center">
@@ -26,13 +26,13 @@
         		</form>    
     		</div><br>
 
+
 			   <c:forEach var="i" items="${flist}" begin="0" end="${flist.size() }" >
 			    <div id="smtest">ksm</div>
 			   </c:forEach>
 
      		<div id="searchResult">${i.m_id}</div><br><br>
      		
-     		<div id = "addresult"></div>
      		
      		<div class="right">
      		<c:set value="${addresslist}" var="adlist"/>
@@ -41,27 +41,26 @@
 			</div>
 		</div>
 	</section>
-
-</body>
-<script>
-<script>
-var content ="";
-var id = [];
-function searchajax(){
-	var words= $("#searchFromAll").val();
-	if(words==""){
-		alert("키워드를입력해주세요");
-	}else{
-		$.ajax({
-			type : 'POST',
-			url : 'searchFriend.mw',
-			data : {searchFromAll : words},
-			success : function(data){
-				$("#searchFriend").html(data);
-				
+	
+<script type="text/javascript">
+		var content ="";
+		var id = [];
+		function searchajax(){
+			var words= $("#searchFromAll").val();
+			if(words==""){
+				alert("키워드를입력해주세요");
+			}else{
+				$.ajax({
+					type : 'POST',
+					url : 'searchResult.mw?',
+					data : {searchFromAll : words},
+					success : function(data){
+						$("#searchResult").html(data);
+						
+					}
+				})
 			}
-		})
-	}
-};
+		};
 
 </script>
+</body>

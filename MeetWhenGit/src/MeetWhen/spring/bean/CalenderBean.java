@@ -42,6 +42,9 @@ public class CalenderBean {
 		String seeName = (String)session.getAttribute("loginUser");
 		
 		
+		
+		session.setAttribute("groupId_se", groupId);
+		
 		String friendsList = sql.selectOne("calendar.friendslist", groupId);
 		
 		model.addAttribute("friendsList", friendsList);
@@ -104,11 +107,7 @@ public class CalenderBean {
 	}
 	
 	
-	@RequestMapping("InviteFriend.mw")
-	public String InviteFriend(String groupId) {
-		
-		return "/Main/InviteFriend";
-	}
+	
 	
 	
 	//CreateCalendar.mw
@@ -222,8 +221,8 @@ public class CalenderBean {
 			sql.update("calendar.dataUpdate", uvo);
 		}
 		
-		@RequestMapping("searchFriend.mw")
-		public String searchFriend(Model model, String searchFromAll){
+		@RequestMapping("InviteFriend.mw")
+		public String InviteFriend(Model model, String searchFromAll,String groupId){
 
 			List<MWMemberVO> Slist = null;
 			String m_id = (String)session.getAttribute("loginUser");
@@ -238,16 +237,67 @@ public class CalenderBean {
 	    	 Slist = sql.selectList("memberSQL.memberSearch", map);
 	    	
 	    	model.addAttribute("slist", Slist);
-	    	
+	    	model.addAttribute("groupId", groupId);
 	    	if(count !=0) {
 	    	model.addAttribute("cntFrnd", count);
 	    	}
 	    	else if(count==0) {
-	    		String NResult = "없음요.";
+	    		String NResult = "�뾾�쓬�슂.";
 	    		model.addAttribute("NR", NResult);
 	    	}
 			}catch(Exception e){e.printStackTrace();}
-			return "/Member/searchFriend";
+			return "/Main/InviteFriend";
 		}
+		
+		@RequestMapping("searchResult.mw")
+		public String searchResult(Model model, String searchFromAll,String groupId){
+
+			List<MWMemberVO> Slist = null;
+			String m_id = (String)session.getAttribute("loginUser");
+			try {
+	    	Map<String, String> map = new HashMap<String, String>();
+	   	 	
+	    	map.put("searchFromAll", searchFromAll);
+	    	map.put("m_id", m_id);
+	    	System.out.println("========="+map.get("searchFromAll"));
+	    	System.out.println(map.get("m_id"));
+	    	
+	      	int count = (int)sql.selectOne("memberSQL.memberSearchCnt", map);
+	    	 Slist = sql.selectList("memberSQL.memberSearch", map);
+	    	
+	    	model.addAttribute("slist", Slist);
+	    	model.addAttribute("groupId", groupId);
+	    	if(count !=0) {
+	    	model.addAttribute("cntFrnd", count);
+	    	}
+	    	else if(count==0) {
+	    		String NResult = "寃곌낵媛믪씠 �뾾�뒿�땲�떎.";
+	    		model.addAttribute("NR", NResult);
+	    	}
+			}catch(Exception e){e.printStackTrace();}
+			return "/Main/searchResult";
+		}
+		
+		@RequestMapping("addfriend.mw")
+		public String addfriend(String friend,Model model) {
+			Map<String, String> map = new HashMap<String, String>();
+			String groupId = (String)session.getAttribute("groupId_se");
+			System.out.println(groupId);
+			System.out.println(friend);
+			
+			map.put("friend", friend);
+	    	map.put("groupId", groupId);
+	    	
+	    	System.out.println(map.get(groupId));
+			System.out.println(map.get(friend));
+			
+			
+			sql.update("calendar.addFirend", map);
+			
+			model.addAttribute("groupId", groupId);
+			
+			return "/Main/addfriend";
+		}
+		
 		
 }

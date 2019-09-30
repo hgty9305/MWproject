@@ -22,6 +22,10 @@
 	<update id="dataUpdate" parameterType="uvo">
 		update calendar set c_start=#{c_start}, c_end=#{c_end} where num=#{num}
 	</update>
+	
+	<update id="addFriend" parameterType="map">
+		update MWMEETGROUP set FRIENDLIST=FRIENDLIST||#{friend} where GROUPID=#{groupId}
+	</update>
 
 
 

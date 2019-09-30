@@ -33,7 +33,6 @@
 	 --%>
      		<div id="searchResult">${i.m_id}</div><br><br>
      		
-     		<div id = "addresult"></div>
      		<button type="button" onclick="openPop();">그룹방 만들기</button>
      		
      		<div class="right">
