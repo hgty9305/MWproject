@@ -43,7 +43,7 @@ public class CrawlBean {
 		REXP contry=null, capital=null, rate=null,imageSrc=null;//R결과를 담을 변수
 		String con="", cap="", rat="",imgSrc="";//R결과를 형변환하여 담을 변수
 
-		conn.eval("setwd('D:/R-workspace')");
+		conn.eval("setwd('C:/R-workspace')");
 		conn.eval("library(rvest)");
 		conn.eval("library(httr)");
 		//conn.eval("install.packages(\"RSelenium\")");
@@ -206,7 +206,7 @@ public class CrawlBean {
 		REXP explain1=null, explain2=null;
 		String ex1="",ex2="";
 
-		conn.eval("setwd('D:/R-workspace')");
+		conn.eval("setwd('C:/R-workspace')");
 		conn.eval("library(rvest)");
 		conn.eval("library(httr)");
 		//conn.eval("install.packages(\"RSelenium\")");
@@ -284,7 +284,7 @@ public class CrawlBean {
 		String topURL="";
 		//기본 셋팅
 		RConnection conn = new RConnection();
-		conn.eval("setwd('D:/R-workspace')");
+		conn.eval("setwd('C:/R-workspace')");
 		conn.eval("library(rvest)");
 		conn.eval("library(httr)");
 		//conn.eval("install.packages(\"RSelenium\")");

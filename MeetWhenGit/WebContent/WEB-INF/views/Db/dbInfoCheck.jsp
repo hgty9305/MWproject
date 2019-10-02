@@ -20,16 +20,16 @@
 
 <c:forEach items="${dataList}" var="ent" begin="0" step="1" end="${listSize}">
 	<c:if test="${num==1}"><%--Contry --%>
-		<span>${ent.c_num}) ${ent.c_con} : ${ent.c_cnt}</span><br>
+		<span>${ent.c_num}) ${ent.c_con} ▶  [방문객 : ${ent.c_cnt}]</span><br>
 	</c:if>
 	<c:if test="${num==2}"><%--LContry --%>
-		<span>${ent.lc_num}) ${ent.lc_con} : ${ent.lc_cnt}, ${ent.lc_lat}, ${ent.lc_lon}</span><br>
+		<span>${ent.lc_num}) ${ent.lc_con} ▶  [방문객: ${ent.lc_cnt}] [좌표: ${ent.lc_lat}/${ent.lc_lon}]</span><br>
 	</c:if>
 	<c:if test="${num==3}"><%--Region --%>
-		<span>${ent.r_num}) ${ent.r_reg} : ${ent.r_cnt}</span><br>
+		<span>${ent.r_num}) ${ent.r_reg} ▶  [방문객 : ${ent.r_cnt}]</span><br>
 	</c:if>
 	<c:if test="${num==4}"><%--LRegion --%>
-		<span>${ent.lr_num}) ${ent.lr_reg} : ${ent.lr_cnt}, ${ent.lr_lat}, ${ent.lr_lon}</span><br>
+		<span>${ent.lr_num}) ${ent.lr_reg} ▶  [방문객 :${ent.lr_cnt}] [좌표: ${ent.lr_lat}/${ent.lr_lon}]</span><br>
 	</c:if>
 	
 	<c:if test="${num==5}"><%--SubwayInfo --%>
